@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="zh-tw"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Fuck,一个神奇的纠错工具 · iLovebaicai</title><meta name="description" content="Fuck,一个神奇的纠错工具 - Nemo Chen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://messay.me/atom.xml" title="iLovebaicai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/cfqtxd1" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/lovebaicai" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="http://messay.me/about/" target="_blank" class="nav-list-link">ABOUT</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Fuck,一个神奇的纠错工具</h1><div class="post-info">2017年5月5日</div><div class="post-content"><h4 id="thefuck是一个使用Python编写的开源小工具，它可以自动纠正前一个命令的拼写错误。这个工具非常酷，尤其对于常常使用命令行的童鞋"><a href="#thefuck是一个使用Python编写的开源小工具，它可以自动纠正前一个命令的拼写错误。这个工具非常酷，尤其对于常常使用命令行的童鞋" class="headerlink" title="thefuck是一个使用Python编写的开源小工具，它可以自动纠正前一个命令的拼写错误。这个工具非常酷，尤其对于常常使用命令行的童鞋"></a>thefuck是一个使用Python编写的开源小工具，它可以自动纠正前一个命令的拼写错误。这个工具非常酷，尤其对于常常使用命令行的童鞋</h4><ul>
+<li>thefuck支持Mac OS X和Linux系统。</li>
+<li><p>安装步骤：</p>
+<ul>
+<li><p>ubuntu</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt install python3-dev python3-pip</div><div class="line"> pip3 install --user thefuck (or sudo -H pip3 install thefuck)</div></pre></td></tr></table></figure>
+</li>
+<li><p>macOs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install thefuck</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>  </li>
+<li><p>用法：</p>
+<ul>
+<li><p>先alias一个别名，别名随便</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim  .vimrc or .bashrc</div><div class="line">eval &quot;$(thefuck --alias fuck)&quot;</div><div class="line">source ~/.vimrc or ~/.bashrc</div></pre></td></tr></table></figure>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">  ➜ puthon</div><div class="line">No command &apos;puthon&apos; found, did you mean:</div><div class="line"> Command &apos;python&apos; from package &apos;python-minimal&apos; (main)</div><div class="line"> Command &apos;python&apos; from package &apos;python3&apos; (main)</div><div class="line">zsh: command not found: puthon</div><div class="line">➜ fuck</div><div class="line">python [enter/↑/↓/ctrl+c]</div><div class="line">Python 3.4.2 (default, Oct  8 2014, 13:08:17)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/nvbn/thefuck/master/example.gif" alt=""></p>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/nvbn/thefuck" target="_blank" rel="external">Git地址</a><br>更多用法请参考README</p>
+</blockquote>
+</div></article></div></main><footer><div class="paginator"><a href="/2017/05/25/python-ahocorasick-从本地文件读取文本，进行关键字匹配/" class="prev">PREV</a><a href="/2017/04/20/cassandra-CQL-常用操作/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2017 <a href="http://messay.me">Nemo Chen</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-91949407-1",'auto');ga('send','pageview');</script></body></html>

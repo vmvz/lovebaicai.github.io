@@ -1,0 +1,1005 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>iLovebaicai</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://messay.me/"/>
+  <updated>2017-06-25T05:31:33.000Z</updated>
+  <id>http://messay.me/</id>
+  
+  <author>
+    <name>Nemo Chen</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深究递归和迭代的区别、联系、优缺点及实例对比</title>
+    <link href="http://messay.me/2017/06/24/%E6%B7%B1%E7%A9%B6%E9%80%92%E5%BD%92%E5%92%8C%E8%BF%AD%E4%BB%A3%E7%9A%84%E5%8C%BA%E5%88%AB%E3%80%81%E8%81%94%E7%B3%BB%E3%80%81%E4%BC%98%E7%BC%BA%E7%82%B9%E5%8F%8A%E5%AE%9E%E4%BE%8B%E5%AF%B9%E6%AF%94/"/>
+    <id>http://messay.me/2017/06/24/深究递归和迭代的区别、联系、优缺点及实例对比/</id>
+    <published>2017-06-24T14:31:57.000Z</published>
+    <updated>2017-06-25T05:31:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="概念区分"><a href="#概念区分" class="headerlink" title="概念区分"></a>概念区分</h4><ul>
+<li><p>递归的基本概念:程序调用自身的编程技巧称为递归,是函数自己调用自己.<br>一个函数在其定义中直接或间接调用自身的一种方法,它通常把一个大型的复杂的问题转化为一个与原问题相似的规模较小的问题来解决,可以极大的减少代码量.递归的能力在于用有限的语句来定义对象的无限集合.</p>
+</li>
+<li><p>使用递归要注意的有两点:</p>
+<ol>
+<li>递归就是在过程或函数里面调用自身;</li>
+<li>在使用递归时,必须有一个明确的递归结束条件,称为递归出口.</li>
+</ol>
+</li>
+<li>递归分为两个阶段:<ol>
+<li>递推:把复杂的问题的求解推到比原问题简单一些的问题的求解;</li>
+<li>回归:当获得最简单的情况后,逐步返回,依次得到复杂的解.<br>利用递归可以解决很多问题:如背包问题,汉诺塔问题,…等.<br>斐波那契数列为:0,1,1,2,3,5…<br>由于递归引起一系列的函数调用,并且有可能会有一系列的重复计算,递归算法的执行效率相对较低.</li>
+</ol>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>迭代:利用变量的原值推算出变量的一个新值.如果递归是自己调用自己的话,迭代就是A不停的调用B.</li>
+<li>辩证看递归和迭代<ol>
+<li>所谓递归，简而言之就是应用程序自身调用自身，以实现层次数据结构的查询和访问。递归的使用可以使代码更简洁清晰，可读性更好（对于初学者到不见得），但由于递归需要系统堆栈，所以空间消耗要比非递归代码要大很多，而且，如果递归深度太大，可能系统资源会不够用。</li>
+<li>往往有这样的观点：能不用递归就不用递归，递归都可以用迭代来代替。<br>诚然，在理论上，递归和迭代在时间复杂度方面是等价的（在不考虑函数调用开销和函数调用产生的堆栈开销），但实际上递归确实效率比迭代低，既然这样，递归没有任何优势，那么是不是就，没有使用递归的必要了，那递归的存在有何意义呢？</li>
+<li>万物的存在是需要时间的检验的，递归没有被历史所埋没，即有存在的理由。从理论上说，所有的递归函数都可以转换为迭代函数，反之亦然，然而代价通常都是比较高的。但从算法结构来说，递归声明的结构并不总能够转换为迭代结构，原因在于结构的引申本身属于递归的概念，用迭代的方法在设计初期根本无法实现，这就像动多态的东西并不总是可以用静多态的方法实现一样。这也是为什么在结构设计时，通常采用递归的方式而不是采用迭代的方式的原因，一个极典型的例子类似于链表，使用递归定义及其简单，但对于内存定义(数组方式)其定义及调用处理说明就变得很晦涩，尤其是在遇到环链、图、网格等问题时，使用迭代方式从描述到实现上都变得不现实。因而可以从实际上说，所有的迭代可以转换为递归，但递归不一定可以转换为迭代。</li>
+<li>采用递归算法需要的前提条件是，当且仅当一个存在预期的收敛时，才可采用递归算法，否则，就不能使用递归算法。</li>
+<li>递归其实是方便了程序员难为了机器，递归可以通过数学公式很方便的转换为程序。其优点就是易理解，容易编程。但递归是用栈机制实现的，每深入一层，都要占去一块栈数据区域，对嵌套层数深的一些算法，递归会力不从心，空间上会以内存崩溃而告终，而且递归也带来了大量的函数调用，这也有许多额外的时间开销。所以在深度大时，它的时空性就不好了。</li>
+<li>而迭代虽然效率高，运行时间只因循环次数增加而增加，没什么额外开销，空间上也没有什么增加，但缺点就是不容易理解，编写复杂问题时困难。<br>因而，“能不用递归就不用递归，递归都可以用迭代来代替”这样的理解，还是辩证的来看待，不可一棍子打死。*/<br>1,2部分摘自网络，略有改动，向原作者致敬！</li>
+</ol>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>定义</th>
+<th style="text-align:center">优点</th>
+<th style="text-align:right">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>迭代</td>
+<td>程序调用自身的编程技巧称为递归</td>
+<td style="text-align:center">1）大问题化为小问题,可以极大的减少代码量；2）用有限的语句来定义对象的无限集合.；3）代码更简洁清晰，可读性更好</td>
+<td style="text-align:right">1）递归调用函数,浪费空间；2）递归太深容易造成堆栈的溢出；</td>
+</tr>
+<tr>
+<td>递归</td>
+<td>利用变量的原值推算出变量的一个新值，迭代就是A不停的调用B.</td>
+<td style="text-align:center">1）迭代效率高，运行时间只因循环次数增加而增加；2）没什么额外开销，空间上也没有什么增加；</td>
+<td style="text-align:right">1） 不容易理解；2） 代码不如递归简洁；3） 编写复杂问题时困难。</td>
+</tr>
+<tr>
+<td>二者关系</td>
+<td>1） 递归中一定有迭代,但是迭代中不一定有递归,大部分可以相互转换。2） 能用迭代的不用递归,递归调用函数,浪费空间,并且递归太深容易造成堆栈的溢出./<em>相对</em>/</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>举例如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;  </div><div class="line">using namespace std;  </div><div class="line">  </div><div class="line">//迭代实现斐波那契数列  </div><div class="line">long fab_iteration(int index)  </div><div class="line">&#123;  </div><div class="line">    if(index == 1 || index == 2)  </div><div class="line">    &#123;  </div><div class="line">        return 1;  </div><div class="line">    &#125;  </div><div class="line">    else  </div><div class="line">    &#123;  </div><div class="line">        long f1 = 1L;  </div><div class="line">        long f2 = 1L;  </div><div class="line">        long f3 = 0;  </div><div class="line">        for(int i = 0; i &lt; index-2; i++)  </div><div class="line">        &#123;     </div><div class="line">            f3 = f1 + f2; //利用变量的原值推算出变量的一个新值  </div><div class="line">            f1 = f2;  </div><div class="line">            f2 = f3;  </div><div class="line">        &#125;  </div><div class="line">         return f3;  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">//递归实现斐波那契数列  </div><div class="line"> long fab_recursion(int index)  </div><div class="line"> &#123;      </div><div class="line">    if(index == 1 || index == 2)  </div><div class="line">    &#123;  </div><div class="line">        return 1;  </div><div class="line">    &#125;  </div><div class="line">    else  </div><div class="line">    &#123;  </div><div class="line">        return fab_recursion(index-1)+fab_recursion(index-2);    //递归求值  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line">int main(int argc, char* argv[])  </div><div class="line">&#123;  </div><div class="line">    cout &lt;&lt; fab_recursion(10) &lt;&lt; endl;  </div><div class="line">    cout &lt;&lt; fab_iteration(10) &lt;&lt; endl;  </div><div class="line">    return 0;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a><a href="http://blog.csdn.net/laoyang360/article/details/7855860" target="_blank" rel="external">原文链接</a></h4>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;概念区分&quot;&gt;&lt;a href=&quot;#概念区分&quot; class=&quot;headerlink&quot; title=&quot;概念区分&quot;&gt;&lt;/a&gt;概念区分&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;递归的基本概念:程序调用自身的编程技巧称为递归,是函数自己调用自己.&lt;br&gt;一个函数在其定义中直接或间接调用自身的一种方法,它通常把一个大型的复杂的问题转化为一个与原问题相似的规模较小的问题来解决,可以极大的减少代码量.递归的能力在于用有限的语句来定义对象的无限集合.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使用递归要注意的有两点:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;递归就是在过程或函数里面调用自身;&lt;/li&gt;
+&lt;li&gt;在使用递归时,必须有一个明确的递归结束条件,称为递归出口.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;递归分为两个阶段:&lt;ol&gt;
+&lt;li&gt;递推:把复杂的问题的求解推到比原问题简单一些的问题的求解;&lt;/li&gt;
+&lt;li&gt;回归:当获得最简单的情况后,逐步返回,依次得到复杂的解.&lt;br&gt;利用递归可以解决很多问题:如背包问题,汉诺塔问题,…等.&lt;br&gt;斐波那契数列为:0,1,1,2,3,5…&lt;br&gt;由于递归引起一系列的函数调用,并且有可能会有一系列的重复计算,递归算法的执行效率相对较低.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Cassandra COPY 命令的用法</title>
+    <link href="http://messay.me/2017/05/25/Cassandra-COPY-%E5%91%BD%E4%BB%A4%E7%9A%84%E7%94%A8%E6%B3%95/"/>
+    <id>http://messay.me/2017/05/25/Cassandra-COPY-命令的用法/</id>
+    <published>2017-05-25T11:45:58.000Z</published>
+    <updated>2017-06-26T14:11:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Cassandra-COPY-命令简单用法"><a href="#Cassandra-COPY-命令简单用法" class="headerlink" title="Cassandra COPY 命令简单用法:"></a>Cassandra COPY 命令简单用法:</h4><ul>
+<li>Cassandra提供了COPY命令,可将数据库里面的table导入或者导出到本地,实现简单数据迁移</li>
+<li><p>导出到本地:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">COPY keyspace_name.table_name (id,lastname) TO &apos;../testname.csv&apos; WITH HEADER = TRUE ;</div></pre></td></tr></table></figure>
+</li>
+<li><p>从本地导入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">COPY keyspace_name.table_name (id,firstname) FROM &apos;../testnem.csv&apos; WITH HEADER = TRUE ;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<p>Note:NOTE: table_name后面若不跟key,默认导出全部数据.<br>特别注意的是,若需导入的表格超过300w的数据,不建议使用COPY命令导入,可使用Cassandra提供的工具sstableloader导入,也可使用其提供的API导入</p>
+</blockquote>
+<p>参考链接：</p>
+<p><a href="http://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlshCopy.html?hl=copy" target="_blank" rel="external">Cassandra COPY用法</a></p>
+<p><a href="http://docs.datastax.com/en/archived/cassandra/2.0/cassandra/tools/toolsBulkloader_t.html" target="_blank" rel="external">Cassandra sstableloader用法</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Cassandra-COPY-命令简单用法&quot;&gt;&lt;a href=&quot;#Cassandra-COPY-命令简单用法&quot; class=&quot;headerlink&quot; title=&quot;Cassandra COPY 命令简单用法:&quot;&gt;&lt;/a&gt;Cassandra COPY 命令简单用法:&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Cassandra提供了COPY命令,可将数据库里面的table导入或者导出到本地,实现简单数据迁移&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;导出到本地:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;COPY keyspace_name.table_name (id,lastname) TO &amp;apos;../testname.csv&amp;apos; WITH HEADER = TRUE ;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;从本地导入:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;COPY keyspace_name.table_name (id,firstname) FROM &amp;apos;../testnem.csv&amp;apos; WITH HEADER = TRUE ;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>python ahocorasick 从本地文件读取文本，进行关键字匹配</title>
+    <link href="http://messay.me/2017/05/25/python-ahocorasick-%E4%BB%8E%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%96%87%E6%9C%AC%EF%BC%8C%E8%BF%9B%E8%A1%8C%E5%85%B3%E9%94%AE%E5%AD%97%E5%8C%B9%E9%85%8D/"/>
+    <id>http://messay.me/2017/05/25/python-ahocorasick-从本地文件读取文本，进行关键字匹配/</id>
+    <published>2017-05-25T11:41:36.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h4><ul>
+<li>使用Python+pyahocorasick，匹配关键字，关键字大概在10-20个汉字之间。</li>
+<li>构建ahocorasick的文本，是从本地文件key_word的读入。格式如下：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Keyword</th>
+<th style="text-align:center">Keyword</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>母婴专区&lt;辅食&lt;面仔/面条:婴幼儿,幼儿,婴儿,儿童,宝宝</td>
+<td style="text-align:center">面条,细面,粗面,手工面,蔬菜面,营养面,碎面,挂面,面仔</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h4 id="参考代码如下："><a href="#参考代码如下：" class="headerlink" title="参考代码如下："></a>参考代码如下：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">import ahocorasick</div><div class="line">A = ahocorasick.Automaton()</div><div class="line">titles = [&apos;Hello Kitty3色蔬菜细面300克 婴儿幼儿营养面条宝宝辅食面条&apos;]</div><div class="line">word_dict = &#123;&#125;</div><div class="line">with open(&apos;categories.csv&apos;, &apos;r&apos;) as f:</div><div class="line">    for line in f.readlines():</div><div class="line">        line = line.strip()</div><div class="line">        word_key = line.split(&apos;:&apos;)[0]</div><div class="line">        word_value = list(line.split(&apos;:&apos;)[1].split(&apos;|&apos;))</div><div class="line">        word_dict[word_key] = word_value</div><div class="line">        line = (line.split(&apos;:&apos;)[1].split(&apos;|&apos;))</div><div class="line">        for word in line:</div><div class="line">            if word == &quot;&quot;:</div><div class="line">                continue</div><div class="line">            A.add_word(word, word)</div><div class="line">A.make_automaton()</div><div class="line">for title in titles:</div><div class="line">    category = []</div><div class="line">    aa = A.iter(title)</div><div class="line">    ret = []</div><div class="line">    matches = &#123;&#125;</div><div class="line">    for (k,v) in aa:</div><div class="line">        matches[v] = 1</div><div class="line">    for (k,v) in matches.items():</div><div class="line">        ret.append(k)</div><div class="line">    for value in word_dict.items():</div><div class="line">        if ret[0] in value[1]:</div><div class="line">            category.append(value[0]) #关键字太多，所以写死了一个keyword匹配的结果</div><div class="line">            #print(ret[0], value[0], value[1]) </div><div class="line">    print(category[0])</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;需求&quot;&gt;&lt;a href=&quot;#需求&quot; class=&quot;headerlink&quot; title=&quot;需求&quot;&gt;&lt;/a&gt;需求&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;使用Python+pyahocorasick，匹配关键字，关键字大概在10-20个汉字之间。&lt;/li&gt;
+&lt;li&gt;构建ahocorasick的文本，是从本地文件key_word的读入。格式如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Keyword&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;Keyword&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;母婴专区&amp;lt;辅食&amp;lt;面仔/面条:婴幼儿,幼儿,婴儿,儿童,宝宝&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;面条,细面,粗面,手工面,蔬菜面,营养面,碎面,挂面,面仔&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Fuck,一个神奇的纠错工具</title>
+    <link href="http://messay.me/2017/05/05/Fuck-%E4%B8%80%E4%B8%AA%E7%A5%9E%E5%A5%87%E7%9A%84%E7%BA%A0%E9%94%99%E5%B7%A5%E5%85%B7/"/>
+    <id>http://messay.me/2017/05/05/Fuck-一个神奇的纠错工具/</id>
+    <published>2017-05-05T12:12:47.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="thefuck是一个使用Python编写的开源小工具，它可以自动纠正前一个命令的拼写错误。这个工具非常酷，尤其对于常常使用命令行的童鞋"><a href="#thefuck是一个使用Python编写的开源小工具，它可以自动纠正前一个命令的拼写错误。这个工具非常酷，尤其对于常常使用命令行的童鞋" class="headerlink" title="thefuck是一个使用Python编写的开源小工具，它可以自动纠正前一个命令的拼写错误。这个工具非常酷，尤其对于常常使用命令行的童鞋"></a>thefuck是一个使用Python编写的开源小工具，它可以自动纠正前一个命令的拼写错误。这个工具非常酷，尤其对于常常使用命令行的童鞋</h4><ul>
+<li>thefuck支持Mac OS X和Linux系统。</li>
+<li><p>安装步骤：</p>
+<ul>
+<li><p>ubuntu</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt install python3-dev python3-pip</div><div class="line"> pip3 install --user thefuck (or sudo -H pip3 install thefuck)</div></pre></td></tr></table></figure>
+</li>
+<li><p>macOs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install thefuck</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>  </li>
+<li><p>用法：</p>
+<ul>
+<li><p>先alias一个别名，别名随便</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim  .vimrc or .bashrc</div><div class="line">eval &quot;$(thefuck --alias fuck)&quot;</div><div class="line">source ~/.vimrc or ~/.bashrc</div></pre></td></tr></table></figure>
+</li>
+<li><p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">  ➜ puthon</div><div class="line">No command &apos;puthon&apos; found, did you mean:</div><div class="line"> Command &apos;python&apos; from package &apos;python-minimal&apos; (main)</div><div class="line"> Command &apos;python&apos; from package &apos;python3&apos; (main)</div><div class="line">zsh: command not found: puthon</div><div class="line">➜ fuck</div><div class="line">python [enter/↑/↓/ctrl+c]</div><div class="line">Python 3.4.2 (default, Oct  8 2014, 13:08:17)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/nvbn/thefuck/master/example.gif" alt=""></p>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/nvbn/thefuck" target="_blank" rel="external">Git地址</a><br>更多用法请参考README</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;thefuck是一个使用Python编写的开源小工具，它可以自动纠正前一个命令的拼写错误。这个工具非常酷，尤其对于常常使用命令行的童鞋&quot;&gt;&lt;a href=&quot;#thefuck是一个使用Python编写的开源小工具，它可以自动纠正前一个命令的拼写错误。这个工具非常酷，尤其对于常常使用命令行的童鞋&quot; class=&quot;headerlink&quot; title=&quot;thefuck是一个使用Python编写的开源小工具，它可以自动纠正前一个命令的拼写错误。这个工具非常酷，尤其对于常常使用命令行的童鞋&quot;&gt;&lt;/a&gt;thefuck是一个使用Python编写的开源小工具，它可以自动纠正前一个命令的拼写错误。这个工具非常酷，尤其对于常常使用命令行的童鞋&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;thefuck支持Mac OS X和Linux系统。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装步骤：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;ubuntu&lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo apt install python3-dev python3-pip&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; pip3 install --user thefuck (or sudo -H pip3 install thefuck)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;macOs&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;brew install thefuck&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>cassandra CQL 常用操作</title>
+    <link href="http://messay.me/2017/04/20/cassandra-CQL-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/"/>
+    <id>http://messay.me/2017/04/20/cassandra-CQL-常用操作/</id>
+    <published>2017-04-20T11:35:25.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li><p>CQL客户端链接<br>bin/cqlsh ip username password</p>
+</li>
+<li><p>常用操作命令</p>
+<ul>
+<li><p>建立keyspace语句，keyspace类似于 mysql 中的数据库，一个数据库中可以有很多表；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE KEYSPACE mykeyspace WITH REPLICATION = &#123; &apos;class&apos; : &apos;SimpleStrategy&apos;,&apos;replication_factor&apos; : 2 &#125; ，replication_factor 表示 数据被复制几份</div></pre></td></tr></table></figure>
+</li>
+<li><p>建表语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE task ( row_split text, column_split text, username text, parent_user text, priority int, url text, status</div><div class="line"> int, is_dir boolean, channel_code text, is_multilayer boolean, action_type int, create_time bigint, finish_time bigint, id text, subtask_result text, reason text, retry_time int, PRIMARY KEY (row_split, column_split) ) ;  primary key 的第一个元素是rowkey，第二个元素的是cluster key；</div></pre></td></tr></table></figure>
+</li>
+<li><p>建索引语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create index task_status on task(status);  cassandra的索引不支持范围查找，类似于 位图索引 或者 哈希索引，支持 ＝ 操作，不支持&lt; 或 &gt; 之类的范围查找；</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<a id="more"></a>
+<ul>
+<li><p>查询语句:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select * from task where status=2;</div><div class="line">注意，cassandra where 子句里面的，除了rowkey以外，其他字段如果要使用 = 操作，必须建立二级索引，而且cassandra里面的二级索引 不支持范围查询，类似于位图索引，不同于 BTREE索引；</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除语句:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">单独删除某个column 或者 某行；</div><div class="line">delete column1，column2 from table where rowkey = &apos;xxxx&apos;</div><div class="line">or</div><div class="line">delete column1，column2 from table where rowkey in (&apos;x&apos;,&apos;xx&apos;,&apos;xxx&apos;...)</div><div class="line">其中where子句是不能省略的。</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除表中的所有数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">如果要想实现 类似 mysql中 delete from table的效果，可以使用truncate；</div><div class="line">truncate table</div></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;CQL客户端链接&lt;br&gt;bin/cqlsh ip username password&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;常用操作命令&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;建立keyspace语句，keyspace类似于 mysql 中的数据库，一个数据库中可以有很多表；&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;CREATE KEYSPACE mykeyspace WITH REPLICATION = &amp;#123; &amp;apos;class&amp;apos; : &amp;apos;SimpleStrategy&amp;apos;,&amp;apos;replication_factor&amp;apos; : 2 &amp;#125; ，replication_factor 表示 数据被复制几份&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;建表语句：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;CREATE TABLE task ( row_split text, column_split text, username text, parent_user text, priority int, url text, status&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; int, is_dir boolean, channel_code text, is_multilayer boolean, action_type int, create_time bigint, finish_time bigint, id text, subtask_result text, reason text, retry_time int, PRIMARY KEY (row_split, column_split) ) ;  primary key 的第一个元素是rowkey，第二个元素的是cluster key；&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;建索引语句：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;create index task_status on task(status);  cassandra的索引不支持范围查找，类似于 位图索引 或者 哈希索引，支持 ＝ 操作，不支持&amp;lt; 或 &amp;gt; 之类的范围查找；&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>基础 Ruby 中 Include, Extend, Load, Require 的使用区别</title>
+    <link href="http://messay.me/2017/04/15/%E5%9F%BA%E7%A1%80-Ruby-%E4%B8%AD-Include-Extend-Load-Require-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8C%BA%E5%88%AB/"/>
+    <id>http://messay.me/2017/04/15/基础-Ruby-中-Include-Extend-Load-Require-的使用区别/</id>
+    <published>2017-04-15T11:18:30.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Include"><a href="#Include" class="headerlink" title="Include"></a>Include</h4><ul>
+<li>如下例当你Include一个模块到某个类时, 相当于把模块中定义的方法插入到类中。它允许使用 mixin。它用来 DRY 你的代码, 避免重复。例如, 当你有多个类时, 需要相同的函数时, 可以把函数定义到module中, 进行include。 下例假设模块Log和类TestClass在相同的.rb文件。如果它们存在于多个文件, 则需要使用 load 或 require 导入文件。<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Log</span> </span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">class_type</span></span></div><div class="line">    <span class="string">"This class is of type: <span class="subst">#&#123;<span class="keyword">self</span>.<span class="keyword">class</span>&#125;</span>"</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span> </span></div><div class="line">  <span class="keyword">include</span> Log </div><div class="line"><span class="keyword">end</span></div><div class="line">tc = TestClass.new.class_type</div><div class="line">puts tc <span class="comment">#This class is of type: TestClass</span></div><div class="line">Extend</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>当你使用Extend来替换 Include 的时候, 你会添加模块里的方法为类方法, 而不是实例方法。详细请看例子：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">module</span> <span class="title">Log</span></span></div><div class="line">  <span class="function"><span class="keyword">def</span> <span class="title">class_type</span></span></div><div class="line">    <span class="string">"This class is of type: <span class="subst">#&#123;<span class="keyword">self</span>.<span class="keyword">class</span>&#125;</span>"</span></div><div class="line">  <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span></span></div><div class="line">  extend Log</div><div class="line">  <span class="comment"># ...</span></div><div class="line"><span class="keyword">end</span></div><div class="line">tc = TestClass.class_type</div><div class="line">puts tc  <span class="comment"># This class is of type: TestClass</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>当你在类中使用 Extend 来代替 Include, 如果你实例化 TestClass 并调用 class_type方法时，你将会得到 NoMethodError。再一次强调, 使用 Extend 时方法是类方法。</p>
+</li>
+</ul>
+<h4 id="Require"><a href="#Require" class="headerlink" title="Require"></a>Require</h4><ul>
+<li>Require 方法允许你载入一个库并且会阻止你加载多次。当你使用 require 重复加载同一个library时，require方法 将会返回 false。当你要载入的库在不同的文件时才能使用 require 方法。下例将演示 require 的使用方式。<br>文件 test_library.rb 和 test_require.rb 在同一个目录下。</li>
+</ul>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># test_library.rb</span></div><div class="line">puts <span class="string">" load this libary "</span></div><div class="line"></div><div class="line"><span class="comment"># test_require.rb</span></div><div class="line">puts (<span class="keyword">require</span> <span class="string">'./test_library'</span>)</div><div class="line">puts (<span class="keyword">require</span> <span class="string">'./test_library'</span>)</div><div class="line">puts (<span class="keyword">require</span> <span class="string">'./test_library'</span>)</div><div class="line"><span class="comment"># 结果为</span></div><div class="line"><span class="comment">#  load this libary </span></div><div class="line"><span class="comment"># true</span></div><div class="line"><span class="comment"># false</span></div><div class="line"><span class="comment"># false</span></div></pre></td></tr></table></figure>
+<h4 id="Load"><a href="#Load" class="headerlink" title="Load"></a>Load</h4><ul>
+<li>Load 方法基本和 require 方法功能一致，但它不会跟踪要导入的库是否已被加载。因此当重复使用 load 方法时，也会载入多次。大部分情况你都会使用 require 来代替 load。但当你需要每次都要加载时候你才会使用 load, 例如模块的状态会频繁地变化, 你会使用 load 进行加载，获取最新的状态。<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">puts load <span class="string">"./test_library.rb"</span>  <span class="comment">#在这里不能省略 .rb, require可以省略</span></div><div class="line">puts load <span class="string">"./test_library.rb"</span> </div><div class="line">puts load <span class="string">"./test_library.rb"</span> </div><div class="line"><span class="comment">#结果</span></div><div class="line"><span class="comment"># load this libary</span></div><div class="line"><span class="comment">#true</span></div><div class="line"><span class="comment"># load this libary</span></div><div class="line"><span class="comment">#true</span></div><div class="line"><span class="comment"># load this libary</span></div><div class="line"><span class="comment">#true</span></div></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Include&quot;&gt;&lt;a href=&quot;#Include&quot; class=&quot;headerlink&quot; title=&quot;Include&quot;&gt;&lt;/a&gt;Include&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;如下例当你Include一个模块到某个类时, 相当于把模块中定义的方法插入到类中。它允许使用 mixin。它用来 DRY 你的代码, 避免重复。例如, 当你有多个类时, 需要相同的函数时, 可以把函数定义到module中, 进行include。 下例假设模块Log和类TestClass在相同的.rb文件。如果它们存在于多个文件, 则需要使用 load 或 require 导入文件。&lt;figure class=&quot;highlight ruby&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Log&lt;/span&gt; &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;class_type&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;This class is of type: &lt;span class=&quot;subst&quot;&gt;#&amp;#123;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;&amp;#125;&lt;/span&gt;&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;TestClass&lt;/span&gt; &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;include&lt;/span&gt; Log &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;tc = TestClass.new.class_type&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;puts tc &lt;span class=&quot;comment&quot;&gt;#This class is of type: TestClass&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Extend&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>git pull强制覆盖本地修改</title>
+    <link href="http://messay.me/2017/04/11/git-pull%E5%BC%BA%E5%88%B6%E8%A6%86%E7%9B%96%E6%9C%AC%E5%9C%B0%E4%BF%AE%E6%94%B9/"/>
+    <id>http://messay.me/2017/04/11/git-pull强制覆盖本地修改/</id>
+    <published>2017-04-11T11:11:19.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="有时候本地的仓库出问题-需要强制pull远程仓库的代码-命令如下"><a href="#有时候本地的仓库出问题-需要强制pull远程仓库的代码-命令如下" class="headerlink" title="有时候本地的仓库出问题,需要强制pull远程仓库的代码,命令如下:"></a>有时候本地的仓库出问题,需要强制pull远程仓库的代码,命令如下:</h4><ul>
+<li><p>清除本地修改</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --hard</div></pre></td></tr></table></figure>
+</li>
+<li><p>pull仓库代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;有时候本地的仓库出问题-需要强制pull远程仓库的代码-命令如下&quot;&gt;&lt;a href=&quot;#有时候本地的仓库出问题-需要强制pull远程仓库的代码-命令如下&quot; class=&quot;headerlink&quot; title=&quot;有时候本地的仓库出问题,需要强制pull远程仓库的代码,命令如下:&quot;&gt;&lt;/a&gt;有时候本地的仓库出问题,需要强制pull远程仓库的代码,命令如下:&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;清除本地修改&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git reset --hard&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;pull仓库代码&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git pull&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ruby中gsub的用法</title>
+    <link href="http://messay.me/2017/04/10/ruby%E4%B8%ADgsub%E7%9A%84%E7%94%A8%E6%B3%95/"/>
+    <id>http://messay.me/2017/04/10/ruby中gsub的用法/</id>
+    <published>2017-04-10T11:09:23.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="新公司的爬虫后续处理脚本都是用ruby写的-没办法又开始学习ruby-今天碰到一个gsub和gsub-的问题-如下解释"><a href="#新公司的爬虫后续处理脚本都是用ruby写的-没办法又开始学习ruby-今天碰到一个gsub和gsub-的问题-如下解释" class="headerlink" title="新公司的爬虫后续处理脚本都是用ruby写的,没办法又开始学习ruby,今天碰到一个gsub和gsub!的问题.如下解释:"></a>新公司的爬虫后续处理脚本都是用ruby写的,没办法又开始学习ruby,今天碰到一个gsub和gsub!的问题.如下解释:</h4><ul>
+<li>ruby中带“!”和不带”!”的方法的最大的区别就是带”!”的会改变调用对象本身了。比方说str.gsub(/a/, ‘b’)，不会改变str本身，只会返回一个新的str。而str.gsub!(/a/, ‘b’)就会把str本身给改了。</li>
+<li>但是gsub和gsub!还有另外一个不同点就是，gsub不管怎么样都会返回一个新的字符串，而gsub!只有在有字符被替换的情况下才会返回一个新的字符串，假如说没有任何字符被替换，gsub!只会返回nil.</li>
+</ul>
+<a id="more"></a>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">example:</span></div><div class="line">[ruby] view plain copy</div><div class="line">- <span class="string">'abc'</span>.gsub(<span class="regexp">/a/</span>, <span class="string">'b'</span>) <span class="comment">#返回'bbc'</span></div><div class="line">[ruby] view plain copy</div><div class="line">- <span class="string">'abc'</span>.gsub!(<span class="regexp">/a/</span>, <span class="string">'b'</span>) <span class="comment">#返回'bbc'</span></div><div class="line">[ruby] view plain copy</div><div class="line">- <span class="string">'abc'</span>.gsub(<span class="regexp">/d/</span>,<span class="string">'a'</span>) <span class="comment">#返回'abc'</span></div><div class="line">[ruby] view plain copy</div><div class="line">- <span class="string">'abc'</span>.gsub!(<span class="regexp">/d/</span>, <span class="string">'a'</span>) <span class="comment">#返回nil</span></div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;新公司的爬虫后续处理脚本都是用ruby写的-没办法又开始学习ruby-今天碰到一个gsub和gsub-的问题-如下解释&quot;&gt;&lt;a href=&quot;#新公司的爬虫后续处理脚本都是用ruby写的-没办法又开始学习ruby-今天碰到一个gsub和gsub-的问题-如下解释&quot; class=&quot;headerlink&quot; title=&quot;新公司的爬虫后续处理脚本都是用ruby写的,没办法又开始学习ruby,今天碰到一个gsub和gsub!的问题.如下解释:&quot;&gt;&lt;/a&gt;新公司的爬虫后续处理脚本都是用ruby写的,没办法又开始学习ruby,今天碰到一个gsub和gsub!的问题.如下解释:&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;ruby中带“!”和不带”!”的方法的最大的区别就是带”!”的会改变调用对象本身了。比方说str.gsub(/a/, ‘b’)，不会改变str本身，只会返回一个新的str。而str.gsub!(/a/, ‘b’)就会把str本身给改了。&lt;/li&gt;
+&lt;li&gt;但是gsub和gsub!还有另外一个不同点就是，gsub不管怎么样都会返回一个新的字符串，而gsub!只有在有字符被替换的情况下才会返回一个新的字符串，假如说没有任何字符被替换，gsub!只会返回nil.&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL查询出错提示 --secure-file-priv解决方法</title>
+    <link href="http://messay.me/2017/04/02/MySQL%E6%9F%A5%E8%AF%A2%E5%87%BA%E9%94%99%E6%8F%90%E7%A4%BA-secure-file-priv%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://messay.me/2017/04/02/MySQL查询出错提示-secure-file-priv解决方法/</id>
+    <published>2017-04-02T10:51:45.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="在某台DB上准备运行一个SQL语句，就是用SELECT-INTO-OUTFILE把查询结果写入到文件的时候提示以下信息："><a href="#在某台DB上准备运行一个SQL语句，就是用SELECT-INTO-OUTFILE把查询结果写入到文件的时候提示以下信息：" class="headerlink" title="在某台DB上准备运行一个SQL语句，就是用SELECT INTO OUTFILE把查询结果写入到文件的时候提示以下信息："></a>在某台DB上准备运行一个SQL语句，就是用SELECT INTO OUTFILE把查询结果写入到文件的时候提示以下信息：</h4><p><code>bash
+The MySQL server is running with the --secure-file-priv option so it cannot execute this statement</code><br><a id="more"></a></p>
+<h4 id="出现这个问题的原因是因为启动MySQL的时候使用了–secure-file-priv这个参数，这个参数的主要目的就是限制LOAD-DATA-INFILE或者SELECT-INTO-OUTFILE之类文件的目录位置，我们可以使用"><a href="#出现这个问题的原因是因为启动MySQL的时候使用了–secure-file-priv这个参数，这个参数的主要目的就是限制LOAD-DATA-INFILE或者SELECT-INTO-OUTFILE之类文件的目录位置，我们可以使用" class="headerlink" title="出现这个问题的原因是因为启动MySQL的时候使用了–secure-file-priv这个参数，这个参数的主要目的就是限制LOAD DATA INFILE或者SELECT INTO OUTFILE之类文件的目录位置，我们可以使用"></a>出现这个问题的原因是因为启动MySQL的时候使用了–secure-file-priv这个参数，这个参数的主要目的就是限制LOAD DATA INFILE或者SELECT INTO OUTFILE之类文件的目录位置，我们可以使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT @@global.secure_file_priv;</div><div class="line">查询到你当前设置的路径，默认应该是/var/lib/mysql-files</div></pre></td></tr></table></figure>
+<h4 id="如果要解决这个问题，我们可以通过下面2种方式："><a href="#如果要解决这个问题，我们可以通过下面2种方式：" class="headerlink" title="如果要解决这个问题，我们可以通过下面2种方式："></a>如果要解决这个问题，我们可以通过下面2种方式：</h4><ul>
+<li><p>将你要导入或导出的文件位置指定到你设置的路径里</p>
+</li>
+<li><p>由于不能动态修改，我们可以修改my.cnf里关于这个选项的配置，然后重启即可。</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;在某台DB上准备运行一个SQL语句，就是用SELECT-INTO-OUTFILE把查询结果写入到文件的时候提示以下信息：&quot;&gt;&lt;a href=&quot;#在某台DB上准备运行一个SQL语句，就是用SELECT-INTO-OUTFILE把查询结果写入到文件的时候提示以下信息：&quot; class=&quot;headerlink&quot; title=&quot;在某台DB上准备运行一个SQL语句，就是用SELECT INTO OUTFILE把查询结果写入到文件的时候提示以下信息：&quot;&gt;&lt;/a&gt;在某台DB上准备运行一个SQL语句，就是用SELECT INTO OUTFILE把查询结果写入到文件的时候提示以下信息：&lt;/h4&gt;&lt;p&gt;&lt;code&gt;bash
+The MySQL server is running with the --secure-file-priv option so it cannot execute this statement&lt;/code&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>scrapy 报错400 Bad Request,个人处理方法</title>
+    <link href="http://messay.me/2017/03/28/scrapy-%E6%8A%A5%E9%94%99400-Bad-Request-%E4%B8%AA%E4%BA%BA%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/"/>
+    <id>http://messay.me/2017/03/28/scrapy-报错400-Bad-Request-个人处理方法/</id>
+    <published>2017-03-28T07:00:06.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="爬虫scrapy报错400-Bad-Request-个人解决方法"><a href="#爬虫scrapy报错400-Bad-Request-个人解决方法" class="headerlink" title="爬虫scrapy报错400 Bad Request,个人解决方法"></a>爬虫scrapy报错400 Bad Request,个人解决方法</h4><h4 id="刚入职新公司开始写爬虫项目-刚好一个爬虫代码出问题-一直报错400-解决如下"><a href="#刚入职新公司开始写爬虫项目-刚好一个爬虫代码出问题-一直报错400-解决如下" class="headerlink" title="刚入职新公司开始写爬虫项目,刚好一个爬虫代码出问题,一直报错400,解决如下:"></a>刚入职新公司开始写爬虫项目,刚好一个爬虫代码出问题,一直报错400,解决如下:</h4><ul>
+<li>400的报错含义就是服务的不接受客户端的请求,可能是客户端的请求格式有问题,或者请求的header有问题.</li>
+<li>如果是第一种有问题,请检查请求的url格式是否有问题.</li>
+<li>如果是第二种问题,可重新测试当前网站的header,加入爬虫代码.特别要注意header里面的host与content-lengh的字段,还有user-agent.</li>
+</ul>
+<p><a href="http://stackoverflow.com/questions/42248903/scrapy-post-request-not-working-400-bad-request" target="_blank" rel="external">参考:http://stackoverflow.com/questions/42248903/scrapy-post-request-not-working-400-bad-request</a></p>
+<p><a href="https://segmentfault.com/q/1010000008902485" target="_blank" rel="external">参考:https://segmentfault.com/q/1010000008902485</a></p>
+<a id="more"></a>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;爬虫scrapy报错400-Bad-Request-个人解决方法&quot;&gt;&lt;a href=&quot;#爬虫scrapy报错400-Bad-Request-个人解决方法&quot; class=&quot;headerlink&quot; title=&quot;爬虫scrapy报错400 Bad Request,个人解决方法&quot;&gt;&lt;/a&gt;爬虫scrapy报错400 Bad Request,个人解决方法&lt;/h4&gt;&lt;h4 id=&quot;刚入职新公司开始写爬虫项目-刚好一个爬虫代码出问题-一直报错400-解决如下&quot;&gt;&lt;a href=&quot;#刚入职新公司开始写爬虫项目-刚好一个爬虫代码出问题-一直报错400-解决如下&quot; class=&quot;headerlink&quot; title=&quot;刚入职新公司开始写爬虫项目,刚好一个爬虫代码出问题,一直报错400,解决如下:&quot;&gt;&lt;/a&gt;刚入职新公司开始写爬虫项目,刚好一个爬虫代码出问题,一直报错400,解决如下:&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;400的报错含义就是服务的不接受客户端的请求,可能是客户端的请求格式有问题,或者请求的header有问题.&lt;/li&gt;
+&lt;li&gt;如果是第一种有问题,请检查请求的url格式是否有问题.&lt;/li&gt;
+&lt;li&gt;如果是第二种问题,可重新测试当前网站的header,加入爬虫代码.特别要注意header里面的host与content-lengh的字段,还有user-agent.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/42248903/scrapy-post-request-not-working-400-bad-request&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考:http://stackoverflow.com/questions/42248903/scrapy-post-request-not-working-400-bad-request&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://segmentfault.com/q/1010000008902485&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考:https://segmentfault.com/q/1010000008902485&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="scrapy" scheme="http://messay.me/tags/scrapy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu运行sh脚本sudo自动输入密码</title>
+    <link href="http://messay.me/2017/03/20/ubuntu%E8%BF%90%E8%A1%8Csh%E8%84%9A%E6%9C%ACsudo%E8%87%AA%E5%8A%A8%E8%BE%93%E5%85%A5%E5%AF%86%E7%A0%81/"/>
+    <id>http://messay.me/2017/03/20/ubuntu运行sh脚本sudo自动输入密码/</id>
+    <published>2017-03-20T02:36:52.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ubuntu运行sh脚本sudo自动输入密码"><a href="#ubuntu运行sh脚本sudo自动输入密码" class="headerlink" title="ubuntu运行sh脚本sudo自动输入密码"></a>ubuntu运行sh脚本sudo自动输入密码</h1><h4 id="以前写的一个自动清理指定磁盘文件的脚本忽然挂了-查看log发现如下报错"><a href="#以前写的一个自动清理指定磁盘文件的脚本忽然挂了-查看log发现如下报错" class="headerlink" title="以前写的一个自动清理指定磁盘文件的脚本忽然挂了,查看log发现如下报错"></a>以前写的一个自动清理指定磁盘文件的脚本忽然挂了,查看log发现如下报错</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo: no tty present and no askpass program specified</div></pre></td></tr></table></figure>
+<h4 id="根据报错-大概推断是shell交互出现问题-google之-找到问题所在-sudo-版本升级-需要增加-S参数"><a href="#根据报错-大概推断是shell交互出现问题-google之-找到问题所在-sudo-版本升级-需要增加-S参数" class="headerlink" title="根据报错,大概推断是shell交互出现问题,google之,找到问题所在:sudo 版本升级,需要增加-S参数."></a>根据报错,大概推断是shell交互出现问题,google之,找到问题所在:sudo 版本升级,需要增加-S参数.</h4><ul>
+<li>使用Man查询sudo -S参数</li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<p>Write the prompt to the standard error and read the password from the standard input instead of using the terminal device. The password must be followed by a newline character.</p>
+</blockquote>
+<ul>
+<li>可见加上-S参数sudo才会从标准输入中读取密码，不加-S参数以上命令将起不到作用</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1 <span class="built_in">cd</span> /opt/hlistenexp_data</div><div class="line">2 sudo -S find . -atime +7 -<span class="built_in">exec</span> rm -f &#123;&#125; \; &lt;&lt;EOF</div><div class="line">3 PassWord</div><div class="line">4 EOF</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;ubuntu运行sh脚本sudo自动输入密码&quot;&gt;&lt;a href=&quot;#ubuntu运行sh脚本sudo自动输入密码&quot; class=&quot;headerlink&quot; title=&quot;ubuntu运行sh脚本sudo自动输入密码&quot;&gt;&lt;/a&gt;ubuntu运行sh脚本sudo自动输入密码&lt;/h1&gt;&lt;h4 id=&quot;以前写的一个自动清理指定磁盘文件的脚本忽然挂了-查看log发现如下报错&quot;&gt;&lt;a href=&quot;#以前写的一个自动清理指定磁盘文件的脚本忽然挂了-查看log发现如下报错&quot; class=&quot;headerlink&quot; title=&quot;以前写的一个自动清理指定磁盘文件的脚本忽然挂了,查看log发现如下报错&quot;&gt;&lt;/a&gt;以前写的一个自动清理指定磁盘文件的脚本忽然挂了,查看log发现如下报错&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo: no tty present and no askpass program specified&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;根据报错-大概推断是shell交互出现问题-google之-找到问题所在-sudo-版本升级-需要增加-S参数&quot;&gt;&lt;a href=&quot;#根据报错-大概推断是shell交互出现问题-google之-找到问题所在-sudo-版本升级-需要增加-S参数&quot; class=&quot;headerlink&quot; title=&quot;根据报错,大概推断是shell交互出现问题,google之,找到问题所在:sudo 版本升级,需要增加-S参数.&quot;&gt;&lt;/a&gt;根据报错,大概推断是shell交互出现问题,google之,找到问题所在:sudo 版本升级,需要增加-S参数.&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;使用Man查询sudo -S参数&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>flask使用Mysql报错&quot;ImportError: No module named MySQLdb&quot;</title>
+    <link href="http://messay.me/2017/02/16/flask-%E4%BD%BF%E7%94%A8Mysql%E6%8A%A5%E9%94%99-ImportError-No-module-named-MySQLdb/"/>
+    <id>http://messay.me/2017/02/16/flask-使用Mysql报错-ImportError-No-module-named-MySQLdb/</id>
+    <published>2017-02-16T09:12:01.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="今天自己尝试写Flask代码-使用Mysql数据库-初始化时候报错ImportError-No-module-named-MySQLdb-google之-解决方法如下"><a href="#今天自己尝试写Flask代码-使用Mysql数据库-初始化时候报错ImportError-No-module-named-MySQLdb-google之-解决方法如下" class="headerlink" title="今天自己尝试写Flask代码,使用Mysql数据库,初始化时候报错ImportError: No module named MySQLdb.google之,解决方法如下:"></a>今天自己尝试写Flask代码,使用Mysql数据库,初始化时候报错ImportError: No module named MySQLdb.google之,解决方法如下:</h4><ul>
+<li>如果没有安装python-mysql支持库,请安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python2: pip install python-mysqldb</div><div class="line">python3: pip install pymysql</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li>更改原教程mysql链接如下:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SQLALCHEMY_DATABASE_URI = &apos;mysql+pymysql://.....&apos;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>报错解决参考:<a href="http://stackoverflow.com/questions/22252397/importerror-no-module-named-mysqldb" target="_blank" rel="external">stackoverflow</a><br>flask+mysql配置参考:<a href="http://docs.jinkan.org/docs/flask-sqlalchemy/config.html" target="_blank" rel="external">flask+mysql</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;今天自己尝试写Flask代码-使用Mysql数据库-初始化时候报错ImportError-No-module-named-MySQLdb-google之-解决方法如下&quot;&gt;&lt;a href=&quot;#今天自己尝试写Flask代码-使用Mysql数据库-初始化时候报错ImportError-No-module-named-MySQLdb-google之-解决方法如下&quot; class=&quot;headerlink&quot; title=&quot;今天自己尝试写Flask代码,使用Mysql数据库,初始化时候报错ImportError: No module named MySQLdb.google之,解决方法如下:&quot;&gt;&lt;/a&gt;今天自己尝试写Flask代码,使用Mysql数据库,初始化时候报错ImportError: No module named MySQLdb.google之,解决方法如下:&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;如果没有安装python-mysql支持库,请安装&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;python2: pip install python-mysqldb&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;python3: pip install pymysql&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>python web 部署：nginx + gunicorn + supervisor + flask 部署笔记 </title>
+    <link href="http://messay.me/2017/02/08/python-web-%E9%83%A8%E7%BD%B2%EF%BC%9Anginx-gunicorn-supervisor-flask-%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/"/>
+    <id>http://messay.me/2017/02/08/python-web-部署：nginx-gunicorn-supervisor-flask-部署笔记/</id>
+    <published>2017-02-08T06:14:58.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="python-web-部署"><a href="#python-web-部署" class="headerlink" title="python web 部署"></a>python web 部署</h4><ol>
+<li>web开发中，各种语言争奇斗艳，web的部署方面，却没有太多的方式。简单而已，大概都是 nginx 做前端代理，中间 webservice 调用程序脚本。大概方式：nginx + webservice + script。</li>
+<li><p>nginx 不用多说，一个高性能的web服务器。通常用来在前端做反向代理服务器。所谓正向与反向（reverse），只是英文说法翻译。代理服务，简而言之，一个请求经过代理服务器从局域网发出，然后到达互联网上服务器，这个过程的代理为正向代理。如果一个请求，从互联网过来，先进入代理服务器，再由代理服务器转发给局域网的目标服务器，这个时候，代理服务器为反向代理（相对正向而言）。</p>
+<blockquote>
+<p>正向代理：{ 客户端 —》 代理服务器 } —》 服务器<br>反向代理：客户端 —》 { 代理服务器 —》 服务器 }<br>{} 表示局域网</p>
+</blockquote>
+</li>
+<li><p>nginx既可以做正向，也可以做反向。<br>webservice 的方式同样也有很多方式。常见的有FastCGI，WSGI等。我们采用gunicorn为 wsgi容器。python为服务器script，采用flask框架。同时采用supervisor管理服务器进程。也就是最终的部署方式为：<br>nginx + gunicorn + flask ++ supervisor</p>
+</li>
+</ol>
+<a id="more"></a>
+<h4 id="创建一个项目"><a href="#创建一个项目" class="headerlink" title="创建一个项目"></a>创建一个项目</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir myproject</div></pre></td></tr></table></figure>
+<h4 id="创建-python-虚拟环境"><a href="#创建-python-虚拟环境" class="headerlink" title="创建 python 虚拟环境"></a>创建 python 虚拟环境</h4><ul>
+<li>virtualenv 可以说是 python 的一个大杀器。用来在一个系统中创建不同的 python 隔离环境。相互之间还不会影响，使用简单到令人发指。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir myproject</div><div class="line"><span class="built_in">cd</span> myproject</div><div class="line">virtualenv venv</div><div class="line"><span class="built_in">source</span> venv/bin/activate(激活虚拟环境)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="安装-python-web-框架-—flask"><a href="#安装-python-web-框架-—flask" class="headerlink" title="安装 python web 框架 —flask"></a>安装 python web 框架 —flask</h4><ul>
+<li><p>flask 是一个 python web micro framework。简洁高效，使用也很简单。flask 依赖两个库 werkzeug 和 jinjia2。采用 pip 方式安装即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install flask</div></pre></td></tr></table></figure>
+</li>
+<li><p>测试我们的 flask 安装是否成功，并使用 flask 写一个简单的 web 服务。</p>
+</li>
+<li><p>vim app.py</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from flask import Flask</div><div class="line">app = Flask(__name__)</div><div class="line">@app.route(<span class="string">'/'</span>)</div><div class="line">def index():</div><div class="line">    <span class="built_in">return</span> <span class="string">'hello world'</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app.debug = True</div><div class="line">    app.run()</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动web服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python app.py</div></pre></td></tr></table></figure>
+</li>
+<li><p>此时，用浏览器访问 <a href="http://127.0.0.1:5000" target="_blank" rel="external">http://127.0.0.1:5000</a> 就能看到网页显示 hello world。</p>
+</li>
+</ul>
+<h4 id="使用-gunicorn-部署-python-web"><a href="#使用-gunicorn-部署-python-web" class="headerlink" title="使用 gunicorn 部署 python web"></a>使用 gunicorn 部署 python web</h4><ul>
+<li>现在我们使用 flask 自带的服务器，完成了 web 服务的启动。生产环境下，flask 自带的 服务器，无法满足性能要求。我们这里采用 gunicorn 做 wsgi容器，用来部署 python。</li>
+<li><p>安装 gunicorn</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install gunicorn</div></pre></td></tr></table></figure>
+</li>
+<li><p>当我们安装好 gunicorn 之后，需要用 gunicorn 启动 flask，注意 flask 里面的name里面的代码启动了 app.run(),这个含义是用 flask 自带的服务器启动 app。这里我们使用了 gunicorn，myapp.py 就等同于一个库文件，被 gunicorn 调用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gunicron -w4 -b0.0.0.0:8000 app:app</div></pre></td></tr></table></figure>
+</li>
+<li><p>此时，我们需要用 8000 的端口进行访问，原先的5000并没有启用。其中 gunicorn 的部署中，，-w 表示开启多少个 worker，-b 表示 gunicorn 开发的访问地址。</p>
+</li>
+<li><p>想要结束 gunicorn 只需执行 pkill gunicorn，有时候还的 ps 找到 pid 进程号才能 kill。可是这对于一个开发来说，太过于繁琐，因此出现了另外一个神器—supervisor，一个专门用来管理进程的工具，还可以管理系统的工具进程。</p>
+</li>
+</ul>
+<h4 id="安装-supervisor"><a href="#安装-supervisor" class="headerlink" title="安装 supervisor"></a>安装 supervisor</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pip install supervisor</div><div class="line">echo_supervisord_conf &gt; supervisor.conf  <span class="comment"># 生成 supervisor 默认配置文件</span></div><div class="line">vim supervisor.conf  <span class="comment"># 修改 supervisor 配置文件，添加gunicorn 进程管理</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>在myapp supervisor.conf 配置文件底部添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[program:myapp]</div><div class="line"><span class="built_in">command</span>=/home/rsj217/rsj217/myproject/venv/bin/gunicorn -w4 -b0.0.0.0:8000 myapp:app    ; supervisor启动命令</div><div class="line">directory=/home/rsj217/rsj217/myproject                                                 ;项目的文件夹路径</div><div class="line">startsecs=0                                                                             ; 启动时间</div><div class="line">stopwaitsecs=0                                                                          ; 终止等待时间</div><div class="line">autostart=<span class="literal">false</span>                                                                         ; 是否自动启动</div><div class="line">autorestart=<span class="literal">false</span>                                                                       ; 是否自动重启</div><div class="line">stdout_logfile=/home/userpath/<span class="built_in">log</span>/gunicorn.log                           ; <span class="built_in">log</span> 日志</div><div class="line">stderr_logfile=/home/userpath/myproject/<span class="built_in">log</span>/gunicorn.err</div></pre></td></tr></table></figure>
+</li>
+<li><p>supervisor的基本使用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">supervisord</div><div class="line">-c</div><div class="line">supervisor.conf</div><div class="line">通过配置文件启动supervisor</div><div class="line"></div><div class="line"></div><div class="line">supervisorctl</div><div class="line">-c</div><div class="line">supervisor.conf</div><div class="line">status                                     察看supervisor的状态</div><div class="line"></div><div class="line"></div><div class="line">supervisorctl -c supervisor.conf reload    重新载入配置文件</div><div class="line"></div><div class="line"></div><div class="line">supervisorctl -c supervisor.conf start [all]|[appname]     启动指定/所有supervisor管理的程序进程</div><div class="line"></div><div class="line"></div><div class="line">supervisorctl -c supervisor.conf stop [all]|[appname]      关闭指定/所有supervisor管理的程序进程</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="安装配置-nginx"><a href="#安装配置-nginx" class="headerlink" title="安装配置 nginx"></a>安装配置 nginx</h4><ul>
+<li><p>采用 apt-get方式安装最简单。运行 sudo apt-get install nginx。安装好的nginx的二进制文件放在 /usr/sbin/文件夹下面。而nginx的配置文件放在 /etc/nginx下面。</p>
+</li>
+<li><p>使用 supervisor 来管理 nginx。这里需要注意一个问题，linux的权限问题。nginx是sudo的方式安装，启动的适合也是 root用户，那么我们现在也需要用 root用户启动supervisor。增加下面的配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[program:nginx]</div><div class="line"><span class="built_in">command</span>=/usr/sbin/nginx</div><div class="line">startsecs=0</div><div class="line">stopwaitsecs=0</div><div class="line">autostart=<span class="literal">false</span></div><div class="line">autorestart=<span class="literal">false</span></div><div class="line">stdout_logfile=/home/userpath/myproject/og/nginx.log</div><div class="line">stderr_logfile=/home/userpath/myproject/<span class="built_in">log</span>/nginx.err</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="到此为止，web-部属已经全部完成"><a href="#到此为止，web-部属已经全部完成" class="headerlink" title="到此为止，web 部属已经全部完成"></a>到此为止，web 部属已经全部完成</h4><h4 id="项目源码：-https-github-com-lovebaicai-openvideo-包含配置文件"><a href="#项目源码：-https-github-com-lovebaicai-openvideo-包含配置文件" class="headerlink" title="项目源码： https://github.com/lovebaicai/openvideo (包含配置文件)"></a>项目源码： <a href="https://github.com/lovebaicai/openvideo" target="_blank" rel="external">https://github.com/lovebaicai/openvideo</a> (包含配置文件)</h4><h4 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h4><ul>
+<li>本来是自己的项目部署,打算自己写的.但是发现了一篇很详细的文章,就直接转过来了.原文请点击<a href="http://lib.csdn.net/article/python/38686" target="_blank" rel="external">这里</a></li>
+<li>ubuntu环境下配置参考<a href="http://mookrs.com/ubuntu-flask-nginx-gunicorn-supervisor/" target="_blank" rel="external">这里</a></li>
+<li>supervisor配置参考<a href="http://liyangliang.me/posts/2015/06/using-supervisor/" target="_blank" rel="external">这里</a></li>
+<li>gunicorn配置参考<a href="http://www.cnblogs.com/ArtsCrafts/p/gunicorn.html" target="_blank" rel="external">这里</a></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;python-web-部署&quot;&gt;&lt;a href=&quot;#python-web-部署&quot; class=&quot;headerlink&quot; title=&quot;python web 部署&quot;&gt;&lt;/a&gt;python web 部署&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;web开发中，各种语言争奇斗艳，web的部署方面，却没有太多的方式。简单而已，大概都是 nginx 做前端代理，中间 webservice 调用程序脚本。大概方式：nginx + webservice + script。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;nginx 不用多说，一个高性能的web服务器。通常用来在前端做反向代理服务器。所谓正向与反向（reverse），只是英文说法翻译。代理服务，简而言之，一个请求经过代理服务器从局域网发出，然后到达互联网上服务器，这个过程的代理为正向代理。如果一个请求，从互联网过来，先进入代理服务器，再由代理服务器转发给局域网的目标服务器，这个时候，代理服务器为反向代理（相对正向而言）。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;正向代理：{ 客户端 —》 代理服务器 } —》 服务器&lt;br&gt;反向代理：客户端 —》 { 代理服务器 —》 服务器 }&lt;br&gt;{} 表示局域网&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;nginx既可以做正向，也可以做反向。&lt;br&gt;webservice 的方式同样也有很多方式。常见的有FastCGI，WSGI等。我们采用gunicorn为 wsgi容器。python为服务器script，采用flask框架。同时采用supervisor管理服务器进程。也就是最终的部署方式为：&lt;br&gt;nginx + gunicorn + flask ++ supervisor&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://messay.me/categories/Python/"/>
+    
+    
+      <category term="Python+Web" scheme="http://messay.me/tags/Python-Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MarkDown进行图片缩放</title>
+    <link href="http://messay.me/2017/02/07/MarkDown-%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E7%BC%A9%E6%94%BE/"/>
+    <id>http://messay.me/2017/02/07/MarkDown-进行图片缩放/</id>
+    <published>2017-02-07T04:38:06.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="MarkDown进行图片缩放"><a href="#MarkDown进行图片缩放" class="headerlink" title="MarkDown进行图片缩放"></a>MarkDown进行图片缩放</h1><h4 id="使用markdown编写说明文档-无奈图片有点大-google之-找到图片处理方法"><a href="#使用markdown编写说明文档-无奈图片有点大-google之-找到图片处理方法" class="headerlink" title="使用markdown编写说明文档,无奈图片有点大,google之,找到图片处理方法"></a>使用markdown编写说明文档,无奈图片有点大,google之,找到图片处理方法</h4><ol>
+<li>直接设置图片大小,简单粗暴<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">![设置图片宽度高度](http://image-path.png =300x200)</div><div class="line">![设置图片宽度](http://image-path.png =300x)</div><div class="line">![设置图片高度](http://image-path.png =x200)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li>如果使用的是七牛的图床,可以调用七牛的API处理图片.<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">设置图片宽度高度: http://image-path.png?imageView/3/w/445/h/325</div><div class="line">imageView2/&lt;mode&gt;/w/&lt;LongEdge&gt;</div><div class="line">                 /h/&lt;ShortEdge&gt;</div><div class="line">                 /format/&lt;Format&gt;</div><div class="line">                 /interlace/&lt;Interlace&gt;</div><div class="line">                 /q/&lt;Quality&gt;</div><div class="line">                 /ignore-error/&lt;ignoreError&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>ps: 七牛API使用参考:<a href="https://developer.qiniu.com/dora/api/basic-processing-images-imageview2" target="_blank" rel="external">七牛API</a></p>
+</blockquote>
+<ol>
+<li>或者也可以使用html的方法缩放,加上div使图片居中.<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">center</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image-path.png"</span> <span class="attr">width</span>=<span class="string">"400"</span> <span class="attr">height</span>=<span class="string">"400"</span> <span class="attr">alt</span>=<span class="string">"image"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;MarkDown进行图片缩放&quot;&gt;&lt;a href=&quot;#MarkDown进行图片缩放&quot; class=&quot;headerlink&quot; title=&quot;MarkDown进行图片缩放&quot;&gt;&lt;/a&gt;MarkDown进行图片缩放&lt;/h1&gt;&lt;h4 id=&quot;使用markdown编写说明文档-无奈图片有点大-google之-找到图片处理方法&quot;&gt;&lt;a href=&quot;#使用markdown编写说明文档-无奈图片有点大-google之-找到图片处理方法&quot; class=&quot;headerlink&quot; title=&quot;使用markdown编写说明文档,无奈图片有点大,google之,找到图片处理方法&quot;&gt;&lt;/a&gt;使用markdown编写说明文档,无奈图片有点大,google之,找到图片处理方法&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;直接设置图片大小,简单粗暴&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;![设置图片宽度高度](http://image-path.png =300x200)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;![设置图片宽度](http://image-path.png =300x)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;![设置图片高度](http://image-path.png =x200)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+    
+      <category term="MarkDown" scheme="http://messay.me/tags/MarkDown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mysql 批量删除相同前缀的表</title>
+    <link href="http://messay.me/2017/02/06/Mysql-%E6%89%B9%E9%87%8F%E5%88%A0%E9%99%A4%E7%9B%B8%E5%90%8C%E5%89%8D%E7%BC%80%E7%9A%84%E8%A1%A8/"/>
+    <id>http://messay.me/2017/02/06/Mysql-批量删除相同前缀的表/</id>
+    <published>2017-02-06T03:36:20.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Mysql批量删除相同前缀的表"><a href="#Mysql批量删除相同前缀的表" class="headerlink" title="Mysql批量删除相同前缀的表"></a>Mysql批量删除相同前缀的表</h4><h4 id="每日需要Cron跑一下爬虫脚本-生成当日数据-今天发现累计了非常多的相同前缀的历史表数据-故删除之"><a href="#每日需要Cron跑一下爬虫脚本-生成当日数据-今天发现累计了非常多的相同前缀的历史表数据-故删除之" class="headerlink" title="每日需要Cron跑一下爬虫脚本,生成当日数据.今天发现累计了非常多的相同前缀的历史表数据,故删除之!"></a>每日需要Cron跑一下爬虫脚本,生成当日数据.今天发现累计了非常多的相同前缀的历史表数据,故删除之!</h4><ul>
+<li><p>命令非常简单</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Select CONCAT( <span class="string">'drop table '</span>, table_name, <span class="string">';'</span> )</div><div class="line">FROM information_schema.tables</div><div class="line">Where table_name LIKE <span class="string">'sound_201701_%'</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>执行上述命令后,就显示匹配的Drop命令,如下图.直接复制执行就ok了.</p>
+</li>
+</ul>
+<a id="more"></a>
+<p><img src="http://7xnh53.com1.z0.glb.clouddn.com/sql.png" alt="Drop"></p>
+<h4 id="如果需要批量修改表名-可以使用如下命令"><a href="#如果需要批量修改表名-可以使用如下命令" class="headerlink" title="如果需要批量修改表名,可以使用如下命令"></a>如果需要批量修改表名,可以使用如下命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Select CONCAT( <span class="string">'ALTER TABLE '</span>, table_name, <span class="string">'RENAME TO '</span>, table_name,<span class="string">';'</span> )</div><div class="line">FROM information_schema.tables</div><div class="line">Where table_name LIKE <span class="string">'sound_%'</span>;</div><div class="line">=&gt;</div><div class="line">ALTER TABLE sound_aaa RENAME TO sound_aaa;</div><div class="line">ALTER TABLE sound_bbb RENAME TO sound_bbb;</div><div class="line">(在编辑器中将“RENAME TO de”批量改为想设置的表前缀，再执行此SQL语句即可批量修改表名。)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;Mysql批量删除相同前缀的表&quot;&gt;&lt;a href=&quot;#Mysql批量删除相同前缀的表&quot; class=&quot;headerlink&quot; title=&quot;Mysql批量删除相同前缀的表&quot;&gt;&lt;/a&gt;Mysql批量删除相同前缀的表&lt;/h4&gt;&lt;h4 id=&quot;每日需要Cron跑一下爬虫脚本-生成当日数据-今天发现累计了非常多的相同前缀的历史表数据-故删除之&quot;&gt;&lt;a href=&quot;#每日需要Cron跑一下爬虫脚本-生成当日数据-今天发现累计了非常多的相同前缀的历史表数据-故删除之&quot; class=&quot;headerlink&quot; title=&quot;每日需要Cron跑一下爬虫脚本,生成当日数据.今天发现累计了非常多的相同前缀的历史表数据,故删除之!&quot;&gt;&lt;/a&gt;每日需要Cron跑一下爬虫脚本,生成当日数据.今天发现累计了非常多的相同前缀的历史表数据,故删除之!&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;命令非常简单&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Select CONCAT( &lt;span class=&quot;string&quot;&gt;&#39;drop table &#39;&lt;/span&gt;, table_name, &lt;span class=&quot;string&quot;&gt;&#39;;&#39;&lt;/span&gt; )&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;FROM information_schema.tables&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Where table_name LIKE &lt;span class=&quot;string&quot;&gt;&#39;sound_201701_%&#39;&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;执行上述命令后,就显示匹配的Drop命令,如下图.直接复制执行就ok了.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Mysql" scheme="http://messay.me/categories/Mysql/"/>
+    
+    
+      <category term="Mysql" scheme="http://messay.me/tags/Mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python paramiko 使用方法简介</title>
+    <link href="http://messay.me/2016/12/26/python-paramiko%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E7%AE%80%E4%BB%8B/"/>
+    <id>http://messay.me/2016/12/26/python-paramiko使用方法简介/</id>
+    <published>2016-12-26T10:06:18.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="python-paramiko"><a href="#python-paramiko" class="headerlink" title="python paramiko"></a>python paramiko</h4><ul>
+<li>主要介绍了python paramiko简介和使用方法，让你全面了解python的远程服务器连接和文件上传，ssh远程执行命令等</li>
+<li>paramiko 遵循SSH2协议，支持以加密和认证的方式，进行远程服务器的连接，可以实现远程文件的上传，下载或通过ssh远程执行命令。</li>
+<li>项目地址：<a href="https://github.com/paramiko/paramiko" target="_blank" rel="external">https://github.com/paramiko/paramiko</a></li>
+<li>官方文档：<a href="http://docs.paramiko.org/" target="_blank" rel="external">http://docs.paramiko.org/</a></li>
+<li>文档转载：<a href="http://www.codexiu.cn/python/blog/127/" target="_blank" rel="external">http://www.codexiu.cn/python/blog/127/</a> (根据自己需要有删改)</li>
+</ul>
+<a id="more"></a>
+<h4 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h4><ul>
+<li>root@ubuntu:~/paramiko# pip install paramiko</li>
+<li>运行脚本若报错’ValueError: Multibackend cannot be initialized with no backends. If you are seeing this error when trying to use default_backend() please try uninstalling and reinstalling cryptography’.可重新安装cryptography.</li>
+</ul>
+<h4 id="二、上传文件到远程服务器"><a href="#二、上传文件到远程服务器" class="headerlink" title="二、上传文件到远程服务器"></a>二、上传文件到远程服务器</h4><ul>
+<li>原理：通过SFTPClient类根据SSH传输协议的sftp会话，实现远程文件上传、下载等操作。实现远程文件上传、下载。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">任务：<span class="number">10.</span> <span class="number">1.101</span><span class="number">.187</span>向<span class="number">10.1</span><span class="number">.101</span><span class="number">.186</span>发送文件。</div><div class="line"></div><div class="line"><span class="number">10.1</span><span class="number">.101</span><span class="number">.187</span> 目录/root/paramiko  有三个文件 paramikosend.py  test  test.tar</div><div class="line"></div><div class="line"><span class="number">10.1</span><span class="number">.101</span><span class="number">.186</span> 目录/root/paramiko   开始为空文件夹</div><div class="line"></div><div class="line">执行python paramikosend.py,代码如下</div><div class="line"></div><div class="line">root@ubuntu:~/paramiko<span class="comment"># cat paramikosend.py</span></div><div class="line"><span class="keyword">import</span> paramiko,datetime,os</div><div class="line">hostname = <span class="string">'10.1.101.186'</span></div><div class="line">username = <span class="string">'root'</span></div><div class="line">password = <span class="string">'123456'</span></div><div class="line">port = <span class="number">22</span></div><div class="line">local_dir = <span class="string">'/root/paramiko'</span></div><div class="line">remote_dir = <span class="string">'/root/paramiko'</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    t=paramiko.Transport((hostname,port))</div><div class="line">    t.connect(username=username,password=password)</div><div class="line">    sftp = paramiko.SFTPClient.from_transport(t)</div><div class="line">    files = os.listdir(local_dir)</div><div class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</div><div class="line">            sftp.put(os.path.join(local_dir,f),os.path.join(remote_dir,f))</div><div class="line">    t.close()</div><div class="line"><span class="keyword">except</span> Exception:</div><div class="line">    <span class="keyword">print</span> <span class="string">"connect error!"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="三、从远程服务器下载文件"><a href="#三、从远程服务器下载文件" class="headerlink" title="三、从远程服务器下载文件"></a>三、从远程服务器下载文件</h4><ul>
+<li>原理：通过SFTPClient类根据SSH传输协议的sftp会话，实现远程文件上传、下载等操作。实现远程文件上传、下载。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">任务：现在<span class="number">10.1</span><span class="number">.101</span><span class="number">.186</span>的/root/paramiko/temp186目录有两个文件,将其下载到<span class="number">10.1</span><span class="number">.101</span><span class="number">.187</span>的/root/paramiko/temp187目录。</div><div class="line"></div><div class="line">执行 python paramikoget.py ，代码如下:</div><div class="line"></div><div class="line">root@ubuntu:~/paramiko<span class="comment"># cat paramikoget.py</span></div><div class="line"><span class="keyword">import</span> paramiko,datetime,os</div><div class="line">hostname = <span class="string">'10.1.101.186'</span></div><div class="line">username = <span class="string">'root'</span></div><div class="line">password = <span class="string">'123456'</span></div><div class="line">port = <span class="number">22</span></div><div class="line">local_dir = <span class="string">'/root/paramiko/temp187'</span></div><div class="line">remote_dir = <span class="string">'/root/paramiko/temp186'</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    t=paramiko.Transport((hostname,port))</div><div class="line">    t.connect(username=username,password=password)</div><div class="line">    sftp = paramiko.SFTPClient.from_transport(t)</div><div class="line">    files = sftp.listdir(remote_dir) <span class="comment">#这里需要注意，列出远程文件必须使用sftp，而不能用os</span></div><div class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</div><div class="line">            sftp.get(os.path.join(remote_dir,f),os.path.join(local_dir,f))</div><div class="line">    t.close()</div><div class="line"><span class="keyword">except</span> Exception:</div><div class="line">    <span class="keyword">print</span> <span class="string">"connect error!"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="四、执行命令测试"><a href="#四、执行命令测试" class="headerlink" title="四、执行命令测试"></a>四、执行命令测试</h4><ul>
+<li>原理：通过SSHClient类执行命令。SSHClient类是SSH服务会话的高级表示，封装了传输、通道以及SFTPClient的校验、建立方法，通常用于执行命令。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">任务：通过<span class="number">10.1</span><span class="number">.101</span><span class="number">.187</span>连接到<span class="number">10.1</span><span class="number">.101</span><span class="number">.186</span>，然后进入目录/root/paramiko，创建一个目录lxy。</div><div class="line">执行python paramikocommand.py，代码如下：</div><div class="line"></div><div class="line">root@ubuntu:~/paramiko<span class="comment"># cat paramikocommand.py</span></div><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="keyword">import</span> paramiko</div><div class="line">hostname = <span class="string">'10.1.101.186'</span></div><div class="line">username = <span class="string">'root'</span></div><div class="line">password = <span class="string">'123456'</span></div><div class="line">port = <span class="number">22</span></div><div class="line">ssh = paramiko.SSHClient()</div><div class="line">ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())</div><div class="line">ssh.connect(hostname=hostname,port=port,username=username,password=password)</div><div class="line">stdin, stdout, stderr = ssh.exec_command(<span class="string">"cd  /root/paramiko;mkdir lxy"</span>)</div><div class="line"><span class="keyword">print</span> stdout.readlines()</div><div class="line">ssh.close()</div><div class="line"></div><div class="line">Note: 命令中也可以带参数：</div><div class="line"></div><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> paramiko</div><div class="line">hostname = <span class="string">'10.1.101.186'</span></div><div class="line">username = <span class="string">'root'</span></div><div class="line">password = <span class="string">'123456'</span></div><div class="line">port = <span class="number">22</span></div><div class="line">name=<span class="string">'testcmd'</span></div><div class="line"></div><div class="line">ssh = paramiko.SSHClient()</div><div class="line">ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())</div><div class="line">ssh.connect(hostname=hostname,port=port,username=username,password=password)</div><div class="line">stdin, stdout, stderr = ssh.exec_command(<span class="string">"cd  /root/paramiko;mkdir %s"</span> %name)</div><div class="line"><span class="keyword">print</span> stdout.readlines()</div><div class="line">ssh.close()</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="五、python远程执行操作的其他开源模块"><a href="#五、python远程执行操作的其他开源模块" class="headerlink" title="五、python远程执行操作的其他开源模块"></a>五、python远程执行操作的其他开源模块</h4><ul>
+<li>fabric:fabric是封装了paramiko模块来实现ssh来传输文件的。</li>
+<li>pexpect:也可以实现ssh 登录到某个用户指定的主机上，运行某个用户指定的命令</li>
+</ul>
+<h4 id="六、与输入的CMD命令进行交互"><a href="#六、与输入的CMD命令进行交互" class="headerlink" title="六、与输入的CMD命令进行交互"></a>六、与输入的CMD命令进行交互</h4><ul>
+<li>stdin.write部分是用于交互情况下，通过该命令可以执行交互。注意这里可能会引起歧义，这里的交互并不是ssh连接过程中出现的让输入yes的交互，因为paramiko模块在连接过程中会自动处理好yes确认。这里的交互是指后面的cmd需要的执行的程序可能出现交互的情况下，可以通过该参数进行交互。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">代码如下:</div><div class="line">stdin.write(<span class="string">"Y\n"</span>)   <span class="comment">#简单交互，输入 'Y'</span></div><div class="line"></div><div class="line">使用示例:</div><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> paramiko</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sshclient</span><span class="params">(ip, username, password, cmd)</span>:</span></div><div class="line"></div><div class="line">    myclient = paramiko.SSHClient()</div><div class="line"></div><div class="line">    myclient.set_missing_host_key_policy(paramiko.AutoAddPolicy())</div><div class="line"></div><div class="line">    myclient.connect(ip, port=<span class="number">22</span>, username=username, password=password, timeout=<span class="number">5</span>)</div><div class="line"></div><div class="line">    stdin, stdout, stderr = myclient.exec_command(cmd)</div><div class="line"></div><div class="line">    stdin.write(<span class="string">"y\n"</span>)</div><div class="line"></div><div class="line">    <span class="keyword">print</span> stdout.readlines()</div><div class="line"></div><div class="line">    myclient.close()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> len(str(sys.argv[<span class="number">1</span>])) &lt;= <span class="number">14</span>:</div><div class="line">    cmd = <span class="string">'cd /test &amp;&amp; python3 upload.py -f %s '</span> % sys.argv[<span class="number">1</span>]</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    cmd = <span class="string">'cd /test &amp;&amp; python3 upload_by_id.py -f %s'</span> % sys.argv[<span class="number">1</span>]</div><div class="line"></div><div class="line">sshclient(<span class="string">'hostname'</span>, <span class="string">'username'</span>, <span class="string">'password'</span>, cmd=cmd)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;python-paramiko&quot;&gt;&lt;a href=&quot;#python-paramiko&quot; class=&quot;headerlink&quot; title=&quot;python paramiko&quot;&gt;&lt;/a&gt;python paramiko&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;主要介绍了python paramiko简介和使用方法，让你全面了解python的远程服务器连接和文件上传，ssh远程执行命令等&lt;/li&gt;
+&lt;li&gt;paramiko 遵循SSH2协议，支持以加密和认证的方式，进行远程服务器的连接，可以实现远程文件的上传，下载或通过ssh远程执行命令。&lt;/li&gt;
+&lt;li&gt;项目地址：&lt;a href=&quot;https://github.com/paramiko/paramiko&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/paramiko/paramiko&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;官方文档：&lt;a href=&quot;http://docs.paramiko.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://docs.paramiko.org/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;文档转载：&lt;a href=&quot;http://www.codexiu.cn/python/blog/127/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.codexiu.cn/python/blog/127/&lt;/a&gt; (根据自己需要有删改)&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://messay.me/categories/Python/"/>
+    
+    
+      <category term="Python自动化" scheme="http://messay.me/tags/Python%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 发送邮件报错&#39;Name or service not known&#39;解决方法</title>
+    <link href="http://messay.me/2016/12/21/Python-%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E6%8A%A5%E9%94%99Name-or-service-not-known/"/>
+    <id>http://messay.me/2016/12/21/Python-发送邮件报错Name-or-service-not-known/</id>
+    <published>2016-12-21T02:48:05.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="前两天设置的自动发送邮件的脚本-今天未发送-查看报错如下"><a href="#前两天设置的自动发送邮件的脚本-今天未发送-查看报错如下" class="headerlink" title="前两天设置的自动发送邮件的脚本,今天未发送.查看报错如下"></a>前两天设置的自动发送邮件的脚本,今天未发送.查看报错如下</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">File <span class="string">"/usr/lib/python2.7/smtplib.py"</span>, line 256, <span class="keyword">in</span> __init__</div><div class="line">    (code, msg) = self.connect(host, port)</div><div class="line">  File <span class="string">"/usr/lib/python2.7/smtplib.py"</span>, line 316, <span class="keyword">in</span> connect</div><div class="line">    self.sock = self._get_socket(host, port, self.timeout)</div><div class="line">  File <span class="string">"/usr/lib/python2.7/smtplib.py"</span>, line 291, <span class="keyword">in</span> _get_socket</div><div class="line">    <span class="built_in">return</span> socket.create_connection((host, port), timeout)</div><div class="line">  File <span class="string">"/usr/lib/python2.7/socket.py"</span>, line 553, <span class="keyword">in</span> create_connection</div><div class="line">    <span class="keyword">for</span> res <span class="keyword">in</span> getaddrinfo(host, port, 0, SOCK_STREAM):</div><div class="line">socket.gaierror: [Errno -2] Name or service not known</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="google之-发现是连接sock端口连接失败-由于我用的是ubuntu的测试机-测试网络ok-就可能是防火墙的问题-关闭防火墙进行测试-发送ok"><a href="#google之-发现是连接sock端口连接失败-由于我用的是ubuntu的测试机-测试网络ok-就可能是防火墙的问题-关闭防火墙进行测试-发送ok" class="headerlink" title="google之,发现是连接sock端口连接失败,由于我用的是ubuntu的测试机,测试网络ok,就可能是防火墙的问题.关闭防火墙进行测试,发送ok."></a>google之,发现是连接sock端口连接失败,由于我用的是ubuntu的测试机,测试网络ok,就可能是防火墙的问题.关闭防火墙进行测试,发送ok.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ubuntu关闭防火墙命令:ufw disable</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;前两天设置的自动发送邮件的脚本-今天未发送-查看报错如下&quot;&gt;&lt;a href=&quot;#前两天设置的自动发送邮件的脚本-今天未发送-查看报错如下&quot; class=&quot;headerlink&quot; title=&quot;前两天设置的自动发送邮件的脚本,今天未发送.查看报错如下&quot;&gt;&lt;/a&gt;前两天设置的自动发送邮件的脚本,今天未发送.查看报错如下&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;File &lt;span class=&quot;string&quot;&gt;&quot;/usr/lib/python2.7/smtplib.py&quot;&lt;/span&gt;, line 256, &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; __init__&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    (code, msg) = self.connect(host, port)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  File &lt;span class=&quot;string&quot;&gt;&quot;/usr/lib/python2.7/smtplib.py&quot;&lt;/span&gt;, line 316, &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; connect&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    self.sock = self._get_socket(host, port, self.timeout)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  File &lt;span class=&quot;string&quot;&gt;&quot;/usr/lib/python2.7/smtplib.py&quot;&lt;/span&gt;, line 291, &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; _get_socket&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;return&lt;/span&gt; socket.create_connection((host, port), timeout)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  File &lt;span class=&quot;string&quot;&gt;&quot;/usr/lib/python2.7/socket.py&quot;&lt;/span&gt;, line 553, &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; create_connection&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; res &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; getaddrinfo(host, port, 0, SOCK_STREAM):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;socket.gaierror: [Errno -2] Name or service not known&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://messay.me/categories/Linux/"/>
+    
+    
+      <category term="Python自动化" scheme="http://messay.me/tags/Python%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySQL正则表达式匹配</title>
+    <link href="http://messay.me/2016/12/20/MySQL%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D/"/>
+    <id>http://messay.me/2016/12/20/MySQL正则表达式匹配/</id>
+    <published>2016-12-20T14:12:11.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ul>
+<li>正则表达式和MySQL有何关系？正则表达式的作用是匹配文本，将一个模式(正则表达式)与一个文本串进行比较。MySQL用where子句对正则表达式提供了初步的支持，允许你指定正则表达式，过滤select检索出的数据。</li>
+</ul>
+<a id="more"></a>
+<h4 id="表达式语法-基本字符匹配-基本语法如下所示："><a href="#表达式语法-基本字符匹配-基本语法如下所示：" class="headerlink" title="表达式语法,基本字符匹配,基本语法如下所示："></a>表达式语法,基本字符匹配,基本语法如下所示：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">select prod_name from products where prod_name regexp &apos;1000&apos;</div><div class="line"></div><div class="line">上面的语句作用是检索列prod_name中包含文本1000的所有行。</div><div class="line"></div><div class="line">select prod_name from products where prod_name regexp &apos;.000&apos;</div><div class="line">上面的语句中的.是正则表达式语言中一个特殊的字符。它表示匹配任意一个字符，因此，1000和2000都匹配且返回。</div></pre></td></tr></table></figure>
+<blockquote>
+<p>PS：MySQL中的正则表达式匹配不区分大小写。为区分大小写，可使用BINARY关键字，如：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">where prod_name regexp binary &apos;jetpack .000&apos;</div><div class="line">进行OR匹配</div><div class="line">为搜索两个串之一，使用|，如下所示：</div><div class="line"></div><div class="line">select prod_name from products where prod_name regexp &apos;1000|2000|3000&apos;</div><div class="line">匹配几个字符之一</div><div class="line">匹配任何单一字符。但是，如果你只想匹配特定的字符，怎么办？可通过指定一组[和]括起来的字符完成，如下所示：</div><div class="line"></div><div class="line">select prod_name from products where prod_name regexp &apos;[123] Ton&apos;</div><div class="line">匹配范围</div><div class="line">集合可用来定义要匹配的一个或多个字符。例如，下面的集合将匹配数字0到9：</div><div class="line"></div><div class="line">[0123456789]</div><div class="line">为了简化这种类型的集合，可使用-来定义一个范围。下面的式子功能等同于上述数字列表：</div><div class="line"></div><div class="line">[0-9]</div><div class="line">范围不限于完整的集合，[1-3]和[6-9]也是合法的范围。此外，范围不一定只是数值的，[a-z]匹配任意字母字符。</div><div class="line"></div><div class="line">匹配特殊字符</div><div class="line">为了匹配特殊字符，必须用\\为前导。\\-表示查找-，\\.表示查找.。这种处理就是所谓的转义，正则表达式内具有特殊意义的所有字符都必须以这种方式转义。这包括.、|、[]、\等。</div><div class="line"></div><div class="line">匹配字符类</div><div class="line">存在找出你自己使用的数字、所有字母字符或所有数字字母字符等匹配。为了更方便的工作，可以使用预定义的字符集，称为字符类。表列出了字符类以及他们的含义：</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[:alnum:]</td>
+<td style="text-align:center">任意字母和数字（同[a-zA-Z0-9]）</td>
+</tr>
+<tr>
+<td>[:alnum:]</td>
+<td style="text-align:center">任意字母和数字（同[a-zA-Z0-9]）</td>
+</tr>
+<tr>
+<td>[:alpha:]</td>
+<td style="text-align:center">任意字符</td>
+</tr>
+<tr>
+<td>[:blank:]</td>
+<td style="text-align:center">空格和制表</td>
+</tr>
+<tr>
+<td>[:cntrl:]</td>
+<td style="text-align:center">ASCII控制字符</td>
+</tr>
+<tr>
+<td>[:digit:]</td>
+<td style="text-align:center">任意数字（同[0-9]）</td>
+</tr>
+<tr>
+<td>[:print:]</td>
+<td style="text-align:center">任意可打印字符</td>
+</tr>
+<tr>
+<td>[:graph:]</td>
+<td style="text-align:center">与[:print:]相同，但不包括空格</td>
+</tr>
+<tr>
+<td>[:lower:]</td>
+<td style="text-align:center">任意小写字母（同[a - z]）</td>
+</tr>
+<tr>
+<td>[:punct:]</td>
+<td style="text-align:center">既不在[:alnum:]又不在[:cntrl:]中任意字符</td>
+</tr>
+<tr>
+<td>[:space:]</td>
+<td style="text-align:center">包括空格在内的任意空白字符</td>
+</tr>
+<tr>
+<td>[:upper:]</td>
+<td style="text-align:center">任意大写字母</td>
+</tr>
+<tr>
+<td>[:xdigt:]</td>
+<td style="text-align:center">任意十六进制</td>
+</tr>
+</tbody>
+</table>
+<h4 id="匹配多个实例"><a href="#匹配多个实例" class="headerlink" title="匹配多个实例"></a>匹配多个实例</h4><ul>
+<li>目前为止使用的所有正则表达式都视图匹配单词出现。如果存在一个匹配，改行被检索出来，如果不存在，检索不出任何行。但是有需要对匹配的数目进行更强的控制。例如，你可能需要寻找所有的数，不管书中包含多少个字。<br>这可以用正则的表达式重复元字符来完成。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">元字符	说明</div><div class="line">*	0个或多个匹配</div><div class="line">+	一个或多个匹配</div><div class="line">?	0个或一个匹配</div><div class="line">&#123;n&#125;	n个数目的匹配</div><div class="line">&#123;n,&#125;	n个以上的匹配</div><div class="line">&#123;n,m&#125;	n~m个数目的匹配(m不超过255)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">定位符</div><div class="line">目前为止的所有例子都是匹配一个串中任意位置的文本。为了匹配特定位置的文本，需要使用下面给出的定位符：</div><div class="line"></div><div class="line">元字符	说明</div><div class="line">^	文本的开始</div><div class="line">$	文本的结尾</div><div class="line">[[:&amp;lt:]]	词的开始</div><div class="line">[[:&gt;:]]	词的结尾</div></pre></td></tr></table></figure>
+<blockquote>
+<p>非原创,转载自<a href="https://segmentfault.com/a/1190000002892050" target="_blank" rel="external">这里</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;正则表达式和MySQL有何关系？正则表达式的作用是匹配文本，将一个模式(正则表达式)与一个文本串进行比较。MySQL用where子句对正则表达式提供了初步的支持，允许你指定正则表达式，过滤select检索出的数据。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Mysql" scheme="http://messay.me/categories/Mysql/"/>
+    
+    
+      <category term="Mysql" scheme="http://messay.me/tags/Mysql/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用阿里云PythonSdk,调用API获取全部主机信息</title>
+    <link href="http://messay.me/2016/12/14/%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91PythonSdk-%E8%B0%83%E7%94%A8API%E8%8E%B7%E5%8F%96%E5%85%A8%E9%83%A8%E4%B8%BB%E6%9C%BA%E4%BF%A1%E6%81%AF/"/>
+    <id>http://messay.me/2016/12/14/使用阿里云PythonSdk-调用API获取全部主机信息/</id>
+    <published>2016-12-14T08:41:57.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="这周有个需求-需要把阿里云上的服务器信息拉下来统计-但是阿里云的文档实在是写的太烂-无奈google-工单-处理ok"><a href="#这周有个需求-需要把阿里云上的服务器信息拉下来统计-但是阿里云的文档实在是写的太烂-无奈google-工单-处理ok" class="headerlink" title="这周有个需求,需要把阿里云上的服务器信息拉下来统计.但是阿里云的文档实在是写的太烂.无奈google+工单.处理ok!"></a>这周有个需求,需要把阿里云上的服务器信息拉下来统计.但是阿里云的文档实在是写的太烂.无奈google+工单.处理ok!</h4><h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料:"></a>参考资料:</h4><ul>
+<li>SDK安装和示例请参考<a href="https://develop.aliyun.com/sdk/python?spm=5176.doc25699.2.2.B3LMph" target="_blank" rel="external">这里</a></li>
+<li>API参数请参考<a href="https://help.aliyun.com/document_detail/25484.html?spm=5176.doc25506.3.2.E7cEyj" target="_blank" rel="external">这里</a></li>
+<li>脚本参考<a href="http://www.cnblogs.com/wangxiaoqiangs/p/5369336.html" target="_blank" rel="external">这里</a>,自己根据需要有删改.</li>
+</ul>
+<a id="more"></a>
+<hr>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法:"></a>使用方法:</h4><h4 id="第一步，需要初始化Client"><a href="#第一步，需要初始化Client" class="headerlink" title="第一步，需要初始化Client"></a>第一步，需要初始化Client</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> aliyunsdkcore <span class="keyword">import</span> client</div><div class="line"></div><div class="line">clt = client.AcsClient(<span class="string">'SFAW************'</span>,<span class="string">'Nc2nZ6dQoiqck0*************'</span>,</div><div class="line"><span class="string">'cn-hangzhou'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>NOTE:DescribeInstancesRequest是调用你对应的API的模块.</p>
+</blockquote>
+<h4 id="第二步-初始化request。以ECS的DescribeRegionsRequest接口为例"><a href="#第二步-初始化request。以ECS的DescribeRegionsRequest接口为例" class="headerlink" title="第二步, 初始化request。以ECS的DescribeRegionsRequest接口为例:"></a>第二步, 初始化request。以ECS的DescribeRegionsRequest接口为例:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> aliyunsdkecs.request.v20140526 <span class="keyword">import</span> DescribeInstancesRequest</div><div class="line"></div><div class="line">request = DescribeInstancesRequest.DescribeInstancesRequest()</div><div class="line">request.set_PageSize(Number) <span class="comment"># 设置返回sizenumber</span></div><div class="line">request.set_PageNumber(Number) <span class="comment"># 设置返回pagenumber</span></div><div class="line">request.set_accept_format(<span class="string">'json'</span>) <span class="comment"># 设置返回格式</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>NOTE:DescribeInstancesRequest是调用你对应的API的模块.除了DescribeInstancesRequest参数,其它参数都需要用set_xxx来设置.</p>
+</blockquote>
+<h4 id="第三步-发起API调用"><a href="#第三步-发起API调用" class="headerlink" title="第三步, 发起API调用"></a>第三步, 发起API调用</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = clt.do_action(request) <span class="comment"># 默认返回第一页,10条数据,可用set调整</span></div></pre></td></tr></table></figure>
+<h4 id="示例脚本"><a href="#示例脚本" class="headerlink" title="示例脚本"></a>示例脚本</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># coding: utf-8</div><div class="line"></div><div class="line">'''</div><div class="line">功能介绍：</div><div class="line">1、调用阿里云API，收集所有区域 ECS 信息</div><div class="line">2、将需要的数据整理、生成 Excel 文档</div><div class="line">3、关于阿里 sdk 的安装，api 的调用请参考阿里云官网</div><div class="line">4、xlsxwriter 请参考这里：http://xlsxwriter.readthedocs.org/</div><div class="line">'''</div><div class="line"></div><div class="line">import json, sys</div><div class="line"></div><div class="line">try:</div><div class="line">    from termcolor import colored</div><div class="line">    from xlsxwriter import workbook</div><div class="line">    from aliyunsdkcore import client</div><div class="line">    from aliyunsdkecs.request.v20140526 import DescribeInstancesRequest</div><div class="line">except ImportError as e:</div><div class="line">    print(colored('%s : %s' % ('Error', e), 'red'))</div><div class="line">    exit(9)</div><div class="line"></div><div class="line">reload(sys)</div><div class="line"></div><div class="line">sys.setdefaultencoding('utf8')</div><div class="line"></div><div class="line"></div><div class="line">def get_sys_info(key, secret, zone, page):</div><div class="line">    '''</div><div class="line">    1、获取该区域全部主机详细信息</div><div class="line">    2、参数：cn-qingdao、cn-hangzhou、cn-beijing 等</div><div class="line">    '''</div><div class="line">    # 与阿里云建立有效连接</div><div class="line">    clt = client.AcsClient(key, secret, zone)</div><div class="line">    # 获取该区域全部实例详细信息</div><div class="line">    request = DescribeInstancesRequest.DescribeInstancesRequest()</div><div class="line">    request.set_PageSize(100)</div><div class="line">    request.set_PageNumber(page)</div><div class="line">    # 将数据格式化成 json，默认为 XML</div><div class="line">    request.set_accept_format('json')</div><div class="line">    # 发起请求，获取数据</div><div class="line">    result = json.loads(clt.do_action(request)).get('Instances').get('Instance')</div><div class="line"></div><div class="line">    return result</div><div class="line"></div><div class="line"></div><div class="line">def format_data(data_info):</div><div class="line">    '''</div><div class="line">    从全部数据中整理出需要的数据</div><div class="line">    '''</div><div class="line">    result = []</div><div class="line"></div><div class="line">    for line in data_info:</div><div class="line">        data = (</div><div class="line">            line.get('InstanceId'),</div><div class="line">            line.get('ZoneId'),</div><div class="line">            line.get('HostName'),</div><div class="line">            line.get('InstanceName'),</div><div class="line">            line.get('PublicIpAddress').get('IpAddress'),</div><div class="line">            line.get('InnerIpAddress').get('IpAddress'),</div><div class="line">            line.get('Cpu'),</div><div class="line">            line.get('Memory'),</div><div class="line">            line.get('InternetMaxBandwidthOut'),</div><div class="line">            line.get('Status'),</div><div class="line">            line.get('CreationTime'),</div><div class="line">            line.get('ExpiredTime')</div><div class="line">        )</div><div class="line">        result.append(data)</div><div class="line"></div><div class="line">    return result</div><div class="line"></div><div class="line"></div><div class="line">def write_excel(file, data):</div><div class="line">    '''</div><div class="line">    1、设置 Excel 样式</div><div class="line">    2、将数据写入到 Excel 中</div><div class="line">    '''</div><div class="line">    # 生成 Excel 文件</div><div class="line">    work = workbook.Workbook(file)</div><div class="line">    # 建立工作表，表名默认</div><div class="line">    worksheet = work.add_worksheet()</div><div class="line">    # 设置字体加粗、字体大小</div><div class="line">    format_title = work.add_format(&#123;'bold': True, 'font_size': 16&#125;)</div><div class="line">    # 设置水平对齐、垂直对齐</div><div class="line">    format_title.set_align('center')</div><div class="line">    format_title.set_align('vcenter')</div><div class="line"></div><div class="line">    format_body = work.add_format(&#123;'font_size': 14&#125;)</div><div class="line">    # 设置样式，行高、列宽</div><div class="line">    worksheet.set_row(0, 25)</div><div class="line">    worksheet.set_column(0, 0, 30)</div><div class="line">    worksheet.set_column(1, 1, 20)</div><div class="line">    worksheet.set_column(2, 3, 28)</div><div class="line">    worksheet.set_column(4, 5, 25)</div><div class="line">    worksheet.set_column(6, 6, 12)</div><div class="line">    worksheet.set_column(7, 9, 16)</div><div class="line">    worksheet.set_column(10, 11, 25)</div><div class="line">    # 定义表头</div><div class="line">    title = (</div><div class="line">        '实例 ID',</div><div class="line">        '所在区域',</div><div class="line">        '主机名称',</div><div class="line">        '主机别名',</div><div class="line">        '公网地址',</div><div class="line">        '私网地址',</div><div class="line">        'CPU 核数',</div><div class="line">        '内存大小 MB',</div><div class="line">        '网络带宽 MB',</div><div class="line">        '运行状态',</div><div class="line">        '创建时间',</div><div class="line">        '过期时间'</div><div class="line">    )</div><div class="line"></div><div class="line">    row = 0</div><div class="line">    col = 0</div><div class="line">    # 表头写入文件，引用样式</div><div class="line">    for item in title:</div><div class="line">        worksheet.write(row, col, item, format_title)</div><div class="line">        col += 1</div><div class="line">    # 内容写入文件，引用样式</div><div class="line">    for line in data:</div><div class="line">        row += 1</div><div class="line">        col = 0</div><div class="line">        for key in line:</div><div class="line">            worksheet.write(row, col, str(key), format_body) #ip地址是list类型,需转换成str.</div><div class="line">            col += 1</div><div class="line"></div><div class="line">    work.close()</div><div class="line"></div><div class="line"></div><div class="line">def main():</div><div class="line">    key = 'key'</div><div class="line">    secret = 'secret'</div><div class="line">    zones = ['cn-qingdao', 'cn-hangzhou', 'cn-beijing', 'cn-shanghai] #根据需要修改</div><div class="line"></div><div class="line">    filename = './aliyunSystemToExcel.xlsx'</div><div class="line"></div><div class="line">    result = []</div><div class="line"></div><div class="line">    for zone in zones:</div><div class="line">        for page in range(1, 2): # 根据主机数量,设置page数</div><div class="line">            info = get_sys_info(key, secret, zone, page)</div><div class="line">            data = format_data(info)</div><div class="line"></div><div class="line">            [result.append(line) for line in data]</div><div class="line"></div><div class="line">    write_excel(filename, result)</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == '__main__':</div><div class="line">    main()</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;这周有个需求-需要把阿里云上的服务器信息拉下来统计-但是阿里云的文档实在是写的太烂-无奈google-工单-处理ok&quot;&gt;&lt;a href=&quot;#这周有个需求-需要把阿里云上的服务器信息拉下来统计-但是阿里云的文档实在是写的太烂-无奈google-工单-处理ok&quot; class=&quot;headerlink&quot; title=&quot;这周有个需求,需要把阿里云上的服务器信息拉下来统计.但是阿里云的文档实在是写的太烂.无奈google+工单.处理ok!&quot;&gt;&lt;/a&gt;这周有个需求,需要把阿里云上的服务器信息拉下来统计.但是阿里云的文档实在是写的太烂.无奈google+工单.处理ok!&lt;/h4&gt;&lt;h4 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料:&quot;&gt;&lt;/a&gt;参考资料:&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;SDK安装和示例请参考&lt;a href=&quot;https://develop.aliyun.com/sdk/python?spm=5176.doc25699.2.2.B3LMph&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;API参数请参考&lt;a href=&quot;https://help.aliyun.com/document_detail/25484.html?spm=5176.doc25506.3.2.E7cEyj&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;脚本参考&lt;a href=&quot;http://www.cnblogs.com/wangxiaoqiangs/p/5369336.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;,自己根据需要有删改.&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://messay.me/categories/Python/"/>
+    
+    
+      <category term="Aliyun" scheme="http://messay.me/tags/Aliyun/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python获取Linux磁盘容量</title>
+    <link href="http://messay.me/2016/12/12/Python%E8%8E%B7%E5%8F%96Linux%E7%A3%81%E7%9B%98%E5%AE%B9%E9%87%8F/"/>
+    <id>http://messay.me/2016/12/12/Python获取Linux磁盘容量/</id>
+    <published>2016-12-12T08:20:34.000Z</published>
+    <updated>2017-06-25T05:07:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="使用cron服务-定时跑脚本-监控磁盘容量"><a href="#使用cron服务-定时跑脚本-监控磁盘容量" class="headerlink" title="使用cron服务,定时跑脚本,监控磁盘容量."></a>使用cron服务,定时跑脚本,监控磁盘容量.</h4><h4 id="Python脚本监控磁盘使用量-导入Mail模块-超过定值-邮件通知-附上参考脚本"><a href="#Python脚本监控磁盘使用量-导入Mail模块-超过定值-邮件通知-附上参考脚本" class="headerlink" title="Python脚本监控磁盘使用量,导入Mail模块,超过定值,邮件通知(附上参考脚本)"></a>Python脚本监控磁盘使用量,导入Mail模块,超过定值,邮件通知(附上参考脚本)</h4><a id="more"></a>
+<hr>
+<h4 id="Python磁盘操作模块"><a href="#Python磁盘操作模块" class="headerlink" title="Python磁盘操作模块"></a>Python磁盘操作模块</h4><h4 id="os-statvfs-函数"><a href="#os-statvfs-函数" class="headerlink" title="os.statvfs()函数"></a>os.statvfs()函数</h4><ul>
+<li>系统中的df命令应该调用了linux的函数statfs()，这里我使用python，调用的是 os.statvfs()函数。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">需要的头文件</div><div class="line"></div><div class="line">imprt os     <span class="comment">#os模块，statvfs函数在此模块中</span></div><div class="line"><span class="keyword">import</span> statvfs     <span class="comment">#里面有相应的宏，F_BSIZE等，可以不需要。</span></div><div class="line"></div><div class="line">vfs=os.statvfs(“目录”)返回这个目录所在磁盘的信息。</div><div class="line"></div><div class="line">F_BSIZE = <span class="number">0</span> <span class="comment"># 首选block大小                Preferred file system block size</span></div><div class="line"></div><div class="line">F_FRSIZE = <span class="number">1</span> <span class="comment"># 基本文件block大小             Fundamental file system block size</span></div><div class="line"></div><div class="line">F_BLOCKS = <span class="number">2</span> <span class="comment">#文件系统block总数                       Total number of file system blocks (FRSIZE)</span></div><div class="line"></div><div class="line">F_BFREE = <span class="number">3</span> <span class="comment">#空闲block数量              Total number of free blocks</span></div><div class="line"></div><div class="line">F_BAVAIL = <span class="number">4</span> <span class="comment">#  非超级用户可用的block数量                Free blocks available to non-superuser</span></div><div class="line"></div><div class="line">F_FILES = <span class="number">5</span> <span class="comment"># 总的文件节点数量             Total number of file nodes</span></div><div class="line"></div><div class="line">F_FFREE = <span class="number">6</span> <span class="comment">#空闲的文件节点的数量                   Total number of free file nodes</span></div><div class="line"></div><div class="line">F_FAVAIL = <span class="number">7</span> <span class="comment">#非超级用户可用的空闲文件节点数量    Free nodes available to non-superuser</span></div><div class="line"></div><div class="line">F_FLAG = <span class="number">8</span> <span class="comment"># Flags (see your local statvfs man page)</span></div><div class="line"></div><div class="line">F_NAMEMAX = <span class="number">9</span> <span class="comment"># Maximum file name length</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>读取有多种方式，比如vfs[0],vfs.f_bsize,vfs[F_BSIZE]，都可以读取首选block大小的值。</p>
+</li>
+<li><p>计算容量就是 block大小*block数量</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#更改默认除法运算，使得除法计算得到float而不是int</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</div><div class="line"></div><div class="line"><span class="comment">#获得磁盘信息</span></div><div class="line"></div><div class="line">vfs=os.statvfs(<span class="string">"目录"</span>)</div><div class="line"></div><div class="line"><span class="comment">#1k－blocks栏，总容量KB</span></div><div class="line"></div><div class="line">k_blocks=vfs.f_bsize*vfs.f_blocks/<span class="number">1024</span></div><div class="line"></div><div class="line"><span class="comment">#Used,使用量KB，总容量减去空闲容量</span></div><div class="line"></div><div class="line">used=vfs.f_bsize*(vfs.f_blocks-vfs.f_bfree)/<span class="number">1024</span></div><div class="line"></div><div class="line"><span class="comment">#Available，有效容量KB</span></div><div class="line"></div><div class="line">available=vfs.f_bsize*vfs.f_bavail/<span class="number">1024</span></div><div class="line"></div><div class="line"><span class="comment">#use%,使用量，%,round(浮点数，精确到小数点后的位数）</span></div><div class="line"></div><div class="line">use=round(used/(used+available)*<span class="number">100</span>,<span class="number">2</span>)</div><div class="line"> 为什么use不是由used/k_blocks</div></pre></td></tr></table></figure>
+<ul>
+<li><p>看上去，使用量/总容量 就是使用率，但是忽略了一点  总容量=使用量+未使用量+不可使用量</p>
+</li>
+<li><p>所以其实重点就是在于这个不可使用量，使用率=使用量/(使用量+未使用量)  才是正确的值。</p>
+</li>
+</ul>
+<hr>
+<h4 id="参考脚本"><a href="#参考脚本" class="headerlink" title="参考脚本:"></a>参考脚本:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">disk_stat</span><span class="params">()</span>:</span></div><div class="line">    hd = &#123;&#125;</div><div class="line">    disk = os.statvfs(<span class="string">"/var/lib/test"</span>)</div><div class="line">    disk1 = os.statvfs(<span class="string">"/"</span>)</div><div class="line"></div><div class="line">    disksize = disk.f_bsize * disk.f_blocks/(<span class="number">1024</span>*<span class="number">1024</span>*<span class="number">1024</span>)</div><div class="line">    used = disk.f_bsize * (disk.f_blocks - disk.f_bfree) / (<span class="number">1024</span> ** <span class="number">3</span>)</div><div class="line">    hd[<span class="string">'diskused'</span>] = format((used / float(disksize)), <span class="string">'.2f'</span>)</div><div class="line"></div><div class="line">    disksize1 = disk1.f_bsize * disk1.f_blocks/(<span class="number">1024</span>*<span class="number">1024</span>*<span class="number">1024</span>)</div><div class="line">    used1 = disk1.f_bsize * (disk1.f_blocks - disk1.f_bfree) / (<span class="number">1024</span> ** <span class="number">3</span>)</div><div class="line">    hd[<span class="string">'diskused1'</span>] = format((used1 / float(disksize1)), <span class="string">'.2f'</span>)</div><div class="line"></div><div class="line">    <span class="comment">#return used, disksize, diskused, used1, disksize1, diskused1</span></div><div class="line">    <span class="keyword">return</span> hd</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">Email</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">import</span> smtplib</div><div class="line">    <span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</div><div class="line">    <span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</div><div class="line">    <span class="keyword">from</span> email.mime.application <span class="keyword">import</span> MIMEApplication</div><div class="line">    <span class="keyword">import</span> datetime</div><div class="line"></div><div class="line">    user = <span class="string">'test@test.com'</span></div><div class="line">    pwd = <span class="string">'test'</span></div><div class="line">    to = [<span class="string">'test@test.com'</span>]</div><div class="line">    msg = MIMEMultipart()</div><div class="line">    msg[<span class="string">'Subject'</span>]  = <span class="string">'disk Exceed the limit, Please Process'</span></div><div class="line">    msg[<span class="string">'From'</span>] = user</div><div class="line">    msg[<span class="string">'To'</span>] = <span class="string">','</span>.join(to)</div><div class="line"></div><div class="line">    part = MIMEText(<span class="string">'test disk Exceed the limit, Please Process'</span>)</div><div class="line">    msg.attach(part)</div><div class="line"></div><div class="line"></div><div class="line">    server = smtplib.SMTP(<span class="string">'smtp.test.com'</span>)</div><div class="line">    server.login(user, pwd)</div><div class="line">    server.sendmail(user, to, msg.as_string())</div><div class="line">    server.close()</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    hd = disk_stat()</div><div class="line">    <span class="keyword">if</span> hd[<span class="string">'diskused'</span>] &gt; <span class="number">0.75</span> <span class="keyword">or</span> hd[<span class="string">'diskused1'</span>] &gt; <span class="number">0.75</span>:</div><div class="line">        Email()</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;使用cron服务-定时跑脚本-监控磁盘容量&quot;&gt;&lt;a href=&quot;#使用cron服务-定时跑脚本-监控磁盘容量&quot; class=&quot;headerlink&quot; title=&quot;使用cron服务,定时跑脚本,监控磁盘容量.&quot;&gt;&lt;/a&gt;使用cron服务,定时跑脚本,监控磁盘容量.&lt;/h4&gt;&lt;h4 id=&quot;Python脚本监控磁盘使用量-导入Mail模块-超过定值-邮件通知-附上参考脚本&quot;&gt;&lt;a href=&quot;#Python脚本监控磁盘使用量-导入Mail模块-超过定值-邮件通知-附上参考脚本&quot; class=&quot;headerlink&quot; title=&quot;Python脚本监控磁盘使用量,导入Mail模块,超过定值,邮件通知(附上参考脚本)&quot;&gt;&lt;/a&gt;Python脚本监控磁盘使用量,导入Mail模块,超过定值,邮件通知(附上参考脚本)&lt;/h4&gt;
+    
+    </summary>
+    
+      <category term="Python" scheme="http://messay.me/categories/Python/"/>
+    
+    
+      <category term="Linux" scheme="http://messay.me/tags/Linux/"/>
+    
+      <category term="Disk" scheme="http://messay.me/tags/Disk/"/>
+    
+      <category term="Python自动化" scheme="http://messay.me/tags/Python%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    
+  </entry>
+  
+</feed>

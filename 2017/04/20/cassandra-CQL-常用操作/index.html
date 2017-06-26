@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="zh-tw"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> cassandra CQL 常用操作 · iLovebaicai</title><meta name="description" content="cassandra CQL 常用操作 - Nemo Chen"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://messay.me/atom.xml" title="iLovebaicai"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/cfqtxd1" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/lovebaicai" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="http://messay.me/about/" target="_blank" class="nav-list-link">ABOUT</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">cassandra CQL 常用操作</h1><div class="post-info">2017年4月20日</div><div class="post-content"><ol>
+<li><p>CQL客户端链接<br>bin/cqlsh ip username password</p>
+</li>
+<li><p>常用操作命令</p>
+<ul>
+<li><p>建立keyspace语句，keyspace类似于 mysql 中的数据库，一个数据库中可以有很多表；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE KEYSPACE mykeyspace WITH REPLICATION = &#123; &apos;class&apos; : &apos;SimpleStrategy&apos;,&apos;replication_factor&apos; : 2 &#125; ，replication_factor 表示 数据被复制几份</div></pre></td></tr></table></figure>
+</li>
+<li><p>建表语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE task ( row_split text, column_split text, username text, parent_user text, priority int, url text, status</div><div class="line"> int, is_dir boolean, channel_code text, is_multilayer boolean, action_type int, create_time bigint, finish_time bigint, id text, subtask_result text, reason text, retry_time int, PRIMARY KEY (row_split, column_split) ) ;  primary key 的第一个元素是rowkey，第二个元素的是cluster key；</div></pre></td></tr></table></figure>
+</li>
+<li><p>建索引语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create index task_status on task(status);  cassandra的索引不支持范围查找，类似于 位图索引 或者 哈希索引，支持 ＝ 操作，不支持&lt; 或 &gt; 之类的范围查找；</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<a id="more"></a>
+<ul>
+<li><p>查询语句:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select * from task where status=2;</div><div class="line">注意，cassandra where 子句里面的，除了rowkey以外，其他字段如果要使用 = 操作，必须建立二级索引，而且cassandra里面的二级索引 不支持范围查询，类似于位图索引，不同于 BTREE索引；</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除语句:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">单独删除某个column 或者 某行；</div><div class="line">delete column1，column2 from table where rowkey = &apos;xxxx&apos;</div><div class="line">or</div><div class="line">delete column1，column2 from table where rowkey in (&apos;x&apos;,&apos;xx&apos;,&apos;xxx&apos;...)</div><div class="line">其中where子句是不能省略的。</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除表中的所有数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">如果要想实现 类似 mysql中 delete from table的效果，可以使用truncate；</div><div class="line">truncate table</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</div></article></div></main><footer><div class="paginator"><a href="/2017/05/05/Fuck-一个神奇的纠错工具/" class="prev">PREV</a><a href="/2017/04/15/基础-Ruby-中-Include-Extend-Load-Require-的使用区别/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2017 <a href="http://messay.me">Nemo Chen</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-91949407-1",'auto');ga('send','pageview');</script></body></html>
