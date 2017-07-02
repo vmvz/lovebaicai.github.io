@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://messay.me/"/>
-  <updated>2017-06-28T15:14:26.000Z</updated>
+  <updated>2017-07-02T13:36:03.000Z</updated>
   <id>http://messay.me/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows域环境通过组策略推送补丁脚本</title>
+    <link href="http://messay.me/2017/07/02/Windows%E5%9F%9F%E7%8E%AF%E5%A2%83%E9%80%9A%E8%BF%87%E7%BB%84%E7%AD%96%E7%95%A5%E6%8E%A8%E9%80%81%E8%A1%A5%E4%B8%81%E8%84%9A%E6%9C%AC/"/>
+    <id>http://messay.me/2017/07/02/Windows域环境通过组策略推送补丁脚本/</id>
+    <published>2017-07-02T13:27:26.000Z</published>
+    <updated>2017-07-02T13:36:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>将下载好的MSU文件提取到一个共享路径，如\s1\app。</li>
+<li>新建一个txt文件，对每一个安装补丁添加一行下面的命令，最后保存，修改文件后缀名为bat，也将其放置到共享路径。示例如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Wusa.exe &lt;WSU文件共享路径&gt; /quiet</div></pre></td></tr></table></figure>
+<p><img src="https://fud.community.services.support.microsoft.com/Fud/FileDownloadHandler.ashx?fid=6b042fef-5b58-459b-9ee5-e6651a97faee" alt=""></p>
+<a id="more"></a>
+<ul>
+<li><p>新建一个GPO，导航到计算机配置\策略\Windows设置\脚本（启动/关机），双击右侧的“启动”，点击添加该bat脚本的网络路径。<br><img src="https://fud.community.services.support.microsoft.com/Fud/FileDownloadHandler.ashx?fid=2c30f03f-62de-4a08-8613-4be189fe0db4" alt=""></p>
+</li>
+<li><p>将GPO链接到能包含目标计算机的容器后，重启需要打补丁的计算机。</p>
+</li>
+</ul>
+<p>参考链接：<a href="https://partnersupport.microsoft.com/zh-hans/par_servplat/forum/par_winserv/%E7%BB%84%E7%AD%96%E7%95%A5%E6%8E%A8%E9%80%81/9f31fda0-2a5f-40c3-9d96-2b7a9ba9d69b?tab=AllReplies&amp;auth=1#tabs" target="_blank" rel="external">组策略推送补丁</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;将下载好的MSU文件提取到一个共享路径，如\s1\app。&lt;/li&gt;
+&lt;li&gt;新建一个txt文件，对每一个安装补丁添加一行下面的命令，最后保存，修改文件后缀名为bat，也将其放置到共享路径。示例如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;Wusa.exe &amp;lt;WSU文件共享路径&amp;gt; /quiet&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img src=&quot;https://fud.community.services.support.microsoft.com/Fud/FileDownloadHandler.ashx?fid=6b042fef-5b58-459b-9ee5-e6651a97faee&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Github 访问时出现Permission denied (public key)</title>
@@ -936,49 +973,6 @@ The MySQL server is running with the --secure-file-priv option so it cannot exec
     
     
       <category term="Mysql" scheme="http://messay.me/tags/Mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用阿里云PythonSdk,调用API获取全部主机信息</title>
-    <link href="http://messay.me/2016/12/14/%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91PythonSdk-%E8%B0%83%E7%94%A8API%E8%8E%B7%E5%8F%96%E5%85%A8%E9%83%A8%E4%B8%BB%E6%9C%BA%E4%BF%A1%E6%81%AF/"/>
-    <id>http://messay.me/2016/12/14/使用阿里云PythonSdk-调用API获取全部主机信息/</id>
-    <published>2016-12-14T08:41:57.000Z</published>
-    <updated>2017-06-25T05:07:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="这周有个需求-需要把阿里云上的服务器信息拉下来统计-但是阿里云的文档实在是写的太烂-无奈google-工单-处理ok"><a href="#这周有个需求-需要把阿里云上的服务器信息拉下来统计-但是阿里云的文档实在是写的太烂-无奈google-工单-处理ok" class="headerlink" title="这周有个需求,需要把阿里云上的服务器信息拉下来统计.但是阿里云的文档实在是写的太烂.无奈google+工单.处理ok!"></a>这周有个需求,需要把阿里云上的服务器信息拉下来统计.但是阿里云的文档实在是写的太烂.无奈google+工单.处理ok!</h4><h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料:"></a>参考资料:</h4><ul>
-<li>SDK安装和示例请参考<a href="https://develop.aliyun.com/sdk/python?spm=5176.doc25699.2.2.B3LMph" target="_blank" rel="external">这里</a></li>
-<li>API参数请参考<a href="https://help.aliyun.com/document_detail/25484.html?spm=5176.doc25506.3.2.E7cEyj" target="_blank" rel="external">这里</a></li>
-<li>脚本参考<a href="http://www.cnblogs.com/wangxiaoqiangs/p/5369336.html" target="_blank" rel="external">这里</a>,自己根据需要有删改.</li>
-</ul>
-<a id="more"></a>
-<hr>
-<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法:"></a>使用方法:</h4><h4 id="第一步，需要初始化Client"><a href="#第一步，需要初始化Client" class="headerlink" title="第一步，需要初始化Client"></a>第一步，需要初始化Client</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> aliyunsdkcore <span class="keyword">import</span> client</div><div class="line"></div><div class="line">clt = client.AcsClient(<span class="string">'SFAW************'</span>,<span class="string">'Nc2nZ6dQoiqck0*************'</span>,</div><div class="line"><span class="string">'cn-hangzhou'</span>)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>NOTE:DescribeInstancesRequest是调用你对应的API的模块.</p>
-</blockquote>
-<h4 id="第二步-初始化request。以ECS的DescribeRegionsRequest接口为例"><a href="#第二步-初始化request。以ECS的DescribeRegionsRequest接口为例" class="headerlink" title="第二步, 初始化request。以ECS的DescribeRegionsRequest接口为例:"></a>第二步, 初始化request。以ECS的DescribeRegionsRequest接口为例:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> aliyunsdkecs.request.v20140526 <span class="keyword">import</span> DescribeInstancesRequest</div><div class="line"></div><div class="line">request = DescribeInstancesRequest.DescribeInstancesRequest()</div><div class="line">request.set_PageSize(Number) <span class="comment"># 设置返回sizenumber</span></div><div class="line">request.set_PageNumber(Number) <span class="comment"># 设置返回pagenumber</span></div><div class="line">request.set_accept_format(<span class="string">'json'</span>) <span class="comment"># 设置返回格式</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>NOTE:DescribeInstancesRequest是调用你对应的API的模块.除了DescribeInstancesRequest参数,其它参数都需要用set_xxx来设置.</p>
-</blockquote>
-<h4 id="第三步-发起API调用"><a href="#第三步-发起API调用" class="headerlink" title="第三步, 发起API调用"></a>第三步, 发起API调用</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">result = clt.do_action(request) <span class="comment"># 默认返回第一页,10条数据,可用set调整</span></div></pre></td></tr></table></figure>
-<h4 id="示例脚本"><a href="#示例脚本" class="headerlink" title="示例脚本"></a>示例脚本</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># coding: utf-8</div><div class="line"></div><div class="line">'''</div><div class="line">功能介绍：</div><div class="line">1、调用阿里云API，收集所有区域 ECS 信息</div><div class="line">2、将需要的数据整理、生成 Excel 文档</div><div class="line">3、关于阿里 sdk 的安装，api 的调用请参考阿里云官网</div><div class="line">4、xlsxwriter 请参考这里：http://xlsxwriter.readthedocs.org/</div><div class="line">'''</div><div class="line"></div><div class="line">import json, sys</div><div class="line"></div><div class="line">try:</div><div class="line">    from termcolor import colored</div><div class="line">    from xlsxwriter import workbook</div><div class="line">    from aliyunsdkcore import client</div><div class="line">    from aliyunsdkecs.request.v20140526 import DescribeInstancesRequest</div><div class="line">except ImportError as e:</div><div class="line">    print(colored('%s : %s' % ('Error', e), 'red'))</div><div class="line">    exit(9)</div><div class="line"></div><div class="line">reload(sys)</div><div class="line"></div><div class="line">sys.setdefaultencoding('utf8')</div><div class="line"></div><div class="line"></div><div class="line">def get_sys_info(key, secret, zone, page):</div><div class="line">    '''</div><div class="line">    1、获取该区域全部主机详细信息</div><div class="line">    2、参数：cn-qingdao、cn-hangzhou、cn-beijing 等</div><div class="line">    '''</div><div class="line">    # 与阿里云建立有效连接</div><div class="line">    clt = client.AcsClient(key, secret, zone)</div><div class="line">    # 获取该区域全部实例详细信息</div><div class="line">    request = DescribeInstancesRequest.DescribeInstancesRequest()</div><div class="line">    request.set_PageSize(100)</div><div class="line">    request.set_PageNumber(page)</div><div class="line">    # 将数据格式化成 json，默认为 XML</div><div class="line">    request.set_accept_format('json')</div><div class="line">    # 发起请求，获取数据</div><div class="line">    result = json.loads(clt.do_action(request)).get('Instances').get('Instance')</div><div class="line"></div><div class="line">    return result</div><div class="line"></div><div class="line"></div><div class="line">def format_data(data_info):</div><div class="line">    '''</div><div class="line">    从全部数据中整理出需要的数据</div><div class="line">    '''</div><div class="line">    result = []</div><div class="line"></div><div class="line">    for line in data_info:</div><div class="line">        data = (</div><div class="line">            line.get('InstanceId'),</div><div class="line">            line.get('ZoneId'),</div><div class="line">            line.get('HostName'),</div><div class="line">            line.get('InstanceName'),</div><div class="line">            line.get('PublicIpAddress').get('IpAddress'),</div><div class="line">            line.get('InnerIpAddress').get('IpAddress'),</div><div class="line">            line.get('Cpu'),</div><div class="line">            line.get('Memory'),</div><div class="line">            line.get('InternetMaxBandwidthOut'),</div><div class="line">            line.get('Status'),</div><div class="line">            line.get('CreationTime'),</div><div class="line">            line.get('ExpiredTime')</div><div class="line">        )</div><div class="line">        result.append(data)</div><div class="line"></div><div class="line">    return result</div><div class="line"></div><div class="line"></div><div class="line">def write_excel(file, data):</div><div class="line">    '''</div><div class="line">    1、设置 Excel 样式</div><div class="line">    2、将数据写入到 Excel 中</div><div class="line">    '''</div><div class="line">    # 生成 Excel 文件</div><div class="line">    work = workbook.Workbook(file)</div><div class="line">    # 建立工作表，表名默认</div><div class="line">    worksheet = work.add_worksheet()</div><div class="line">    # 设置字体加粗、字体大小</div><div class="line">    format_title = work.add_format(&#123;'bold': True, 'font_size': 16&#125;)</div><div class="line">    # 设置水平对齐、垂直对齐</div><div class="line">    format_title.set_align('center')</div><div class="line">    format_title.set_align('vcenter')</div><div class="line"></div><div class="line">    format_body = work.add_format(&#123;'font_size': 14&#125;)</div><div class="line">    # 设置样式，行高、列宽</div><div class="line">    worksheet.set_row(0, 25)</div><div class="line">    worksheet.set_column(0, 0, 30)</div><div class="line">    worksheet.set_column(1, 1, 20)</div><div class="line">    worksheet.set_column(2, 3, 28)</div><div class="line">    worksheet.set_column(4, 5, 25)</div><div class="line">    worksheet.set_column(6, 6, 12)</div><div class="line">    worksheet.set_column(7, 9, 16)</div><div class="line">    worksheet.set_column(10, 11, 25)</div><div class="line">    # 定义表头</div><div class="line">    title = (</div><div class="line">        '实例 ID',</div><div class="line">        '所在区域',</div><div class="line">        '主机名称',</div><div class="line">        '主机别名',</div><div class="line">        '公网地址',</div><div class="line">        '私网地址',</div><div class="line">        'CPU 核数',</div><div class="line">        '内存大小 MB',</div><div class="line">        '网络带宽 MB',</div><div class="line">        '运行状态',</div><div class="line">        '创建时间',</div><div class="line">        '过期时间'</div><div class="line">    )</div><div class="line"></div><div class="line">    row = 0</div><div class="line">    col = 0</div><div class="line">    # 表头写入文件，引用样式</div><div class="line">    for item in title:</div><div class="line">        worksheet.write(row, col, item, format_title)</div><div class="line">        col += 1</div><div class="line">    # 内容写入文件，引用样式</div><div class="line">    for line in data:</div><div class="line">        row += 1</div><div class="line">        col = 0</div><div class="line">        for key in line:</div><div class="line">            worksheet.write(row, col, str(key), format_body) #ip地址是list类型,需转换成str.</div><div class="line">            col += 1</div><div class="line"></div><div class="line">    work.close()</div><div class="line"></div><div class="line"></div><div class="line">def main():</div><div class="line">    key = 'key'</div><div class="line">    secret = 'secret'</div><div class="line">    zones = ['cn-qingdao', 'cn-hangzhou', 'cn-beijing', 'cn-shanghai] #根据需要修改</div><div class="line"></div><div class="line">    filename = './aliyunSystemToExcel.xlsx'</div><div class="line"></div><div class="line">    result = []</div><div class="line"></div><div class="line">    for zone in zones:</div><div class="line">        for page in range(1, 2): # 根据主机数量,设置page数</div><div class="line">            info = get_sys_info(key, secret, zone, page)</div><div class="line">            data = format_data(info)</div><div class="line"></div><div class="line">            [result.append(line) for line in data]</div><div class="line"></div><div class="line">    write_excel(filename, result)</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == '__main__':</div><div class="line">    main()</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;这周有个需求-需要把阿里云上的服务器信息拉下来统计-但是阿里云的文档实在是写的太烂-无奈google-工单-处理ok&quot;&gt;&lt;a href=&quot;#这周有个需求-需要把阿里云上的服务器信息拉下来统计-但是阿里云的文档实在是写的太烂-无奈google-工单-处理ok&quot; class=&quot;headerlink&quot; title=&quot;这周有个需求,需要把阿里云上的服务器信息拉下来统计.但是阿里云的文档实在是写的太烂.无奈google+工单.处理ok!&quot;&gt;&lt;/a&gt;这周有个需求,需要把阿里云上的服务器信息拉下来统计.但是阿里云的文档实在是写的太烂.无奈google+工单.处理ok!&lt;/h4&gt;&lt;h4 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料:&quot;&gt;&lt;/a&gt;参考资料:&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;SDK安装和示例请参考&lt;a href=&quot;https://develop.aliyun.com/sdk/python?spm=5176.doc25699.2.2.B3LMph&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;API参数请参考&lt;a href=&quot;https://help.aliyun.com/document_detail/25484.html?spm=5176.doc25506.3.2.E7cEyj&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;脚本参考&lt;a href=&quot;http://www.cnblogs.com/wangxiaoqiangs/p/5369336.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这里&lt;/a&gt;,自己根据需要有删改.&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://messay.me/categories/Python/"/>
-    
-    
-      <category term="Aliyun" scheme="http://messay.me/tags/Aliyun/"/>
     
   </entry>
   
