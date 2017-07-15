@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://messay.me/"/>
-  <updated>2017-07-14T16:08:36.000Z</updated>
+  <updated>2017-07-15T13:12:05.000Z</updated>
   <id>http://messay.me/</id>
   
   <author>
@@ -14,6 +14,47 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>天空之城</title>
+    <link href="http://messay.me/2017/07/15/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E5%9F%8E/"/>
+    <id>http://messay.me/2017/07/15/天空之城/</id>
+    <published>2017-07-15T13:11:03.000Z</published>
+    <updated>2017-07-15T13:12:05.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>飞机飞过天空，天空之城</p>
+<p>落雨下的黄昏的我们</p>
+<p>此刻我在异乡的夜里</p>
+<p>感觉着你忽明忽暗</p>
+<p>我想回到过去，沉默着欢喜</p>
+<p>天空之城在哭泣越来越明亮的你</p>
+<p>爱情不过是生活的屁</p>
+<p>折磨着我也折磨着你</p>
+<p>港岛妹妹，你献给我的西班牙馅饼</p>
+<p>甜蜜地融化了我，天空之城在哭泣</p>
+<p>港岛妹妹，我们曾拥有的甜蜜的爱情</p>
+<p>疯狂地撕裂了我，天空之城在哭泣</p>
+<p>有人路过那里，回来告诉我</p>
+<p>天空之城在哭泣无法呼吸的你</p>
+<p>此刻我在异乡的夜里</p>
+<p>想念着你越来越远</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;飞机飞过天空，天空之城&lt;/p&gt;
+&lt;p&gt;落雨下的黄昏的我们&lt;/p&gt;
+&lt;p&gt;此刻我在异乡的夜里&lt;/p&gt;
+&lt;p&gt;感觉着你忽明忽暗&lt;/p&gt;
+&lt;p&gt;我想回到过去，沉默着欢喜&lt;/p&gt;
+&lt;p&gt;天空之城在哭泣越来越明亮的你&lt;/p&gt;
+&lt;p&gt;爱情不过是生活的屁&lt;/p&gt;
+&lt;p&gt;折磨着我也折磨着你
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>计算机科学和PYTHON编程导论（自主模式）Two week problem</title>
@@ -945,31 +986,6 @@ The MySQL server is running with the --secure-file-priv option so it cannot exec
     </summary>
     
       <category term="Python" scheme="http://messay.me/categories/Python/"/>
-    
-    
-      <category term="Python自动化" scheme="http://messay.me/tags/Python%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python 发送邮件报错&#39;Name or service not known&#39;解决方法</title>
-    <link href="http://messay.me/2016/12/21/Python-%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6%E6%8A%A5%E9%94%99Name-or-service-not-known/"/>
-    <id>http://messay.me/2016/12/21/Python-发送邮件报错Name-or-service-not-known/</id>
-    <published>2016-12-21T02:48:05.000Z</published>
-    <updated>2017-06-25T05:07:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="前两天设置的自动发送邮件的脚本-今天未发送-查看报错如下"><a href="#前两天设置的自动发送邮件的脚本-今天未发送-查看报错如下" class="headerlink" title="前两天设置的自动发送邮件的脚本,今天未发送.查看报错如下"></a>前两天设置的自动发送邮件的脚本,今天未发送.查看报错如下</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">File <span class="string">"/usr/lib/python2.7/smtplib.py"</span>, line 256, <span class="keyword">in</span> __init__</div><div class="line">    (code, msg) = self.connect(host, port)</div><div class="line">  File <span class="string">"/usr/lib/python2.7/smtplib.py"</span>, line 316, <span class="keyword">in</span> connect</div><div class="line">    self.sock = self._get_socket(host, port, self.timeout)</div><div class="line">  File <span class="string">"/usr/lib/python2.7/smtplib.py"</span>, line 291, <span class="keyword">in</span> _get_socket</div><div class="line">    <span class="built_in">return</span> socket.create_connection((host, port), timeout)</div><div class="line">  File <span class="string">"/usr/lib/python2.7/socket.py"</span>, line 553, <span class="keyword">in</span> create_connection</div><div class="line">    <span class="keyword">for</span> res <span class="keyword">in</span> getaddrinfo(host, port, 0, SOCK_STREAM):</div><div class="line">socket.gaierror: [Errno -2] Name or service not known</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h4 id="google之-发现是连接sock端口连接失败-由于我用的是ubuntu的测试机-测试网络ok-就可能是防火墙的问题-关闭防火墙进行测试-发送ok"><a href="#google之-发现是连接sock端口连接失败-由于我用的是ubuntu的测试机-测试网络ok-就可能是防火墙的问题-关闭防火墙进行测试-发送ok" class="headerlink" title="google之,发现是连接sock端口连接失败,由于我用的是ubuntu的测试机,测试网络ok,就可能是防火墙的问题.关闭防火墙进行测试,发送ok."></a>google之,发现是连接sock端口连接失败,由于我用的是ubuntu的测试机,测试网络ok,就可能是防火墙的问题.关闭防火墙进行测试,发送ok.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ubuntu关闭防火墙命令:ufw disable</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;前两天设置的自动发送邮件的脚本-今天未发送-查看报错如下&quot;&gt;&lt;a href=&quot;#前两天设置的自动发送邮件的脚本-今天未发送-查看报错如下&quot; class=&quot;headerlink&quot; title=&quot;前两天设置的自动发送邮件的脚本,今天未发送.查看报错如下&quot;&gt;&lt;/a&gt;前两天设置的自动发送邮件的脚本,今天未发送.查看报错如下&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;File &lt;span class=&quot;string&quot;&gt;&quot;/usr/lib/python2.7/smtplib.py&quot;&lt;/span&gt;, line 256, &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; __init__&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    (code, msg) = self.connect(host, port)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  File &lt;span class=&quot;string&quot;&gt;&quot;/usr/lib/python2.7/smtplib.py&quot;&lt;/span&gt;, line 316, &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; connect&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    self.sock = self._get_socket(host, port, self.timeout)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  File &lt;span class=&quot;string&quot;&gt;&quot;/usr/lib/python2.7/smtplib.py&quot;&lt;/span&gt;, line 291, &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; _get_socket&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;return&lt;/span&gt; socket.create_connection((host, port), timeout)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  File &lt;span class=&quot;string&quot;&gt;&quot;/usr/lib/python2.7/socket.py&quot;&lt;/span&gt;, line 553, &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; create_connection&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; res &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; getaddrinfo(host, port, 0, SOCK_STREAM):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;socket.gaierror: [Errno -2] Name or service not known&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Linux" scheme="http://messay.me/categories/Linux/"/>
     
     
       <category term="Python自动化" scheme="http://messay.me/tags/Python%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
