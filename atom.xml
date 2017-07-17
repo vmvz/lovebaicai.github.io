@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://messay.me/"/>
-  <updated>2017-07-15T13:14:33.000Z</updated>
+  <updated>2017-07-17T15:11:25.000Z</updated>
   <id>http://messay.me/</id>
   
   <author>
@@ -16,11 +16,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>计算机科学和PYTHON编程导论 Week Three ClassCode &amp; ClassWork</title>
+    <link href="http://messay.me/2017/07/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%92%8CPYTHON%E7%BC%96%E7%A8%8B%E5%AF%BC%E8%AE%BA-Week-Three-ClassCode-ClassWork/"/>
+    <id>http://messay.me/2017/07/17/计算机科学和PYTHON编程导论-Week-Three-ClassCode-ClassWork/</id>
+    <published>2017-07-17T15:03:13.000Z</published>
+    <updated>2017-07-17T15:11:25.000Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="ClossCode"><a href="#ClossCode" class="headerlink" title="ClossCode"></a>ClossCode</h4><ul>
+<li>递归</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># coding: utf-8</div><div class="line"># author: nemo_chen</div><div class="line"># 递归</div><div class="line"></div><div class="line">def iterMul(a, b):</div><div class="line">    result = 0</div><div class="line">    while b &gt; 0:</div><div class="line">        result += a</div><div class="line">        b -= 1</div><div class="line">    return result</div><div class="line"></div><div class="line">def recurMul(a, b):</div><div class="line">    if b == 1:</div><div class="line">        return a</div><div class="line">    else:</div><div class="line">        return a + recurMul(a, b-1)</div><div class="line"></div><div class="line">def factR(n):</div><div class="line">    if n == 1:</div><div class="line">        return n</div><div class="line">    else:</div><div class="line">        return n * factR(n-1)</div></pre></td></tr></table></figure>
+<!-- -->
+<ul>
+<li>汉塔塔</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># coding: utf-8</div><div class="line"># author: nemo_chen</div><div class="line"></div><div class="line">def printMove(fr, to):</div><div class="line">    print(&apos;Move from &apos; + str(fr) + &apos; to &apos; + str(to))</div><div class="line"></div><div class="line">def Towers(n ,fr, to, spare):</div><div class="line">    if n == 1:</div><div class="line">        printMove(fr, to)</div><div class="line">    else:</div><div class="line">        Towers(n-1, fr, spare, to)</div><div class="line">        Towers(n, fr, to, spare)</div><div class="line">        Towers(n-1, spare, to, fr)</div></pre></td></tr></table></figure>
+<ul>
+<li>斐波那契</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># coding: utf-8</div><div class="line"># author: nemo_chen</div><div class="line"></div><div class="line">def fib(x):</div><div class="line">    assert type(x) == int and x &gt;= 0</div><div class="line">    if x == 0 or x == 1:</div><div class="line">        return 1</div><div class="line">    else:</div><div class="line">        return fib(x-1) + fib(x-2)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;ClossCode&quot;&gt;&lt;a href=&quot;#ClossCode&quot; class=&quot;headerlink&quot; title=&quot;ClossCode&quot;&gt;&lt;/a&gt;ClossCode&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;递归&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlig
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>天空之城</title>
     <link href="http://messay.me/2017/07/15/%E5%A4%A9%E7%A9%BA%E4%B9%8B%E5%9F%8E/"/>
     <id>http://messay.me/2017/07/15/天空之城/</id>
     <published>2017-07-15T13:11:03.000Z</published>
-    <updated>2017-07-15T13:14:33.000Z</updated>
+    <updated>2017-07-16T00:54:54.000Z</updated>
     
     <content type="html"><![CDATA[<p>飞机飞过天空，天空之城</p>
 <p>落雨下的黄昏的我们</p>
@@ -930,66 +964,6 @@ The MySQL server is running with the --secure-file-priv option so it cannot exec
     
     
       <category term="Mysql" scheme="http://messay.me/tags/Mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python paramiko 使用方法简介</title>
-    <link href="http://messay.me/2016/12/26/python-paramiko%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95%E7%AE%80%E4%BB%8B/"/>
-    <id>http://messay.me/2016/12/26/python-paramiko使用方法简介/</id>
-    <published>2016-12-26T10:06:18.000Z</published>
-    <updated>2017-06-25T05:07:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="python-paramiko"><a href="#python-paramiko" class="headerlink" title="python paramiko"></a>python paramiko</h4><ul>
-<li>主要介绍了python paramiko简介和使用方法，让你全面了解python的远程服务器连接和文件上传，ssh远程执行命令等</li>
-<li>paramiko 遵循SSH2协议，支持以加密和认证的方式，进行远程服务器的连接，可以实现远程文件的上传，下载或通过ssh远程执行命令。</li>
-<li>项目地址：<a href="https://github.com/paramiko/paramiko" target="_blank" rel="external">https://github.com/paramiko/paramiko</a></li>
-<li>官方文档：<a href="http://docs.paramiko.org/" target="_blank" rel="external">http://docs.paramiko.org/</a></li>
-<li>文档转载：<a href="http://www.codexiu.cn/python/blog/127/" target="_blank" rel="external">http://www.codexiu.cn/python/blog/127/</a> (根据自己需要有删改)</li>
-</ul>
-<a id="more"></a>
-<h4 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h4><ul>
-<li>root@ubuntu:~/paramiko# pip install paramiko</li>
-<li>运行脚本若报错’ValueError: Multibackend cannot be initialized with no backends. If you are seeing this error when trying to use default_backend() please try uninstalling and reinstalling cryptography’.可重新安装cryptography.</li>
-</ul>
-<h4 id="二、上传文件到远程服务器"><a href="#二、上传文件到远程服务器" class="headerlink" title="二、上传文件到远程服务器"></a>二、上传文件到远程服务器</h4><ul>
-<li>原理：通过SFTPClient类根据SSH传输协议的sftp会话，实现远程文件上传、下载等操作。实现远程文件上传、下载。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">任务：<span class="number">10.</span> <span class="number">1.101</span><span class="number">.187</span>向<span class="number">10.1</span><span class="number">.101</span><span class="number">.186</span>发送文件。</div><div class="line"></div><div class="line"><span class="number">10.1</span><span class="number">.101</span><span class="number">.187</span> 目录/root/paramiko  有三个文件 paramikosend.py  test  test.tar</div><div class="line"></div><div class="line"><span class="number">10.1</span><span class="number">.101</span><span class="number">.186</span> 目录/root/paramiko   开始为空文件夹</div><div class="line"></div><div class="line">执行python paramikosend.py,代码如下</div><div class="line"></div><div class="line">root@ubuntu:~/paramiko<span class="comment"># cat paramikosend.py</span></div><div class="line"><span class="keyword">import</span> paramiko,datetime,os</div><div class="line">hostname = <span class="string">'10.1.101.186'</span></div><div class="line">username = <span class="string">'root'</span></div><div class="line">password = <span class="string">'123456'</span></div><div class="line">port = <span class="number">22</span></div><div class="line">local_dir = <span class="string">'/root/paramiko'</span></div><div class="line">remote_dir = <span class="string">'/root/paramiko'</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    t=paramiko.Transport((hostname,port))</div><div class="line">    t.connect(username=username,password=password)</div><div class="line">    sftp = paramiko.SFTPClient.from_transport(t)</div><div class="line">    files = os.listdir(local_dir)</div><div class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</div><div class="line">            sftp.put(os.path.join(local_dir,f),os.path.join(remote_dir,f))</div><div class="line">    t.close()</div><div class="line"><span class="keyword">except</span> Exception:</div><div class="line">    <span class="keyword">print</span> <span class="string">"connect error!"</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="三、从远程服务器下载文件"><a href="#三、从远程服务器下载文件" class="headerlink" title="三、从远程服务器下载文件"></a>三、从远程服务器下载文件</h4><ul>
-<li>原理：通过SFTPClient类根据SSH传输协议的sftp会话，实现远程文件上传、下载等操作。实现远程文件上传、下载。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">任务：现在<span class="number">10.1</span><span class="number">.101</span><span class="number">.186</span>的/root/paramiko/temp186目录有两个文件,将其下载到<span class="number">10.1</span><span class="number">.101</span><span class="number">.187</span>的/root/paramiko/temp187目录。</div><div class="line"></div><div class="line">执行 python paramikoget.py ，代码如下:</div><div class="line"></div><div class="line">root@ubuntu:~/paramiko<span class="comment"># cat paramikoget.py</span></div><div class="line"><span class="keyword">import</span> paramiko,datetime,os</div><div class="line">hostname = <span class="string">'10.1.101.186'</span></div><div class="line">username = <span class="string">'root'</span></div><div class="line">password = <span class="string">'123456'</span></div><div class="line">port = <span class="number">22</span></div><div class="line">local_dir = <span class="string">'/root/paramiko/temp187'</span></div><div class="line">remote_dir = <span class="string">'/root/paramiko/temp186'</span></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    t=paramiko.Transport((hostname,port))</div><div class="line">    t.connect(username=username,password=password)</div><div class="line">    sftp = paramiko.SFTPClient.from_transport(t)</div><div class="line">    files = sftp.listdir(remote_dir) <span class="comment">#这里需要注意，列出远程文件必须使用sftp，而不能用os</span></div><div class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</div><div class="line">            sftp.get(os.path.join(remote_dir,f),os.path.join(local_dir,f))</div><div class="line">    t.close()</div><div class="line"><span class="keyword">except</span> Exception:</div><div class="line">    <span class="keyword">print</span> <span class="string">"connect error!"</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="四、执行命令测试"><a href="#四、执行命令测试" class="headerlink" title="四、执行命令测试"></a>四、执行命令测试</h4><ul>
-<li>原理：通过SSHClient类执行命令。SSHClient类是SSH服务会话的高级表示，封装了传输、通道以及SFTPClient的校验、建立方法，通常用于执行命令。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">任务：通过<span class="number">10.1</span><span class="number">.101</span><span class="number">.187</span>连接到<span class="number">10.1</span><span class="number">.101</span><span class="number">.186</span>，然后进入目录/root/paramiko，创建一个目录lxy。</div><div class="line">执行python paramikocommand.py，代码如下：</div><div class="line"></div><div class="line">root@ubuntu:~/paramiko<span class="comment"># cat paramikocommand.py</span></div><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"><span class="keyword">import</span> paramiko</div><div class="line">hostname = <span class="string">'10.1.101.186'</span></div><div class="line">username = <span class="string">'root'</span></div><div class="line">password = <span class="string">'123456'</span></div><div class="line">port = <span class="number">22</span></div><div class="line">ssh = paramiko.SSHClient()</div><div class="line">ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())</div><div class="line">ssh.connect(hostname=hostname,port=port,username=username,password=password)</div><div class="line">stdin, stdout, stderr = ssh.exec_command(<span class="string">"cd  /root/paramiko;mkdir lxy"</span>)</div><div class="line"><span class="keyword">print</span> stdout.readlines()</div><div class="line">ssh.close()</div><div class="line"></div><div class="line">Note: 命令中也可以带参数：</div><div class="line"></div><div class="line"><span class="comment">#!/usr/bin/python</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> paramiko</div><div class="line">hostname = <span class="string">'10.1.101.186'</span></div><div class="line">username = <span class="string">'root'</span></div><div class="line">password = <span class="string">'123456'</span></div><div class="line">port = <span class="number">22</span></div><div class="line">name=<span class="string">'testcmd'</span></div><div class="line"></div><div class="line">ssh = paramiko.SSHClient()</div><div class="line">ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())</div><div class="line">ssh.connect(hostname=hostname,port=port,username=username,password=password)</div><div class="line">stdin, stdout, stderr = ssh.exec_command(<span class="string">"cd  /root/paramiko;mkdir %s"</span> %name)</div><div class="line"><span class="keyword">print</span> stdout.readlines()</div><div class="line">ssh.close()</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="五、python远程执行操作的其他开源模块"><a href="#五、python远程执行操作的其他开源模块" class="headerlink" title="五、python远程执行操作的其他开源模块"></a>五、python远程执行操作的其他开源模块</h4><ul>
-<li>fabric:fabric是封装了paramiko模块来实现ssh来传输文件的。</li>
-<li>pexpect:也可以实现ssh 登录到某个用户指定的主机上，运行某个用户指定的命令</li>
-</ul>
-<h4 id="六、与输入的CMD命令进行交互"><a href="#六、与输入的CMD命令进行交互" class="headerlink" title="六、与输入的CMD命令进行交互"></a>六、与输入的CMD命令进行交互</h4><ul>
-<li>stdin.write部分是用于交互情况下，通过该命令可以执行交互。注意这里可能会引起歧义，这里的交互并不是ssh连接过程中出现的让输入yes的交互，因为paramiko模块在连接过程中会自动处理好yes确认。这里的交互是指后面的cmd需要的执行的程序可能出现交互的情况下，可以通过该参数进行交互。<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">代码如下:</div><div class="line">stdin.write(<span class="string">"Y\n"</span>)   <span class="comment">#简单交互，输入 'Y'</span></div><div class="line"></div><div class="line">使用示例:</div><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> sys</div><div class="line"><span class="keyword">import</span> paramiko</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sshclient</span><span class="params">(ip, username, password, cmd)</span>:</span></div><div class="line"></div><div class="line">    myclient = paramiko.SSHClient()</div><div class="line"></div><div class="line">    myclient.set_missing_host_key_policy(paramiko.AutoAddPolicy())</div><div class="line"></div><div class="line">    myclient.connect(ip, port=<span class="number">22</span>, username=username, password=password, timeout=<span class="number">5</span>)</div><div class="line"></div><div class="line">    stdin, stdout, stderr = myclient.exec_command(cmd)</div><div class="line"></div><div class="line">    stdin.write(<span class="string">"y\n"</span>)</div><div class="line"></div><div class="line">    <span class="keyword">print</span> stdout.readlines()</div><div class="line"></div><div class="line">    myclient.close()</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> len(str(sys.argv[<span class="number">1</span>])) &lt;= <span class="number">14</span>:</div><div class="line">    cmd = <span class="string">'cd /test &amp;&amp; python3 upload.py -f %s '</span> % sys.argv[<span class="number">1</span>]</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    cmd = <span class="string">'cd /test &amp;&amp; python3 upload_by_id.py -f %s'</span> % sys.argv[<span class="number">1</span>]</div><div class="line"></div><div class="line">sshclient(<span class="string">'hostname'</span>, <span class="string">'username'</span>, <span class="string">'password'</span>, cmd=cmd)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;python-paramiko&quot;&gt;&lt;a href=&quot;#python-paramiko&quot; class=&quot;headerlink&quot; title=&quot;python paramiko&quot;&gt;&lt;/a&gt;python paramiko&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;主要介绍了python paramiko简介和使用方法，让你全面了解python的远程服务器连接和文件上传，ssh远程执行命令等&lt;/li&gt;
-&lt;li&gt;paramiko 遵循SSH2协议，支持以加密和认证的方式，进行远程服务器的连接，可以实现远程文件的上传，下载或通过ssh远程执行命令。&lt;/li&gt;
-&lt;li&gt;项目地址：&lt;a href=&quot;https://github.com/paramiko/paramiko&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/paramiko/paramiko&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;官方文档：&lt;a href=&quot;http://docs.paramiko.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://docs.paramiko.org/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;文档转载：&lt;a href=&quot;http://www.codexiu.cn/python/blog/127/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.codexiu.cn/python/blog/127/&lt;/a&gt; (根据自己需要有删改)&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://messay.me/categories/Python/"/>
-    
-    
-      <category term="Python自动化" scheme="http://messay.me/tags/Python%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
     
   </entry>
   
