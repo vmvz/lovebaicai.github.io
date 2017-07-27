@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://messay.me/"/>
-  <updated>2017-07-18T13:47:57.000Z</updated>
+  <updated>2017-07-27T15:33:18.000Z</updated>
   <id>http://messay.me/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机科学和PYTHON编程导论 Lecture 10</title>
+    <link href="http://messay.me/2017/07/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%92%8CPYTHON%E7%BC%96%E7%A8%8B%E5%AF%BC%E8%AE%BA-Lecture-10/"/>
+    <id>http://messay.me/2017/07/27/计算机科学和PYTHON编程导论-Lecture-10/</id>
+    <published>2017-07-27T15:30:19.000Z</published>
+    <updated>2017-07-27T15:33:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>选择排序</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># coding: utf-8</div><div class="line"># author: nemo_chen</div><div class="line"></div><div class="line">def selSort(L):</div><div class="line">    for i in range(len(L) - 1):</div><div class="line">        minIndx = i</div><div class="line">        minVal = L[i]</div><div class="line">        j = i + 1</div><div class="line">        while j &lt; len(L):</div><div class="line">            if minVal &gt; L[j]:</div><div class="line">                minIndx = j</div><div class="line">                minVal = L[j]</div><div class="line">            j += 1</div><div class="line">        temp = L[i]</div><div class="line">        L[i] = L[minIndx]</div><div class="line">        L[minIndx] = temp</div></pre></td></tr></table></figure>
+<ul>
+<li>合并排序</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># coding: utf-8</div><div class="line"># author: nemo_chen</div><div class="line"></div><div class="line">import operator</div><div class="line">def merge(left, right, compare):</div><div class="line">    result = []</div><div class="line">    i, j = 0, 0</div><div class="line">    while i &lt; len(left) and j &lt; len(right):</div><div class="line">        if compare(left[i], right[j]):</div><div class="line">            return.append(left[i])</div><div class="line">            i += 1</div><div class="line">        else:</div><div class="line">            result.append(right[j])</div><div class="line">            j += 1</div><div class="line">     while (i &lt; len(left)):</div><div class="line">         result.append(left[i])</div><div class="line">         i += 1</div><div class="line">     while (j &lt; len(right)):</div><div class="line">         result.append(right[j]):</div><div class="line">             j += 1</div><div class="line">    return result</div><div class="line"></div><div class="line">def mergeSort(L, compare=operator.lt):</div><div class="line">    if len(L) &lt; 2:</div><div class="line">        result L[:]</div><div class="line">    else:</div><div class="line">        middle = int(len(L)/2)</div><div class="line">        left = mergeSort(L[:middle], compare)</div><div class="line">        right = mergeSort(l[middle], compare)</div><div class="line">        return merge(left, right, compare)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;选择排序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/di
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Scrapy请求URL，302异常个人解决(user-agent方面)</title>
@@ -919,45 +948,6 @@ The MySQL server is running with the --secure-file-priv option so it cannot exec
     
     
       <category term="Python+Web" scheme="http://messay.me/tags/Python-Web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MarkDown进行图片缩放</title>
-    <link href="http://messay.me/2017/02/07/MarkDown-%E8%BF%9B%E8%A1%8C%E5%9B%BE%E7%89%87%E7%BC%A9%E6%94%BE/"/>
-    <id>http://messay.me/2017/02/07/MarkDown-进行图片缩放/</id>
-    <published>2017-02-07T04:38:06.000Z</published>
-    <updated>2017-06-25T05:07:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="MarkDown进行图片缩放"><a href="#MarkDown进行图片缩放" class="headerlink" title="MarkDown进行图片缩放"></a>MarkDown进行图片缩放</h1><h4 id="使用markdown编写说明文档-无奈图片有点大-google之-找到图片处理方法"><a href="#使用markdown编写说明文档-无奈图片有点大-google之-找到图片处理方法" class="headerlink" title="使用markdown编写说明文档,无奈图片有点大,google之,找到图片处理方法"></a>使用markdown编写说明文档,无奈图片有点大,google之,找到图片处理方法</h4><ol>
-<li>直接设置图片大小,简单粗暴<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">![设置图片宽度高度](http://image-path.png =300x200)</div><div class="line">![设置图片宽度](http://image-path.png =300x)</div><div class="line">![设置图片高度](http://image-path.png =x200)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<a id="more"></a>
-<ol>
-<li>如果使用的是七牛的图床,可以调用七牛的API处理图片.<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">设置图片宽度高度: http://image-path.png?imageView/3/w/445/h/325</div><div class="line">imageView2/&lt;mode&gt;/w/&lt;LongEdge&gt;</div><div class="line">                 /h/&lt;ShortEdge&gt;</div><div class="line">                 /format/&lt;Format&gt;</div><div class="line">                 /interlace/&lt;Interlace&gt;</div><div class="line">                 /q/&lt;Quality&gt;</div><div class="line">                 /ignore-error/&lt;ignoreError&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>ps: 七牛API使用参考:<a href="https://developer.qiniu.com/dora/api/basic-processing-images-imageview2" target="_blank" rel="external">七牛API</a></p>
-</blockquote>
-<ol>
-<li>或者也可以使用html的方法缩放,加上div使图片居中.<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">align</span>=<span class="string">center</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://image-path.png"</span> <span class="attr">width</span>=<span class="string">"400"</span> <span class="attr">height</span>=<span class="string">"400"</span> <span class="attr">alt</span>=<span class="string">"image"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;MarkDown进行图片缩放&quot;&gt;&lt;a href=&quot;#MarkDown进行图片缩放&quot; class=&quot;headerlink&quot; title=&quot;MarkDown进行图片缩放&quot;&gt;&lt;/a&gt;MarkDown进行图片缩放&lt;/h1&gt;&lt;h4 id=&quot;使用markdown编写说明文档-无奈图片有点大-google之-找到图片处理方法&quot;&gt;&lt;a href=&quot;#使用markdown编写说明文档-无奈图片有点大-google之-找到图片处理方法&quot; class=&quot;headerlink&quot; title=&quot;使用markdown编写说明文档,无奈图片有点大,google之,找到图片处理方法&quot;&gt;&lt;/a&gt;使用markdown编写说明文档,无奈图片有点大,google之,找到图片处理方法&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;直接设置图片大小,简单粗暴&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;![设置图片宽度高度](http://image-path.png =300x200)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;![设置图片宽度](http://image-path.png =300x)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;![设置图片高度](http://image-path.png =x200)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-    
-      <category term="MarkDown" scheme="http://messay.me/tags/MarkDown/"/>
     
   </entry>
   
