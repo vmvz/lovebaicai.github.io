@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://messay.me/"/>
-  <updated>2017-07-27T15:33:18.000Z</updated>
+  <updated>2017-08-02T16:01:14.000Z</updated>
   <id>http://messay.me/</id>
   
   <author>
@@ -14,6 +14,75 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python中执行JS命令</title>
+    <link href="http://messay.me/2017/08/02/Python%E4%B8%AD%E6%89%A7%E8%A1%8CJS%E5%91%BD%E4%BB%A4/"/>
+    <id>http://messay.me/2017/08/02/Python中执行JS命令/</id>
+    <published>2017-08-02T15:51:56.000Z</published>
+    <updated>2017-08-02T16:01:14.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>自动将Javascipt代码翻译成Python代码 </li>
+<li>支持全部ECMA Scipt 5.1</li>
+<li>可使用pyimport语法从Javascript代码中导入Python库</li>
+<li>解释速度快，可作为独立的JS解释器</li>
+<li>友好的JS执行方式，js2py.eval_js</li>
+</ul>
+<h4 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo pip install js2py</div></pre></td></tr></table></figure>
+<h4 id="Simple-Example"><a href="#Simple-Example" class="headerlink" title="Simple Example"></a>Simple Example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import js2py</div><div class="line">&gt;&gt;&gt; js2py.eval_js(&apos;console.log(&quot;Hello World!&quot;)&apos;)</div><div class="line">&apos;Hello World!&apos;</div><div class="line">&gt;&gt;&gt; add = js2py.eval_js(&apos;function add(a,b)&#123;return a+b&#125;&apos;)</div><div class="line">&gt;&gt;&gt; add</div><div class="line">&apos;function add(a, b) &#123; [python code] &#125;&apos;</div><div class="line">&gt;&gt;&gt; add(1,2) + 3</div><div class="line">&gt;&gt;&gt; add.constructor</div><div class="line">&apos;function Function() &#123; [python code] &#125;&apos;</div><div class="line">&gt;&gt;&gt; js2py.eval_js(&quot;Object.prototype.toString.call(Function(&apos;s&apos;, &apos;return s+arguments[1]&apos;)(new Date(), 7).__proto__)&quot;)</div><div class="line">&apos;[object String]&apos;</div></pre></td></tr></table></figure>
+<h4 id="More-advanced-usage-example"><a href="#More-advanced-usage-example" class="headerlink" title="More advanced usage example"></a>More advanced usage example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"># Adding Python built-in sum to the JS context:</div><div class="line">&gt;&gt;&gt; context = js2py.EvalJs(&#123;&apos;python_sum&apos;: sum&#125;)  </div><div class="line">&gt;&gt;&gt; js_code = &apos;&apos;&apos;</div><div class="line">var a = 10</div><div class="line">function f(x) &#123;return x*x&#125;</div><div class="line">&apos;&apos;&apos;</div><div class="line">&gt;&gt;&gt; context.execute(js_code)</div><div class="line"># Get value of variable a:</div><div class="line">&gt;&gt;&gt; context.a</div><div class="line">10</div><div class="line"># context.f behaves just like js function so you can supply more than 1 argument. &apos;9&apos;*&apos;9&apos; in javascript is 81.</div><div class="line">&gt;&gt;&gt; context.f(&apos;9&apos;, 0)  </div><div class="line">81    </div><div class="line"># context.f has all attributes of normal JavaScript object</div><div class="line">&gt;&gt;&gt; context.f.toString()</div><div class="line">u&apos;function f(x) &#123; [python code] &#125;&apos;</div><div class="line">&gt;&gt;&gt; context.f.bind</div><div class="line">function bind(thisArg) &#123; [python code] &#125;</div><div class="line"># You can also add variables to the context:</div><div class="line">&gt;&gt;&gt; context.foo = [1,2,3]  # context.foo is now Js Array object and behaves just like javascript array!</div><div class="line">&gt;&gt;&gt; context.foo.push(4)  </div><div class="line">4</div><div class="line">&gt;&gt;&gt; context.foo.to_list() # convert to python list</div><div class="line">[1, 2, 3, 4]</div><div class="line"># You can use Python objects that you put inside the context!</div><div class="line">&gt;&gt;&gt; context.eval(&apos;python_sum(new Array(1, 2, 3))&apos;)</div></pre></td></tr></table></figure>
+<h4 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h4><ul>
+<li>忽视了”strict mode”</li>
+<li>不支持with语法</li>
+<li>eval的非直接调用会被当做直接调用</li>
+</ul>
+<a id="more"></a>
+<p>####Other Examples</p>
+<ul>
+<li>In Js2Py all JavaScript objects are a subclass of PyJs object. For example JS Number is represented by PyJsNumber class. js2py.eval_js and js2py.EvalJs automatically tries to convert PyJs type to builtin python type. So for example if you execute:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; js2py.eval_js(&apos;var a = &quot;hello&quot;; a&apos;)</div></pre></td></tr></table></figure>
+<ul>
+<li>eval_js will return unicode type (u”hello”). However for complex types such conversion is impossible and JsObjectWrapper is returned. See the conversion table JsType -&gt; PyType:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; Boolean -&gt; bool</div><div class="line">&gt;&gt;&gt; String -&gt; unicode (str in Python 3)</div><div class="line">&gt;&gt;&gt; Number -&gt; float (or int/long if whole number)</div><div class="line">&gt;&gt;&gt; undefined -&gt; None</div><div class="line">&gt;&gt;&gt; null -&gt; None</div><div class="line">&gt;&gt;&gt; OTHER -&gt; JsObjectWrapper</div></pre></td></tr></table></figure>
+<ul>
+<li>JsObjectWrapper supports: getitem, getattr, setitem, setattr, repr and call. Moreover it has to_list and to_dict methods if you want to convert it to builtin python type.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; js = js2py.eval_js(&apos;d = &#123;a:1, b:2&#125;&apos;)</div><div class="line">&gt;&gt;&gt; js</div><div class="line">&#123;a: 1, b: 2&#125;  </div><div class="line">&gt;&gt;&gt; type(js)</div><div class="line">&lt;class &apos;js2py.base.JsObjectWrapper&apos;&gt;</div><div class="line">&gt;&gt;&gt; js.a</div><div class="line">&gt;&gt;&gt; 1</div><div class="line">&gt;&gt;&gt; js[&apos;a&apos;]</div><div class="line">&gt;&gt;&gt; 1</div><div class="line">&gt;&gt;&gt; js.b = 20</div><div class="line">&gt;&gt;&gt; js</div><div class="line">&#123;a: 1, b: 20&#125;  </div><div class="line">&gt;&gt;&gt; js[&apos;c&apos;] = 30</div><div class="line">&gt;&gt;&gt; js.to_dict()</div><div class="line">&#123;u&apos;a&apos;: 1, &apos;c&apos;: 30, u&apos;b&apos;: 20&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Also, of course you can use Js2Py to parse (tree is the same as in esprima.js) and translate JavaScript</li>
+</ul>
+<p>####Parsing</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; js2py.parse_js(&apos;var $ = 5&apos;)   </div><div class="line">&#123;&apos;body&apos;: [&#123;&apos;kind&apos;: &apos;var&apos;, &apos;declarations&apos;: [&#123;&apos;init&apos;: &#123;&apos;raw&apos;: None, &apos;type&apos;: u&apos;Literal&apos;, &apos;value&apos;: 5.0&#125;, &apos;type&apos;: u&apos;VariableDeclarator&apos;, &apos;id&apos;: &#123;&apos;type&apos;: u&apos;Identifier&apos;, &apos;name&apos;: u&apos;$&apos;&#125;&#125;], &apos;type&apos;: u&apos;VariableDeclaration&apos;&#125;], &apos;type&apos;: u&apos;Program&apos;&#125;</div></pre></td></tr></table></figure>
+<p>####Translating</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print js2py.translate_js(&apos;var $ = 5&apos;)</div><div class="line">import js2py.pyjs, sys</div><div class="line">for m in sys.modules.keys():</div><div class="line">    if m.startswith(&apos;js2py&apos;):</div><div class="line">        del sys.modules[m]</div><div class="line">del js2py.pyjs</div><div class="line">del js2py</div><div class="line">from js2py.pyjs import *</div><div class="line"># setting scope</div><div class="line">var = Scope( JS_BUILTINS )</div><div class="line">set_global_object(var)</div><div class="line"># Code follows:</div><div class="line">var.registers([u&apos;$&apos;])</div><div class="line">var.put(u&apos;$&apos;, Js(5.0))</div><div class="line">pyimport statement</div><div class="line"></div><div class="line">Finally, Js2Py also supports importing any Python code from JavaScript using ‘pyimport’ statement:</div><div class="line"></div><div class="line">&gt;&gt;&gt; x = &quot;&quot;&quot;pyimport urllib;</div><div class="line">           var result = urllib.urlopen(&apos;https://www.google.com/&apos;).read();</div><div class="line">           console.log(result.length)</div><div class="line">        &quot;&quot;&quot;</div><div class="line">&gt;&gt;&gt; js2py.eval_js(x)</div><div class="line">18211</div></pre></td></tr></table></figure>
+<p>####<a href="https://lizonghang.github.io/2016/07/10/Python%E4%B8%AD%E6%89%A7%E8%A1%8CJS%E5%91%BD%E4%BB%A4/" target="_blank" rel="external">原文链接</a>          </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;自动将Javascipt代码翻译成Python代码 &lt;/li&gt;
+&lt;li&gt;支持全部ECMA Scipt 5.1&lt;/li&gt;
+&lt;li&gt;可使用pyimport语法从Javascript代码中导入Python库&lt;/li&gt;
+&lt;li&gt;解释速度快，可作为独立的JS解释器&lt;/li&gt;
+&lt;li&gt;友好的JS执行方式，js2py.eval_js&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;Installation&quot;&gt;&lt;a href=&quot;#Installation&quot; class=&quot;headerlink&quot; title=&quot;Installation&quot;&gt;&lt;/a&gt;Installation&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ sudo pip install js2py&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;Simple-Example&quot;&gt;&lt;a href=&quot;#Simple-Example&quot; class=&quot;headerlink&quot; title=&quot;Simple Example&quot;&gt;&lt;/a&gt;Simple Example&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; import js2py&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; js2py.eval_js(&amp;apos;console.log(&amp;quot;Hello World!&amp;quot;)&amp;apos;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;apos;Hello World!&amp;apos;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; add = js2py.eval_js(&amp;apos;function add(a,b)&amp;#123;return a+b&amp;#125;&amp;apos;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; add&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;apos;function add(a, b) &amp;#123; [python code] &amp;#125;&amp;apos;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; add(1,2) + 3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; add.constructor&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;apos;function Function() &amp;#123; [python code] &amp;#125;&amp;apos;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; js2py.eval_js(&amp;quot;Object.prototype.toString.call(Function(&amp;apos;s&amp;apos;, &amp;apos;return s+arguments[1]&amp;apos;)(new Date(), 7).__proto__)&amp;quot;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;apos;[object String]&amp;apos;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;More-advanced-usage-example&quot;&gt;&lt;a href=&quot;#More-advanced-usage-example&quot; class=&quot;headerlink&quot; title=&quot;More advanced usage example&quot;&gt;&lt;/a&gt;More advanced usage example&lt;/h4&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;26&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;27&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# Adding Python built-in sum to the JS context:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; context = js2py.EvalJs(&amp;#123;&amp;apos;python_sum&amp;apos;: sum&amp;#125;)  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; js_code = &amp;apos;&amp;apos;&amp;apos;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;var a = 10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;function f(x) &amp;#123;return x*x&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;apos;&amp;apos;&amp;apos;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; context.execute(js_code)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# Get value of variable a:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; context.a&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# context.f behaves just like js function so you can supply more than 1 argument. &amp;apos;9&amp;apos;*&amp;apos;9&amp;apos; in javascript is 81.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; context.f(&amp;apos;9&amp;apos;, 0)  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;81    &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# context.f has all attributes of normal JavaScript object&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; context.f.toString()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;u&amp;apos;function f(x) &amp;#123; [python code] &amp;#125;&amp;apos;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; context.f.bind&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;function bind(thisArg) &amp;#123; [python code] &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# You can also add variables to the context:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; context.foo = [1,2,3]  # context.foo is now Js Array object and behaves just like javascript array!&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; context.foo.push(4)  &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; context.foo.to_list() # convert to python list&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[1, 2, 3, 4]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# You can use Python objects that you put inside the context!&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; context.eval(&amp;apos;python_sum(new Array(1, 2, 3))&amp;apos;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h4 id=&quot;Limitations&quot;&gt;&lt;a href=&quot;#Limitations&quot; class=&quot;headerlink&quot; title=&quot;Limitations&quot;&gt;&lt;/a&gt;Limitations&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;忽视了”strict mode”&lt;/li&gt;
+&lt;li&gt;不支持with语法&lt;/li&gt;
+&lt;li&gt;eval的非直接调用会被当做直接调用&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>计算机科学和PYTHON编程导论 Lecture 10</title>
@@ -851,103 +920,6 @@ The MySQL server is running with the --secure-file-priv option so it cannot exec
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>python web 部署：nginx + gunicorn + supervisor + flask 部署笔记 </title>
-    <link href="http://messay.me/2017/02/08/python-web-%E9%83%A8%E7%BD%B2%EF%BC%9Anginx-gunicorn-supervisor-flask-%E9%83%A8%E7%BD%B2%E7%AC%94%E8%AE%B0/"/>
-    <id>http://messay.me/2017/02/08/python-web-部署：nginx-gunicorn-supervisor-flask-部署笔记/</id>
-    <published>2017-02-08T06:14:58.000Z</published>
-    <updated>2017-06-25T05:07:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="python-web-部署"><a href="#python-web-部署" class="headerlink" title="python web 部署"></a>python web 部署</h4><ol>
-<li>web开发中，各种语言争奇斗艳，web的部署方面，却没有太多的方式。简单而已，大概都是 nginx 做前端代理，中间 webservice 调用程序脚本。大概方式：nginx + webservice + script。</li>
-<li><p>nginx 不用多说，一个高性能的web服务器。通常用来在前端做反向代理服务器。所谓正向与反向（reverse），只是英文说法翻译。代理服务，简而言之，一个请求经过代理服务器从局域网发出，然后到达互联网上服务器，这个过程的代理为正向代理。如果一个请求，从互联网过来，先进入代理服务器，再由代理服务器转发给局域网的目标服务器，这个时候，代理服务器为反向代理（相对正向而言）。</p>
-<blockquote>
-<p>正向代理：{ 客户端 —》 代理服务器 } —》 服务器<br>反向代理：客户端 —》 { 代理服务器 —》 服务器 }<br>{} 表示局域网</p>
-</blockquote>
-</li>
-<li><p>nginx既可以做正向，也可以做反向。<br>webservice 的方式同样也有很多方式。常见的有FastCGI，WSGI等。我们采用gunicorn为 wsgi容器。python为服务器script，采用flask框架。同时采用supervisor管理服务器进程。也就是最终的部署方式为：<br>nginx + gunicorn + flask ++ supervisor</p>
-</li>
-</ol>
-<a id="more"></a>
-<h4 id="创建一个项目"><a href="#创建一个项目" class="headerlink" title="创建一个项目"></a>创建一个项目</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir myproject</div></pre></td></tr></table></figure>
-<h4 id="创建-python-虚拟环境"><a href="#创建-python-虚拟环境" class="headerlink" title="创建 python 虚拟环境"></a>创建 python 虚拟环境</h4><ul>
-<li>virtualenv 可以说是 python 的一个大杀器。用来在一个系统中创建不同的 python 隔离环境。相互之间还不会影响，使用简单到令人发指。<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir myproject</div><div class="line"><span class="built_in">cd</span> myproject</div><div class="line">virtualenv venv</div><div class="line"><span class="built_in">source</span> venv/bin/activate(激活虚拟环境)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="安装-python-web-框架-—flask"><a href="#安装-python-web-框架-—flask" class="headerlink" title="安装 python web 框架 —flask"></a>安装 python web 框架 —flask</h4><ul>
-<li><p>flask 是一个 python web micro framework。简洁高效，使用也很简单。flask 依赖两个库 werkzeug 和 jinjia2。采用 pip 方式安装即可。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install flask</div></pre></td></tr></table></figure>
-</li>
-<li><p>测试我们的 flask 安装是否成功，并使用 flask 写一个简单的 web 服务。</p>
-</li>
-<li><p>vim app.py</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from flask import Flask</div><div class="line">app = Flask(__name__)</div><div class="line">@app.route(<span class="string">'/'</span>)</div><div class="line">def index():</div><div class="line">    <span class="built_in">return</span> <span class="string">'hello world'</span></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    app.debug = True</div><div class="line">    app.run()</div></pre></td></tr></table></figure>
-</li>
-<li><p>启动web服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python app.py</div></pre></td></tr></table></figure>
-</li>
-<li><p>此时，用浏览器访问 <a href="http://127.0.0.1:5000" target="_blank" rel="external">http://127.0.0.1:5000</a> 就能看到网页显示 hello world。</p>
-</li>
-</ul>
-<h4 id="使用-gunicorn-部署-python-web"><a href="#使用-gunicorn-部署-python-web" class="headerlink" title="使用 gunicorn 部署 python web"></a>使用 gunicorn 部署 python web</h4><ul>
-<li>现在我们使用 flask 自带的服务器，完成了 web 服务的启动。生产环境下，flask 自带的 服务器，无法满足性能要求。我们这里采用 gunicorn 做 wsgi容器，用来部署 python。</li>
-<li><p>安装 gunicorn</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install gunicorn</div></pre></td></tr></table></figure>
-</li>
-<li><p>当我们安装好 gunicorn 之后，需要用 gunicorn 启动 flask，注意 flask 里面的name里面的代码启动了 app.run(),这个含义是用 flask 自带的服务器启动 app。这里我们使用了 gunicorn，myapp.py 就等同于一个库文件，被 gunicorn 调用。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gunicron -w4 -b0.0.0.0:8000 app:app</div></pre></td></tr></table></figure>
-</li>
-<li><p>此时，我们需要用 8000 的端口进行访问，原先的5000并没有启用。其中 gunicorn 的部署中，，-w 表示开启多少个 worker，-b 表示 gunicorn 开发的访问地址。</p>
-</li>
-<li><p>想要结束 gunicorn 只需执行 pkill gunicorn，有时候还的 ps 找到 pid 进程号才能 kill。可是这对于一个开发来说，太过于繁琐，因此出现了另外一个神器—supervisor，一个专门用来管理进程的工具，还可以管理系统的工具进程。</p>
-</li>
-</ul>
-<h4 id="安装-supervisor"><a href="#安装-supervisor" class="headerlink" title="安装 supervisor"></a>安装 supervisor</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pip install supervisor</div><div class="line">echo_supervisord_conf &gt; supervisor.conf  <span class="comment"># 生成 supervisor 默认配置文件</span></div><div class="line">vim supervisor.conf  <span class="comment"># 修改 supervisor 配置文件，添加gunicorn 进程管理</span></div></pre></td></tr></table></figure>
-<ul>
-<li><p>在myapp supervisor.conf 配置文件底部添加</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">[program:myapp]</div><div class="line"><span class="built_in">command</span>=/home/rsj217/rsj217/myproject/venv/bin/gunicorn -w4 -b0.0.0.0:8000 myapp:app    ; supervisor启动命令</div><div class="line">directory=/home/rsj217/rsj217/myproject                                                 ;项目的文件夹路径</div><div class="line">startsecs=0                                                                             ; 启动时间</div><div class="line">stopwaitsecs=0                                                                          ; 终止等待时间</div><div class="line">autostart=<span class="literal">false</span>                                                                         ; 是否自动启动</div><div class="line">autorestart=<span class="literal">false</span>                                                                       ; 是否自动重启</div><div class="line">stdout_logfile=/home/userpath/<span class="built_in">log</span>/gunicorn.log                           ; <span class="built_in">log</span> 日志</div><div class="line">stderr_logfile=/home/userpath/myproject/<span class="built_in">log</span>/gunicorn.err</div></pre></td></tr></table></figure>
-</li>
-<li><p>supervisor的基本使用命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">supervisord</div><div class="line">-c</div><div class="line">supervisor.conf</div><div class="line">通过配置文件启动supervisor</div><div class="line"></div><div class="line"></div><div class="line">supervisorctl</div><div class="line">-c</div><div class="line">supervisor.conf</div><div class="line">status                                     察看supervisor的状态</div><div class="line"></div><div class="line"></div><div class="line">supervisorctl -c supervisor.conf reload    重新载入配置文件</div><div class="line"></div><div class="line"></div><div class="line">supervisorctl -c supervisor.conf start [all]|[appname]     启动指定/所有supervisor管理的程序进程</div><div class="line"></div><div class="line"></div><div class="line">supervisorctl -c supervisor.conf stop [all]|[appname]      关闭指定/所有supervisor管理的程序进程</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="安装配置-nginx"><a href="#安装配置-nginx" class="headerlink" title="安装配置 nginx"></a>安装配置 nginx</h4><ul>
-<li><p>采用 apt-get方式安装最简单。运行 sudo apt-get install nginx。安装好的nginx的二进制文件放在 /usr/sbin/文件夹下面。而nginx的配置文件放在 /etc/nginx下面。</p>
-</li>
-<li><p>使用 supervisor 来管理 nginx。这里需要注意一个问题，linux的权限问题。nginx是sudo的方式安装，启动的适合也是 root用户，那么我们现在也需要用 root用户启动supervisor。增加下面的配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[program:nginx]</div><div class="line"><span class="built_in">command</span>=/usr/sbin/nginx</div><div class="line">startsecs=0</div><div class="line">stopwaitsecs=0</div><div class="line">autostart=<span class="literal">false</span></div><div class="line">autorestart=<span class="literal">false</span></div><div class="line">stdout_logfile=/home/userpath/myproject/og/nginx.log</div><div class="line">stderr_logfile=/home/userpath/myproject/<span class="built_in">log</span>/nginx.err</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="到此为止，web-部属已经全部完成"><a href="#到此为止，web-部属已经全部完成" class="headerlink" title="到此为止，web 部属已经全部完成"></a>到此为止，web 部属已经全部完成</h4><h4 id="项目源码：-https-github-com-lovebaicai-openvideo-包含配置文件"><a href="#项目源码：-https-github-com-lovebaicai-openvideo-包含配置文件" class="headerlink" title="项目源码： https://github.com/lovebaicai/openvideo (包含配置文件)"></a>项目源码： <a href="https://github.com/lovebaicai/openvideo" target="_blank" rel="external">https://github.com/lovebaicai/openvideo</a> (包含配置文件)</h4><h4 id="PS"><a href="#PS" class="headerlink" title="PS:"></a>PS:</h4><ul>
-<li>本来是自己的项目部署,打算自己写的.但是发现了一篇很详细的文章,就直接转过来了.原文请点击<a href="http://lib.csdn.net/article/python/38686" target="_blank" rel="external">这里</a></li>
-<li>ubuntu环境下配置参考<a href="http://mookrs.com/ubuntu-flask-nginx-gunicorn-supervisor/" target="_blank" rel="external">这里</a></li>
-<li>supervisor配置参考<a href="http://liyangliang.me/posts/2015/06/using-supervisor/" target="_blank" rel="external">这里</a></li>
-<li>gunicorn配置参考<a href="http://www.cnblogs.com/ArtsCrafts/p/gunicorn.html" target="_blank" rel="external">这里</a></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;python-web-部署&quot;&gt;&lt;a href=&quot;#python-web-部署&quot; class=&quot;headerlink&quot; title=&quot;python web 部署&quot;&gt;&lt;/a&gt;python web 部署&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;web开发中，各种语言争奇斗艳，web的部署方面，却没有太多的方式。简单而已，大概都是 nginx 做前端代理，中间 webservice 调用程序脚本。大概方式：nginx + webservice + script。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;nginx 不用多说，一个高性能的web服务器。通常用来在前端做反向代理服务器。所谓正向与反向（reverse），只是英文说法翻译。代理服务，简而言之，一个请求经过代理服务器从局域网发出，然后到达互联网上服务器，这个过程的代理为正向代理。如果一个请求，从互联网过来，先进入代理服务器，再由代理服务器转发给局域网的目标服务器，这个时候，代理服务器为反向代理（相对正向而言）。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;正向代理：{ 客户端 —》 代理服务器 } —》 服务器&lt;br&gt;反向代理：客户端 —》 { 代理服务器 —》 服务器 }&lt;br&gt;{} 表示局域网&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;nginx既可以做正向，也可以做反向。&lt;br&gt;webservice 的方式同样也有很多方式。常见的有FastCGI，WSGI等。我们采用gunicorn为 wsgi容器。python为服务器script，采用flask框架。同时采用supervisor管理服务器进程。也就是最终的部署方式为：&lt;br&gt;nginx + gunicorn + flask ++ supervisor&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="Python" scheme="http://messay.me/categories/Python/"/>
-    
-    
-      <category term="Python+Web" scheme="http://messay.me/tags/Python-Web/"/>
     
   </entry>
   
