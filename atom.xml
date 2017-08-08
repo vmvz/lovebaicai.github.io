@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://messay.me/"/>
-  <updated>2017-08-02T16:01:14.000Z</updated>
+  <updated>2017-08-08T15:42:13.000Z</updated>
   <id>http://messay.me/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java判断某年某月多少天</title>
+    <link href="http://messay.me/2017/08/08/Java%E5%88%A4%E6%96%AD%E6%9F%90%E5%B9%B4%E6%9F%90%E6%9C%88%E5%A4%9A%E5%B0%91%E5%A4%A9/"/>
+    <id>http://messay.me/2017/08/08/Java判断某年某月多少天/</id>
+    <published>2017-08-08T15:41:00.000Z</published>
+    <updated>2017-08-08T15:42:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>初学Java,写个demo</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*************************************************************************</span></div><div class="line">	&gt; File Name: year_to_days.java</div><div class="line">	&gt; Author: nemo_chen</div><div class="line">	&gt; Created Time: Tue Aug  8 23:29:27 2017</div><div class="line"> ************************************************************************/</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">year_to_days</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> days = <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="comment">//user input</span></div><div class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</div><div class="line">        System.out.print(<span class="string">"Please input yeads: "</span>);</div><div class="line">        <span class="keyword">int</span> year = sc.nextInt();</div><div class="line">        System.out.print(<span class="string">"Please input mount: "</span>);</div><div class="line">        <span class="keyword">int</span> month = sc.nextInt();</div><div class="line"></div><div class="line">        <span class="keyword">switch</span>(month)&#123;</div><div class="line">            <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            <span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">            <span class="keyword">case</span> <span class="number">5</span>:</div><div class="line">            <span class="keyword">case</span> <span class="number">7</span>:</div><div class="line">            <span class="keyword">case</span> <span class="number">8</span>:</div><div class="line">            <span class="keyword">case</span> <span class="number">10</span>:</div><div class="line">            <span class="keyword">case</span> <span class="number">12</span>:</div><div class="line">                days=<span class="number">31</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">            <span class="keyword">case</span> <span class="number">6</span>:</div><div class="line">            <span class="keyword">case</span> <span class="number">9</span>:</div><div class="line">            <span class="keyword">case</span> <span class="number">11</span>:</div><div class="line">                days=<span class="number">30</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">                <span class="comment">//判断闰年</span></div><div class="line">                <span class="keyword">if</span>(year%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; year%<span class="number">100</span>!=<span class="number">0</span> || year%<span class="number">400</span>==<span class="number">0</span>)</div><div class="line">                    days=<span class="number">29</span>;</div><div class="line">                <span class="keyword">else</span></div><div class="line">                    days=<span class="number">28</span>;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">             <span class="keyword">default</span>:</div><div class="line">                System.out.println(<span class="string">"month input error!"</span>);</div><div class="line">                System.exit(<span class="number">0</span>);</div><div class="line">        &#125;</div><div class="line">        System.out.printf(<span class="string">"天数：%d\n"</span>, days);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;初学Java,写个demo&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;lin
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Python中执行JS命令</title>
@@ -883,39 +908,6 @@ The MySQL server is running with the --secure-file-priv option so it cannot exec
       &lt;h1 id=&quot;ubuntu运行sh脚本sudo自动输入密码&quot;&gt;&lt;a href=&quot;#ubuntu运行sh脚本sudo自动输入密码&quot; class=&quot;headerlink&quot; title=&quot;ubuntu运行sh脚本sudo自动输入密码&quot;&gt;&lt;/a&gt;ubuntu运行sh脚本sudo自动输入密码&lt;/h1&gt;&lt;h4 id=&quot;以前写的一个自动清理指定磁盘文件的脚本忽然挂了-查看log发现如下报错&quot;&gt;&lt;a href=&quot;#以前写的一个自动清理指定磁盘文件的脚本忽然挂了-查看log发现如下报错&quot; class=&quot;headerlink&quot; title=&quot;以前写的一个自动清理指定磁盘文件的脚本忽然挂了,查看log发现如下报错&quot;&gt;&lt;/a&gt;以前写的一个自动清理指定磁盘文件的脚本忽然挂了,查看log发现如下报错&lt;/h4&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;sudo: no tty present and no askpass program specified&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h4 id=&quot;根据报错-大概推断是shell交互出现问题-google之-找到问题所在-sudo-版本升级-需要增加-S参数&quot;&gt;&lt;a href=&quot;#根据报错-大概推断是shell交互出现问题-google之-找到问题所在-sudo-版本升级-需要增加-S参数&quot; class=&quot;headerlink&quot; title=&quot;根据报错,大概推断是shell交互出现问题,google之,找到问题所在:sudo 版本升级,需要增加-S参数.&quot;&gt;&lt;/a&gt;根据报错,大概推断是shell交互出现问题,google之,找到问题所在:sudo 版本升级,需要增加-S参数.&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;使用Man查询sudo -S参数&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>flask使用Mysql报错&quot;ImportError: No module named MySQLdb&quot;</title>
-    <link href="http://messay.me/2017/02/16/flask-%E4%BD%BF%E7%94%A8Mysql%E6%8A%A5%E9%94%99-ImportError-No-module-named-MySQLdb/"/>
-    <id>http://messay.me/2017/02/16/flask-使用Mysql报错-ImportError-No-module-named-MySQLdb/</id>
-    <published>2017-02-16T09:12:01.000Z</published>
-    <updated>2017-06-25T05:07:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="今天自己尝试写Flask代码-使用Mysql数据库-初始化时候报错ImportError-No-module-named-MySQLdb-google之-解决方法如下"><a href="#今天自己尝试写Flask代码-使用Mysql数据库-初始化时候报错ImportError-No-module-named-MySQLdb-google之-解决方法如下" class="headerlink" title="今天自己尝试写Flask代码,使用Mysql数据库,初始化时候报错ImportError: No module named MySQLdb.google之,解决方法如下:"></a>今天自己尝试写Flask代码,使用Mysql数据库,初始化时候报错ImportError: No module named MySQLdb.google之,解决方法如下:</h4><ul>
-<li>如果没有安装python-mysql支持库,请安装<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">python2: pip install python-mysqldb</div><div class="line">python3: pip install pymysql</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<a id="more"></a>
-<ul>
-<li>更改原教程mysql链接如下:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SQLALCHEMY_DATABASE_URI = &apos;mysql+pymysql://.....&apos;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>报错解决参考:<a href="http://stackoverflow.com/questions/22252397/importerror-no-module-named-mysqldb" target="_blank" rel="external">stackoverflow</a><br>flask+mysql配置参考:<a href="http://docs.jinkan.org/docs/flask-sqlalchemy/config.html" target="_blank" rel="external">flask+mysql</a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;今天自己尝试写Flask代码-使用Mysql数据库-初始化时候报错ImportError-No-module-named-MySQLdb-google之-解决方法如下&quot;&gt;&lt;a href=&quot;#今天自己尝试写Flask代码-使用Mysql数据库-初始化时候报错ImportError-No-module-named-MySQLdb-google之-解决方法如下&quot; class=&quot;headerlink&quot; title=&quot;今天自己尝试写Flask代码,使用Mysql数据库,初始化时候报错ImportError: No module named MySQLdb.google之,解决方法如下:&quot;&gt;&lt;/a&gt;今天自己尝试写Flask代码,使用Mysql数据库,初始化时候报错ImportError: No module named MySQLdb.google之,解决方法如下:&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;如果没有安装python-mysql支持库,请安装&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;python2: pip install python-mysqldb&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;python3: pip install pymysql&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
