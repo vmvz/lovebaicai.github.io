@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://messay.me/"/>
-  <updated>2017-09-04T14:42:21.000Z</updated>
+  <updated>2017-09-04T14:44:08.000Z</updated>
   <id>http://messay.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://messay.me/2017/08/10/Scrapy-redis%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E5%81%9C%E6%AD%A2%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     <id>http://messay.me/2017/08/10/Scrapy-redis无法自动停止解决方案/</id>
     <published>2017-08-10T14:26:01.000Z</published>
-    <updated>2017-09-04T14:42:21.000Z</updated>
+    <updated>2017-09-04T14:44:08.000Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>公司新项目，需要大量抓取各电商平台的详情页。由于是大量的url，分布式肯定是必须的，故使用Scrapy+redis构造分布式。</li>
@@ -30,13 +30,16 @@
 <li>可以通过engine.close_spider(spider, ‘reason’)来停止程序的运行。在 scrapy-redis/spider的next_requests加入:</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if found == 0:</div><div class="line">        self.crawler.engine.close_spider(&apos;queue is empty, the spider close&apos;)</div></pre></td></tr></table></figure>
-<ul>
-<li>监控redis内requests队列，若为空，发送close信号：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">  @classmethod</div><div class="line">  def from_crawler(cls, crawler, *args, **kwargs):</div><div class="line">        from_crawler = super(SerpSpider, cls).from_crawler</div><div class="line">        spider = from_crawler(crawler, *args, **kwargs)</div><div class="line">        crawler.signals.connect(spider.idle, signal=scrapy.signals.spider_idle)</div><div class="line">        return spider</div><div class="line">def idle(self):</div><div class="line">        if self.q.llen(self.redis_key) &lt;= 0:</div><div class="line">            self.crawler.engine.close_spider(self, reason=&apos;finished&apos;)</div></pre></td></tr></table></figure>
 </li>
-<li><p>参考链接：</p>
+</ul>
+<a id="more"></a>
 <ul>
+<li><p>监控redis内requests队列，若为空，发送close信号：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@classmethod</div><div class="line">def from_crawler(cls, crawler, *args, **kwargs):</div><div class="line">      from_crawler = super(SerpSpider, cls).from_crawler</div><div class="line">      spider = from_crawler(crawler, *args, **kwargs)</div><div class="line">      crawler.signals.connect(spider.idle, signal=scrapy.signals.spider_idle)</div><div class="line">      return spider</div><div class="line">  def idle(self):</div><div class="line">      if self.q.llen(self.redis_key) &lt;= 0:</div><div class="line">          self.crawler.engine.close_spider(self, reason=&apos;finished&apos;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>参考链接：<ul>
 <li><a href="https://segmentfault.com/q/1010000010102034/a-1020000010198313" target="_blank" rel="external">scrapy-redis，爬取全部url结束，不需要清空redis，已设置SCHEDULER_PERSIST = True。</a></li>
 <li><a href="https://stackoverflow.com/questions/45540569/the-scrapy-redis-program-does-not-close-automatically" target="_blank" rel="external">The scrapy-redis program does not close automatically</a></li>
 </ul>
@@ -48,7 +51,14 @@
     
       &lt;ul&gt;
 &lt;li&gt;公司新项目，需要大量抓取各电商平台的详情页。由于是大量的url，分布式肯定是必须的，故使用Scrapy+redis构造分布式。&lt;/li&gt;
-&lt;li&gt;经研究Scrapy+Redis源码，以及实际测试来看，scrapy+redis框架在抓取完redis内的source
+&lt;li&gt;经研究Scrapy+Redis源码，以及实际测试来看，scrapy+redis框架在抓取完redis内的source:start_urls后，仍一直读取redis，无法自动停止。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;解决方法如下，请参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可以通过engine.close_spider(spider, ‘reason’)来停止程序的运行。在 scrapy-redis/spider的next_requests加入:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;if found == 0:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        self.crawler.engine.close_spider(&amp;apos;queue is empty, the spider close&amp;apos;)&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     

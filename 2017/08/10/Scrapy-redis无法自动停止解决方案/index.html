@@ -6,13 +6,16 @@
 <li>可以通过engine.close_spider(spider, ‘reason’)来停止程序的运行。在 scrapy-redis/spider的next_requests加入:</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if found == 0:</div><div class="line">        self.crawler.engine.close_spider(&apos;queue is empty, the spider close&apos;)</div></pre></td></tr></table></figure>
-<ul>
-<li>监控redis内requests队列，若为空，发送close信号：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">  @classmethod</div><div class="line">  def from_crawler(cls, crawler, *args, **kwargs):</div><div class="line">        from_crawler = super(SerpSpider, cls).from_crawler</div><div class="line">        spider = from_crawler(crawler, *args, **kwargs)</div><div class="line">        crawler.signals.connect(spider.idle, signal=scrapy.signals.spider_idle)</div><div class="line">        return spider</div><div class="line">def idle(self):</div><div class="line">        if self.q.llen(self.redis_key) &lt;= 0:</div><div class="line">            self.crawler.engine.close_spider(self, reason=&apos;finished&apos;)</div></pre></td></tr></table></figure>
 </li>
-<li><p>参考链接：</p>
+</ul>
+<a id="more"></a>
 <ul>
+<li><p>监控redis内requests队列，若为空，发送close信号：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@classmethod</div><div class="line">def from_crawler(cls, crawler, *args, **kwargs):</div><div class="line">      from_crawler = super(SerpSpider, cls).from_crawler</div><div class="line">      spider = from_crawler(crawler, *args, **kwargs)</div><div class="line">      crawler.signals.connect(spider.idle, signal=scrapy.signals.spider_idle)</div><div class="line">      return spider</div><div class="line">  def idle(self):</div><div class="line">      if self.q.llen(self.redis_key) &lt;= 0:</div><div class="line">          self.crawler.engine.close_spider(self, reason=&apos;finished&apos;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>参考链接：<ul>
 <li><a href="https://segmentfault.com/q/1010000010102034/a-1020000010198313" target="_blank" rel="external">scrapy-redis，爬取全部url结束，不需要清空redis，已设置SCHEDULER_PERSIST = True。</a></li>
 <li><a href="https://stackoverflow.com/questions/45540569/the-scrapy-redis-program-does-not-close-automatically" target="_blank" rel="external">The scrapy-redis program does not close automatically</a></li>
 </ul>
