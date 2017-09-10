@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://messay.me/"/>
-  <updated>2017-09-06T14:51:37.000Z</updated>
+  <updated>2017-09-10T07:11:13.000Z</updated>
   <id>http://messay.me/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Debian/Ubuntu无netstat命令解决方案</title>
+    <link href="http://messay.me/2017/08/25/Debian-Ubuntu%E6%97%A0netstat%E5%91%BD%E4%BB%A4%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://messay.me/2017/08/25/Debian-Ubuntu无netstat命令解决方案/</id>
+    <published>2017-08-25T07:05:02.000Z</published>
+    <updated>2017-09-10T07:11:13.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>之前用的ubuntu系统，不知道是系统不稳定，还是我操作有问题。经常无缘无故的崩溃，选择许久，换成了Debian系统。相当稳定，流畅。</li>
+<li>Debian系统默认不带netstat等命令，如果使用就会报错</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bash: netstat: command not found - Debian/Ubuntu Linux</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li>解决方法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install net-tools</div></pre></td></tr></table></figure>
+<ul>
+<li><p>net-tools包含arp, ifconfig, netstat, rarp, nameif and route命令，如果使用这些命令报错，可以尝试安装。</p>
+</li>
+<li><p>参考链接：<a href="https://linuxconfig.org/bash-netstat-command-not-found-debian-ubuntu-linux" target="_blank" rel="external">bash: netstat: command not found - Debian/Ubuntu Linux</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;之前用的ubuntu系统，不知道是系统不稳定，还是我操作有问题。经常无缘无故的崩溃，选择许久，换成了Debian系统。相当稳定，流畅。&lt;/li&gt;
+&lt;li&gt;Debian系统默认不带netstat等命令，如果使用就会报错&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;bash: netstat: command not found - Debian/Ubuntu Linux&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>禁用mac版迅雷自带垃圾功能</title>
@@ -910,32 +948,6 @@
 &lt;li&gt;&lt;p&gt;pull仓库代码&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git pull&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ruby中gsub的用法</title>
-    <link href="http://messay.me/2017/04/10/ruby%E4%B8%ADgsub%E7%9A%84%E7%94%A8%E6%B3%95/"/>
-    <id>http://messay.me/2017/04/10/ruby中gsub的用法/</id>
-    <published>2017-04-10T11:09:23.000Z</published>
-    <updated>2017-06-25T05:07:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="新公司的爬虫后续处理脚本都是用ruby写的-没办法又开始学习ruby-今天碰到一个gsub和gsub-的问题-如下解释"><a href="#新公司的爬虫后续处理脚本都是用ruby写的-没办法又开始学习ruby-今天碰到一个gsub和gsub-的问题-如下解释" class="headerlink" title="新公司的爬虫后续处理脚本都是用ruby写的,没办法又开始学习ruby,今天碰到一个gsub和gsub!的问题.如下解释:"></a>新公司的爬虫后续处理脚本都是用ruby写的,没办法又开始学习ruby,今天碰到一个gsub和gsub!的问题.如下解释:</h4><ul>
-<li>ruby中带“!”和不带”!”的方法的最大的区别就是带”!”的会改变调用对象本身了。比方说str.gsub(/a/, ‘b’)，不会改变str本身，只会返回一个新的str。而str.gsub!(/a/, ‘b’)就会把str本身给改了。</li>
-<li>但是gsub和gsub!还有另外一个不同点就是，gsub不管怎么样都会返回一个新的字符串，而gsub!只有在有字符被替换的情况下才会返回一个新的字符串，假如说没有任何字符被替换，gsub!只会返回nil.</li>
-</ul>
-<a id="more"></a>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">example:</span></div><div class="line">[ruby] view plain copy</div><div class="line">- <span class="string">'abc'</span>.gsub(<span class="regexp">/a/</span>, <span class="string">'b'</span>) <span class="comment">#返回'bbc'</span></div><div class="line">[ruby] view plain copy</div><div class="line">- <span class="string">'abc'</span>.gsub!(<span class="regexp">/a/</span>, <span class="string">'b'</span>) <span class="comment">#返回'bbc'</span></div><div class="line">[ruby] view plain copy</div><div class="line">- <span class="string">'abc'</span>.gsub(<span class="regexp">/d/</span>,<span class="string">'a'</span>) <span class="comment">#返回'abc'</span></div><div class="line">[ruby] view plain copy</div><div class="line">- <span class="string">'abc'</span>.gsub!(<span class="regexp">/d/</span>, <span class="string">'a'</span>) <span class="comment">#返回nil</span></div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;新公司的爬虫后续处理脚本都是用ruby写的-没办法又开始学习ruby-今天碰到一个gsub和gsub-的问题-如下解释&quot;&gt;&lt;a href=&quot;#新公司的爬虫后续处理脚本都是用ruby写的-没办法又开始学习ruby-今天碰到一个gsub和gsub-的问题-如下解释&quot; class=&quot;headerlink&quot; title=&quot;新公司的爬虫后续处理脚本都是用ruby写的,没办法又开始学习ruby,今天碰到一个gsub和gsub!的问题.如下解释:&quot;&gt;&lt;/a&gt;新公司的爬虫后续处理脚本都是用ruby写的,没办法又开始学习ruby,今天碰到一个gsub和gsub!的问题.如下解释:&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;ruby中带“!”和不带”!”的方法的最大的区别就是带”!”的会改变调用对象本身了。比方说str.gsub(/a/, ‘b’)，不会改变str本身，只会返回一个新的str。而str.gsub!(/a/, ‘b’)就会把str本身给改了。&lt;/li&gt;
-&lt;li&gt;但是gsub和gsub!还有另外一个不同点就是，gsub不管怎么样都会返回一个新的字符串，而gsub!只有在有字符被替换的情况下才会返回一个新的字符串，假如说没有任何字符被替换，gsub!只会返回nil.&lt;/li&gt;
 &lt;/ul&gt;
     
     </summary>
