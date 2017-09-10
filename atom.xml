@@ -275,12 +275,13 @@
     <link href="http://messay.me/2017/07/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%92%8CPYTHON%E7%BC%96%E7%A8%8B%E5%AF%BC%E8%AE%BA-Lecture-10/"/>
     <id>http://messay.me/2017/07/27/计算机科学和PYTHON编程导论-Lecture-10/</id>
     <published>2017-07-27T15:30:19.000Z</published>
-    <updated>2017-07-27T15:33:18.000Z</updated>
+    <updated>2017-09-10T07:20:22.000Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>选择排序</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># coding: utf-8</div><div class="line"># author: nemo_chen</div><div class="line"></div><div class="line">def selSort(L):</div><div class="line">    for i in range(len(L) - 1):</div><div class="line">        minIndx = i</div><div class="line">        minVal = L[i]</div><div class="line">        j = i + 1</div><div class="line">        while j &lt; len(L):</div><div class="line">            if minVal &gt; L[j]:</div><div class="line">                minIndx = j</div><div class="line">                minVal = L[j]</div><div class="line">            j += 1</div><div class="line">        temp = L[i]</div><div class="line">        L[i] = L[minIndx]</div><div class="line">        L[minIndx] = temp</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <ul>
 <li>合并排序</li>
 </ul>
@@ -292,7 +293,7 @@
       &lt;ul&gt;
 &lt;li&gt;选择排序&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/di
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;#!/usr/bin/env python&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# coding: utf-8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;# author: nemo_chen&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;def selSort(L):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    for i in range(len(L) - 1):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        minIndx = i&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        minVal = L[i]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        j = i + 1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        while j &amp;lt; len(L):&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            if minVal &amp;gt; L[j]:&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                minIndx = j&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;                minVal = L[j]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            j += 1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        temp = L[i]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        L[i] = L[minIndx]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        L[minIndx] = temp&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     

@@ -2,6 +2,7 @@
 <li>选择排序</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env python</div><div class="line"># coding: utf-8</div><div class="line"># author: nemo_chen</div><div class="line"></div><div class="line">def selSort(L):</div><div class="line">    for i in range(len(L) - 1):</div><div class="line">        minIndx = i</div><div class="line">        minVal = L[i]</div><div class="line">        j = i + 1</div><div class="line">        while j &lt; len(L):</div><div class="line">            if minVal &gt; L[j]:</div><div class="line">                minIndx = j</div><div class="line">                minVal = L[j]</div><div class="line">            j += 1</div><div class="line">        temp = L[i]</div><div class="line">        L[i] = L[minIndx]</div><div class="line">        L[minIndx] = temp</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <ul>
 <li>合并排序</li>
 </ul>
