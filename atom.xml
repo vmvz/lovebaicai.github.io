@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://messay.me/"/>
-  <updated>2017-09-10T07:11:13.000Z</updated>
+  <updated>2017-09-18T14:08:28.000Z</updated>
   <id>http://messay.me/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用ElasticDump迁移数据，报错trying to auto create mapping, but dynamic mapping is disabled 个人解决方法</title>
+    <link href="http://messay.me/2017/09/18/%E4%BD%BF%E7%94%A8ElasticDump%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%8A%A5%E9%94%99trying-to-auto-create-mapping-but-dynamic-mapping-is-disabled-%E4%B8%AA%E4%BA%BA%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://messay.me/2017/09/18/使用ElasticDump迁移数据，报错trying-to-auto-create-mapping-but-dynamic-mapping-is-disabled-个人解决方法/</id>
+    <published>2017-09-18T14:07:36.000Z</published>
+    <updated>2017-09-18T14:08:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>近日公司老机房网络一直异常，于是和运维确认迁移服务到新机房。Es服务内有将近1Y的数据量，使用ElasticDump迁移数据。</li>
+<li>报错trying to auto create mapping, but dynamic mapping is disabled</li>
+<li><p>解决方法：</p>
+<ul>
+<li>若使用动态mapping，可在新建index时，修改mapping属性为<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- 若不想使用动态mapping，可安装原来index属性新建，特别注意的是请勿在新建的index导入任何数据，否则会报错```trying to auto create mapping, but dynamic mapping is disabled</div></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>参考链接：</p>
+<ul>
+<li><a href="https://segmentfault.com/q/1010000011114191/a-1020000011116459" target="_blank" rel="external">ElasticSearch使用ElasticDump迁移数据报错，已解决报错，仍其他问题帮忙看看。</a> </li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;近日公司老机房网络一直异常，于是和运维确认迁移服务到新机房。Es服务内有将近1Y的数据量，使用ElasticDump迁移数据。&lt;/li&gt;
+&lt;li&gt;报错trying to auto create mapping, but dynamic mapping is di
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Debian/Ubuntu无netstat命令解决方案</title>
@@ -916,40 +950,6 @@
     
       &lt;h4 id=&quot;Include&quot;&gt;&lt;a href=&quot;#Include&quot; class=&quot;headerlink&quot; title=&quot;Include&quot;&gt;&lt;/a&gt;Include&lt;/h4&gt;&lt;ul&gt;
 &lt;li&gt;如下例当你Include一个模块到某个类时, 相当于把模块中定义的方法插入到类中。它允许使用 mixin。它用来 DRY 你的代码, 避免重复。例如, 当你有多个类时, 需要相同的函数时, 可以把函数定义到module中, 进行include。 下例假设模块Log和类TestClass在相同的.rb文件。如果它们存在于多个文件, 则需要使用 load 或 require 导入文件。&lt;figure class=&quot;highlight ruby&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Log&lt;/span&gt; &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;class_type&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;string&quot;&gt;&quot;This class is of type: &lt;span class=&quot;subst&quot;&gt;#&amp;#123;&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt;&amp;#125;&lt;/span&gt;&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;TestClass&lt;/span&gt; &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;include&lt;/span&gt; Log &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;tc = TestClass.new.class_type&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;puts tc &lt;span class=&quot;comment&quot;&gt;#This class is of type: TestClass&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Extend&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>git pull强制覆盖本地修改</title>
-    <link href="http://messay.me/2017/04/11/git-pull%E5%BC%BA%E5%88%B6%E8%A6%86%E7%9B%96%E6%9C%AC%E5%9C%B0%E4%BF%AE%E6%94%B9/"/>
-    <id>http://messay.me/2017/04/11/git-pull强制覆盖本地修改/</id>
-    <published>2017-04-11T11:11:19.000Z</published>
-    <updated>2017-06-25T05:07:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="有时候本地的仓库出问题-需要强制pull远程仓库的代码-命令如下"><a href="#有时候本地的仓库出问题-需要强制pull远程仓库的代码-命令如下" class="headerlink" title="有时候本地的仓库出问题,需要强制pull远程仓库的代码,命令如下:"></a>有时候本地的仓库出问题,需要强制pull远程仓库的代码,命令如下:</h4><ul>
-<li><p>清除本地修改</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --hard</div></pre></td></tr></table></figure>
-</li>
-<li><p>pull仓库代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git pull</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<a id="more"></a>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;有时候本地的仓库出问题-需要强制pull远程仓库的代码-命令如下&quot;&gt;&lt;a href=&quot;#有时候本地的仓库出问题-需要强制pull远程仓库的代码-命令如下&quot; class=&quot;headerlink&quot; title=&quot;有时候本地的仓库出问题,需要强制pull远程仓库的代码,命令如下:&quot;&gt;&lt;/a&gt;有时候本地的仓库出问题,需要强制pull远程仓库的代码,命令如下:&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;清除本地修改&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git reset --hard&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;pull仓库代码&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git pull&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
     
