@@ -2,7 +2,8 @@
 <li>近日公司老机房网络一直异常，于是和运维确认迁移服务到新机房。Es服务内有将近1Y的数据量，使用ElasticDump迁移数据。</li>
 <li>报错trying to auto create mapping, but dynamic mapping is disabled</li>
 <li>解决方法：<ul>
-<li>若使用动态mapping，可在新建index时，修改mapping属性为<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- 若不想使用动态mapping，可按照原来index属性新建，特别注意的是请勿迁移之前，手动用其它方法在新建的index导入任何数据，否则会报错```trying to auto create mapping, but dynamic mapping is disabled</div></pre></td></tr></table></figure></li>
+<li>若使用动态mapping，可在新建index时，修改mapping属性为<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">   </div><div class="line">- index.mapper.dynamic这个是动态索引开关，如果关闭，那么你新写入一个索引或者存在的一个索引新增一个字段，你又没提前定义好mapping，那么这次写入将会被拒绝</div><div class="line">- 若不想使用动态mapping，可按照原来index属性新建，特别注意的是请勿迁移之前，手动用其它方法在新建的index导入任何数据，否则会报错</div><div class="line">```trying to auto create mapping, but dynamic mapping is disabled</div></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ul></div><a href="/2017/09/18/使用ElasticDump迁移数据，报错trying-to-auto-create-mapping-but-dynamic-mapping-is-disabled-个人解决方法/" class="read-more">...more</a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2017/08/25/Debian-Ubuntu无netstat命令解决方案/" class="post-title-link">Debian/Ubuntu无netstat命令解决方案</a></h2><div class="post-info">2017年8月25日</div><div class="post-content"><ul>

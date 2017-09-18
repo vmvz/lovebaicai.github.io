@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://messay.me/"/>
-  <updated>2017-09-18T14:16:13.000Z</updated>
+  <updated>2017-09-18T14:19:43.000Z</updated>
   <id>http://messay.me/</id>
   
   <author>
@@ -20,13 +20,14 @@
     <link href="http://messay.me/2017/09/18/%E4%BD%BF%E7%94%A8ElasticDump%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%8A%A5%E9%94%99trying-to-auto-create-mapping-but-dynamic-mapping-is-disabled-%E4%B8%AA%E4%BA%BA%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
     <id>http://messay.me/2017/09/18/使用ElasticDump迁移数据，报错trying-to-auto-create-mapping-but-dynamic-mapping-is-disabled-个人解决方法/</id>
     <published>2017-09-18T14:07:36.000Z</published>
-    <updated>2017-09-18T14:16:13.000Z</updated>
+    <updated>2017-09-18T14:19:43.000Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>近日公司老机房网络一直异常，于是和运维确认迁移服务到新机房。Es服务内有将近1Y的数据量，使用ElasticDump迁移数据。</li>
 <li>报错trying to auto create mapping, but dynamic mapping is disabled</li>
 <li>解决方法：<ul>
-<li>若使用动态mapping，可在新建index时，修改mapping属性为<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- 若不想使用动态mapping，可按照原来index属性新建，特别注意的是请勿迁移之前，手动用其它方法在新建的index导入任何数据，否则会报错```trying to auto create mapping, but dynamic mapping is disabled</div></pre></td></tr></table></figure></li>
+<li>若使用动态mapping，可在新建index时，修改mapping属性为<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">   </div><div class="line">- index.mapper.dynamic这个是动态索引开关，如果关闭，那么你新写入一个索引或者存在的一个索引新增一个字段，你又没提前定义好mapping，那么这次写入将会被拒绝</div><div class="line">- 若不想使用动态mapping，可按照原来index属性新建，特别注意的是请勿迁移之前，手动用其它方法在新建的index导入任何数据，否则会报错</div><div class="line">```trying to auto create mapping, but dynamic mapping is disabled</div></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ul>
@@ -45,7 +46,8 @@
 &lt;li&gt;近日公司老机房网络一直异常，于是和运维确认迁移服务到新机房。Es服务内有将近1Y的数据量，使用ElasticDump迁移数据。&lt;/li&gt;
 &lt;li&gt;报错trying to auto create mapping, but dynamic mapping is disabled&lt;/li&gt;
 &lt;li&gt;解决方法：&lt;ul&gt;
-&lt;li&gt;若使用动态mapping，可在新建index时，修改mapping属性为&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;- 若不想使用动态mapping，可按照原来index属性新建，特别注意的是请勿迁移之前，手动用其它方法在新建的index导入任何数据，否则会报错```trying to auto create mapping, but dynamic mapping is disabled&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;若使用动态mapping，可在新建index时，修改mapping属性为&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;   &lt;/div&gt;&lt;div class=&quot;line&quot;&gt;- index.mapper.dynamic这个是动态索引开关，如果关闭，那么你新写入一个索引或者存在的一个索引新增一个字段，你又没提前定义好mapping，那么这次写入将会被拒绝&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;- 若不想使用动态mapping，可按照原来index属性新建，特别注意的是请勿迁移之前，手动用其它方法在新建的index导入任何数据，否则会报错&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;```trying to auto create mapping, but dynamic mapping is disabled&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
