@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>iLovebaicai</title>
+  <title>Messay</title>
   
   <link href="/atom.xml" rel="self"/>
   
@@ -133,7 +133,7 @@
     <link href="http://messay.me/2017/08/10/Scrapy-redis%E6%97%A0%E6%B3%95%E8%87%AA%E5%8A%A8%E5%81%9C%E6%AD%A2%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     <id>http://messay.me/2017/08/10/Scrapy-redis无法自动停止解决方案/</id>
     <published>2017-08-10T14:26:01.000Z</published>
-    <updated>2017-09-06T14:28:14.000Z</updated>
+    <updated>2017-09-18T13:53:14.000Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>公司新项目，需要大量抓取各电商平台的详情页。由于是大量的url，分布式肯定是必须的，故使用Scrapy+redis构造分布式。</li>
@@ -150,6 +150,8 @@
 <li>监控redis内requests队列，若为空，发送close信号：</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@classmethod</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">from_crawler</span><span class="params">(cls, crawler, *args, **kwargs)</span>:</span></div><div class="line">    from_crawler = super(SerpSpider, cls).from_crawler</div><div class="line">    spider = from_crawler(crawler, *args, **kwargs)</div><div class="line">    crawler.signals.connect(spider.idle,signal=scrapy.signals.spider_idle)</div><div class="line">    <span class="keyword">return</span> spider</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">idle</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">if</span> self.q.llen(self.redis_key) &lt;= <span class="number">0</span>:</div><div class="line">        self.crawler.engine.close_spider(self, reason=<span class="string">'finished'</span>)</div></pre></td></tr></table></figure>
+<div class="tip">经过测试，单进程使用此方法，可正常结束。若使用多进程，进程会卡死，无法自动结束。</div>
+
 <ul>
 <li>参考链接：<ul>
 <li><a href="https://segmentfault.com/q/1010000010102034/a-1020000010198313" target="_blank" rel="external">scrapy-redis，爬取全部url结束，不需要清空redis，已设置SCHEDULER_PERSIST = True。</a></li>
