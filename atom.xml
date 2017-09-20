@@ -749,7 +749,7 @@
     <link href="http://messay.me/2017/05/25/Cassandra-COPY-%E5%91%BD%E4%BB%A4%E7%9A%84%E7%94%A8%E6%B3%95/"/>
     <id>http://messay.me/2017/05/25/Cassandra-COPY-命令的用法/</id>
     <published>2017-05-25T11:45:58.000Z</published>
-    <updated>2017-06-26T14:11:53.000Z</updated>
+    <updated>2017-09-20T16:08:11.000Z</updated>
     
     <content type="html"><![CDATA[<h4 id="Cassandra-COPY-命令简单用法"><a href="#Cassandra-COPY-命令简单用法" class="headerlink" title="Cassandra COPY 命令简单用法:"></a>Cassandra COPY 命令简单用法:</h4><ul>
 <li>Cassandra提供了COPY命令,可将数据库里面的table导入或者导出到本地,实现简单数据迁移</li>
