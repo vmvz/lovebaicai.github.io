@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://messay.me/"/>
-  <updated>2017-09-20T15:03:10.000Z</updated>
+  <updated>2017-09-24T09:09:34.000Z</updated>
   <id>http://messay.me/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python之禅</title>
+    <link href="http://messay.me/2017/09/24/Python%E4%B9%8B%E7%A6%85/"/>
+    <id>http://messay.me/2017/09/24/Python之禅/</id>
+    <published>2017-09-24T09:04:37.000Z</published>
+    <updated>2017-09-24T09:09:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<ul>
+<li>希望以后自己能写出和“Python之禅”所说的那种Python代码。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import this</div><div class="line"></div><div class="line">The Zen of Python, by Tim Peters</div><div class="line"></div><div class="line">Beautiful is better than ugly.</div><div class="line">Explicit is better than implicit.</div><div class="line">Simple is better than complex.</div><div class="line">Complex is better than complicated.</div><div class="line">Flat is better than nested.</div><div class="line">Sparse is better than dense.</div><div class="line">Readability counts.</div><div class="line">Special cases aren't special enough to break the rules.</div><div class="line">Although practicality beats purity.</div><div class="line">Errors should never pass silently.</div><div class="line">Unless explicitly silenced.</div><div class="line">In the face of ambiguity, refuse the temptation to guess.</div><div class="line">There should be one-- and preferably only one --obvious way to do it.</div><div class="line">Although that way may not be obvious at first unless you're Dutch.</div><div class="line">Now is better than never.</div><div class="line">Although never is often better than *right* now.</div><div class="line">If the implementation is hard to explain, it's a bad idea.</div><div class="line">If the implementation is easy to explain, it may be a good idea.</div><div class="line">Namespaces are one honking great idea -- let's do more of those!</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">优美胜于丑陋。</div><div class="line">显式胜于隐式。</div><div class="line">简单胜于复杂。</div><div class="line">复杂胜于难懂。</div><div class="line">扁平胜于嵌套。</div><div class="line">稀疏胜于紧密。</div><div class="line">可读性应当被重视。</div><div class="line">尽管实用性会打败纯粹性，特例也不能凌驾于规则之上。</div><div class="line">不要忽略任何错误，除非你确认要这么做。</div><div class="line">面对不明确的定义，拒绝猜测的诱惑。</div><div class="line">找到一种最好唯一的一种方法去解决问题。</div><div class="line">虽然一开始这种方法并不是显而易见，因为你不是 Python 之父。</div><div class="line">做好过不做，但没有思考的做还不如不做。</div><div class="line">如果实现很难说明，那它是个坏想法。</div><div class="line">如果实现容易解释，那它有可能是个好想法。</div><div class="line">命名空间是个绝妙的想法，请多加利用。</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;希望以后自己能写出和“Python之禅”所说的那种Python代码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;gt;&amp;gt;&amp;gt; import this&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;The Zen of Python, by Tim Peters&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Beautiful is better than ugly.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Explicit is better than implicit.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Simple is better than complex.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Complex is better than complicated.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Flat is better than nested.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Sparse is better than dense.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Readability counts.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Special cases aren&#39;t special enough to break the rules.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Although practicality beats purity.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Errors should never pass silently.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Unless explicitly silenced.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;In the face of ambiguity, refuse the temptation to guess.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;There should be one-- and preferably only one --obvious way to do it.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Although that way may not be obvious at first unless you&#39;re Dutch.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Now is better than never.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Although never is often better than *right* now.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;If the implementation is hard to explain, it&#39;s a bad idea.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;If the implementation is easy to explain, it may be a good idea.&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;Namespaces are one honking great idea -- let&#39;s do more of those!&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Centos自动安装Python2.7脚本</title>
@@ -889,69 +916,6 @@
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;brew install thefuck&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>cassandra CQL 常用操作</title>
-    <link href="http://messay.me/2017/04/20/cassandra-CQL-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/"/>
-    <id>http://messay.me/2017/04/20/cassandra-CQL-常用操作/</id>
-    <published>2017-04-20T11:35:25.000Z</published>
-    <updated>2017-06-25T05:07:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li><p>CQL客户端链接<br>bin/cqlsh ip username password</p>
-</li>
-<li><p>常用操作命令</p>
-<ul>
-<li><p>建立keyspace语句，keyspace类似于 mysql 中的数据库，一个数据库中可以有很多表；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE KEYSPACE mykeyspace WITH REPLICATION = &#123; &apos;class&apos; : &apos;SimpleStrategy&apos;,&apos;replication_factor&apos; : 2 &#125; ，replication_factor 表示 数据被复制几份</div></pre></td></tr></table></figure>
-</li>
-<li><p>建表语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CREATE TABLE task ( row_split text, column_split text, username text, parent_user text, priority int, url text, status</div><div class="line"> int, is_dir boolean, channel_code text, is_multilayer boolean, action_type int, create_time bigint, finish_time bigint, id text, subtask_result text, reason text, retry_time int, PRIMARY KEY (row_split, column_split) ) ;  primary key 的第一个元素是rowkey，第二个元素的是cluster key；</div></pre></td></tr></table></figure>
-</li>
-<li><p>建索引语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create index task_status on task(status);  cassandra的索引不支持范围查找，类似于 位图索引 或者 哈希索引，支持 ＝ 操作，不支持&lt; 或 &gt; 之类的范围查找；</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<a id="more"></a>
-<ul>
-<li><p>查询语句:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select * from task where status=2;</div><div class="line">注意，cassandra where 子句里面的，除了rowkey以外，其他字段如果要使用 = 操作，必须建立二级索引，而且cassandra里面的二级索引 不支持范围查询，类似于位图索引，不同于 BTREE索引；</div></pre></td></tr></table></figure>
-</li>
-<li><p>删除语句:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">单独删除某个column 或者 某行；</div><div class="line">delete column1，column2 from table where rowkey = &apos;xxxx&apos;</div><div class="line">or</div><div class="line">delete column1，column2 from table where rowkey in (&apos;x&apos;,&apos;xx&apos;,&apos;xxx&apos;...)</div><div class="line">其中where子句是不能省略的。</div></pre></td></tr></table></figure>
-</li>
-<li><p>删除表中的所有数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">如果要想实现 类似 mysql中 delete from table的效果，可以使用truncate；</div><div class="line">truncate table</div></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;CQL客户端链接&lt;br&gt;bin/cqlsh ip username password&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;常用操作命令&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;建立keyspace语句，keyspace类似于 mysql 中的数据库，一个数据库中可以有很多表；&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;CREATE KEYSPACE mykeyspace WITH REPLICATION = &amp;#123; &amp;apos;class&amp;apos; : &amp;apos;SimpleStrategy&amp;apos;,&amp;apos;replication_factor&amp;apos; : 2 &amp;#125; ，replication_factor 表示 数据被复制几份&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;建表语句：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;CREATE TABLE task ( row_split text, column_split text, username text, parent_user text, priority int, url text, status&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; int, is_dir boolean, channel_code text, is_multilayer boolean, action_type int, create_time bigint, finish_time bigint, id text, subtask_result text, reason text, retry_time int, PRIMARY KEY (row_split, column_split) ) ;  primary key 的第一个元素是rowkey，第二个元素的是cluster key；&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;建索引语句：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;create index task_status on task(status);  cassandra的索引不支持范围查找，类似于 位图索引 或者 哈希索引，支持 ＝ 操作，不支持&amp;lt; 或 &amp;gt; 之类的范围查找；&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
     
     </summary>
     
